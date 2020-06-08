@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "./style.scss";
+import React, { Component } from 'react';
+import './style.scss';
 
-import { listAllMeals, listPopularMeals } from "./../../services/meals";
-import MealList from "./../../components/MealList";
+import { listAllMeals, listPopularMeals } from './../../services/meals';
+import MealList from './../../components/MealList';
 
 class FreezerView extends Component {
   constructor() {
@@ -28,7 +28,7 @@ class FreezerView extends Component {
     listPopularMeals()
       .then((meals) => {
         this.setState({
-          popularMeals: meals,
+          popularMeals: meals.meals,
           meals,
           loaded: true,
         });
@@ -43,20 +43,17 @@ class FreezerView extends Component {
   }
 
   render() {
-    console.log("Popular: ", this.state.allMeals);
+    console.log('Popular: ', this.state.allMeals);
     const allMeals = this.state.allMeals;
+    const popularMeals = this.state.popularMeals;
     return (
-      <div className="freezer-container">
-        <div className="search-bar-container"></div>
-        <div className="categories-container"></div>
+      <div className='freezer-container'>
+        <div className='search-bar-container'></div>
+        <div className='categories-container'></div>
         {this.state.loaded && (
           <div>
-            <div className="popular-meals-container"></div>
-            <div className="recommended-meals-container"></div>
-            <div className="all-meals-container">
-              <h2>All Meals</h2>
-              <MealList meals={allMeals} />
-            </div>
+            <MealList title='Popular' meals={popularMeals} />
+            <MealList title='All' meals={allMeals} />
           </div>
         )}
       </div>

@@ -26,4 +26,17 @@ const listPopularMeals = () => {
     });
 };
 
-export { listAllMeals, listPopularMeals };
+const listSingleMeal = (id) => {
+  return baseMealsService
+    .get(`/${id}`)
+    .then((response) => {
+      const data = response.data;
+      const meal = data.meal;
+      return Promise.resolve({ ...meal });
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+export { listAllMeals, listPopularMeals, listSingleMeal };
