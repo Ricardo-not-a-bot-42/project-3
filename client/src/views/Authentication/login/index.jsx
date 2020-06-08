@@ -26,7 +26,7 @@ class AuthenticationLogInView extends Component {
             onChange=""
           />
 
-          <button className="bottom-button">Register and continue</button>
+          <button className="bottom-button">Login</button>
         </form>
       </div>
     );

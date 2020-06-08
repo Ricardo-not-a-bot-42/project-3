@@ -27,12 +27,12 @@ class ProfileView extends Component {
             onChange=""
           />
 
-          <label htmlFor="delivery-input">Delivery Adress</label>
+          <label htmlFor="delivery-input">Delivery Address</label>
           <input
             id="delivery-input"
             name="delivery"
             type="delivery"
-            placeholder="Delivery Adress"
+            placeholder="Delivery Addess"
             value=""
             onChange=""
           />

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     trim: true
   },
   email: {
@@ -13,7 +14,15 @@ const schema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
+  address: {
+    type: String,
+    required: true
+  },
   passwordHash: {
+    type: String,
+    required: true
+  },
+  CreditCardToken: {
     type: String
   }
 });
