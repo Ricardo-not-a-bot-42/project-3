@@ -47,7 +47,9 @@ class App extends Component {
             {/* <Route path="/profile" component={ProfileView}/> */}
             <Route
               path="/profile"
-              render={(props) => <ProfileView {...props} updateUser={this.updateUser} />}
+              render={(props) => (
+                <ProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
+              )}
             />
 
             <Route

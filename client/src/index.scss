@@ -52,21 +52,22 @@ form {
     border-radius: 4px;
     border: 1px solid #dedfe4;
   }
-
-  button {
-    border-radius: 20px;
-    margin: 1em;
-    border: 1px solid #dedfe4;
-    background-color: #f4f4f4;
-    padding: 0.5em;
-  }
 }
 
+button {
+  border-radius: 20px;
+  width: 30%;
+  margin: 1em;
+  border: 1px solid #dedfe4;
+  background-color: #f4f4f4;
+  padding: 0.5em;
+}
 .bottom-button {
   border-radius: 20px;
   border: 1px solid #ff971d;
   background-color: #fff8f8;
-  width: 30%;
+  width: 40%;
   position: absolute;
   bottom: 1em;
+  right: 1em;
 }
