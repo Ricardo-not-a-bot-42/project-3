@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './style.scss';
 
-class ProfileView extends Component {
+class AuthenticationJoinUsView extends Component {
   render() {
     return (
       <div>
-        <h2>Your Profile</h2>
+        <h2>Join Us!</h2>
         <form>
           <label htmlFor="full-name-input">Full Name</label>
           <input
@@ -56,16 +55,22 @@ class ProfileView extends Component {
             value=""
             onChange=""
           />
-          <div className="profile-buttons">
-            <button>Edit Profile</button>
-            <button>Past Orders</button>
-          </div>
 
-          <button className="bottom-button">Logout</button>
+          <label htmlFor="password-input">Password</label>
+          <input
+            id="password-input"
+            name="password"
+            type="password"
+            placeholder="Strong Password"
+            value=""
+            onChange=""
+          />
+
+          <button className="bottom-button">Register and continue</button>
         </form>
       </div>
     );
   }
 }
 
-export default ProfileView;
+export default AuthenticationJoinUsView;

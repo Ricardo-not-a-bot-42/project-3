@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 
-export class HomeView extends Component {
+class HomeView extends Component {
   render() {
     return (
       <div>
