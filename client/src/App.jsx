@@ -6,6 +6,8 @@ import NavBar from './components/NavBar';
 
 import FreezerView from './views/freezer';
 import MealView from './views/meal';
+import MealEditView from './views/meal/edit';
+import MealCreateView from './views/meal/create';
 
 import HomeView from './views/Home';
 import ProfileView from './views/Profile';
@@ -25,10 +27,16 @@ class App extends Component {
             <Route path='/join-us' exact component={AuthenticationJoinUsView} />
             <Route path='/login' exact component={AuthenticationLogInView} />
             <Route path='/freezer' exact component={FreezerView} />
-            <Route path='/meal/:id' exact component={MealView} />
+            <Route path='/meal/create' exact component={MealCreateView} />
             <Route
               path='/meal/:id'
+              exact
               render={(props) => <MealView {...props} />}
+            />
+            <Route
+              path='/meal/:id/edit'
+              exact
+              render={(props) => <MealEditView {...props} />}
             />
           </Switch>
         </BrowserRouter>

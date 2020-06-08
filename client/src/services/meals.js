@@ -39,4 +39,50 @@ const listSingleMeal = (id) => {
     });
 };
 
-export { listAllMeals, listPopularMeals, listSingleMeal };
+const createNewMeal = (body) => {
+  console.log(body.name);
+  return baseMealsService
+    .post(`/create`, body)
+    .then((response) => {
+      const data = response.data;
+      const meal = data.meal;
+      return Promise.resolve({ ...meal });
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+const editMeal = (id, body) => {
+  console.log(body);
+  return baseMealsService
+    .post(`/${id}/edit`, body)
+    .then((response) => {
+      const data = response.data;
+      const meal = data.meal;
+      return Promise.resolve({ ...meal });
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+const deleteMeal = (id) => {
+  return baseMealsService
+    .post(`/${id}/delete`)
+    .then((response) => {
+      return Promise.resolve();
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+export {
+  listAllMeals,
+  listPopularMeals,
+  listSingleMeal,
+  createNewMeal,
+  editMeal,
+  deleteMeal,
+};

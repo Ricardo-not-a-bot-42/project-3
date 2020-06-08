@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { listSingleMeal } from './../../services/meals';
+import { listSingleMeal, deleteMeal } from './../../services/meals';
 import { Link } from 'react-router-dom';
 
 class MealView extends Component {
@@ -20,6 +20,16 @@ class MealView extends Component {
     });
   }
 
+  delete = () => {
+    deleteMeal(this.id)
+      .then(() => {
+        this.props.history.push('/freezer');
+      })
+      .catch((error) => {
+        console.log('Error', error);
+      });
+  };
+
   render() {
     const meal = { ...this.state.meal };
     return (
@@ -39,7 +49,7 @@ class MealView extends Component {
               })}
             </ul>
             <div className='admin-functions'>
-              <button>Delete</button>
+              <button onClick={this.delete}>Delete</button>
               <Link to={`/meal/${this.id}/edit`}>Edit</Link>
             </div>
           </div>

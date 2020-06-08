@@ -42,6 +42,7 @@ mealRouter.get('/:id', (req, res, next) => {
 
 mealRouter.post('/create', (req, res, next) => {
   const mealDetails = { ...req.body };
+  console.log(req.body);
   Meal.create(mealDetails)
     .then((meal) => {
       console.log(meal);
@@ -54,15 +55,27 @@ mealRouter.post('/create', (req, res, next) => {
     });
 });
 
-mealRouter.post('/edit/:id', (req, res, next) => {
+mealRouter.post('/:id/edit', (req, res, next) => {
   const mealId = req.params.id;
   const mealDetails = { ...req.body };
+  console.log(mealDetails);
   Meal.findByIdAndUpdate(mealId, mealDetails)
     .then((meal) => {
       console.log(meal);
       res.json({
         meal,
       });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+mealRouter.post('/:id/delete', (req, res, next) => {
+  const mealId = req.params.id;
+  Meal.findByIdAndDelete(mealId)
+    .then((meal) => {
+      console.log(meal);
     })
     .catch((error) => {
       console.log(error);
