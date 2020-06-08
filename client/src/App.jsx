@@ -13,23 +13,60 @@ import ProfileView from './views/Profile';
 import AuthenticationJoinUsView from './views/Authentication/joinus';
 import AuthenticationLogInView from './views/Authentication/login';
 
+import { loadAuthenticatedUser } from './services/authentication';
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+  }
+
+  componentDidMount() {
+    loadAuthenticatedUser()
+      .then((user) => {
+        this.updateUser(user);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  updateUser = (user) => {
+    this.setState({
+      user
+    });
+  };
+
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <BrowserRouter>
-          <NavBar />
+          <NavBar user={this.state.user} />
           <Switch>
-            <Route path='/' exact component={HomeView} />
-            <Route path='/profile' component={ProfileView} />
-            <Route path='/join-us' exact component={AuthenticationJoinUsView} />
-            <Route path='/login' exact component={AuthenticationLogInView} />
-            <Route path='/freezer' exact component={FreezerView} />
-            <Route path='/meal/:id' exact component={MealView} />
+            <Route path="/" exact component={HomeView} />
+            {/* <Route path="/profile" component={ProfileView}/> */}
             <Route
-              path='/meal/:id'
-              render={(props) => <MealView {...props} />}
+              path="/profile"
+              render={(props) => <ProfileView {...props} updateUser={this.updateUser} />}
             />
+
+            <Route
+              path="/join-us"
+              exact
+              render={(props) => (
+                <AuthenticationJoinUsView {...props} updateUser={this.updateUser} />
+              )}
+            />
+            <Route
+              path="/login"
+              exact
+              render={(props) => (
+                <AuthenticationLogInView {...props} updateUser={this.updateUser} />
+              )}
+            />
+            <Route path="/freezer" exact component={FreezerView} />
+            <Route path="/meal/:id" exact component={MealView} />
+            <Route path="/meal/:id" render={(props) => <MealView {...props} />} />
           </Switch>
         </BrowserRouter>
       </div>

@@ -18,12 +18,12 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  creditCardToken: {
+    type: String
+  },
   passwordHash: {
     type: String,
     required: true
-  },
-  CreditCardToken: {
-    type: String
   }
 });
 

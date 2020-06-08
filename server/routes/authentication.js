@@ -61,4 +61,11 @@ router.post('/signout', (req, res, next) => {
   res.json({});
 });
 
+router.get('/profile', (req, res, next) => {
+  res.json({
+    user: req.user || null
+    // if there is a user, we pass a user, if not (undefined) we pass null
+  });
+});
+
 module.exports = router;

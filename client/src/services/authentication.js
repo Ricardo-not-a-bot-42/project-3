@@ -31,4 +31,28 @@ const login = (body) => {
     });
 };
 
-export { joinUs, login };
+const signOut = () => {
+  return baseAuthenticationService
+    .post('/signout')
+    .then((response) => {
+      return Promise.resolve();
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+const loadAuthenticatedUser = () => {
+  return baseAuthenticationService
+    .get('/profile')
+    .then((response) => {
+      const data = response.data;
+      const user = data.user;
+      return Promise.resolve(user);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+export { joinUs, login, signOut, loadAuthenticatedUser };

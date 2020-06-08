@@ -29,7 +29,7 @@ class AuthenticationJoinUsView extends Component {
 
     joinUs({ name, email, address, contact, payment, password })
       .then((user) => {
-        console.log(user);
+        this.props.updateUser(user);
       })
       .catch((error) => {
         console.log(error);
