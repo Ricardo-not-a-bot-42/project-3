@@ -10,7 +10,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const serveFavicon = require('serve-favicon');
 const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
-const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
+// const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');  we wont't need this, because we won't use res.locals.user
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 
@@ -26,7 +26,7 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
+      maxAge: 60 * 60 * 24 * 1000,
       sameSite: 'lax',
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production'
@@ -38,7 +38,7 @@ app.use(
   })
 );
 app.use(basicAuthenticationDeserializer);
-app.use(bindUserToViewLocals);
+// app.use(bindUserToViewLocals); we wont't need this, because we won't use res.locals.user
 
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
