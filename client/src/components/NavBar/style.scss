@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  align-items: right;
+  background-color: #ff971d;
+
+  img {
+    left: 0;
+  }
+
+  .auth-links {
+    right: 0;
+  }
+
+  button {
+    border: 0;
+  }
+  img {
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+  }
+}

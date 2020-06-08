@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const baseMealsService = axios.create({
-  baseURL: "/api/meals/",
+  baseURL: '/api/meals/',
 });
 
 const listAllMeals = () => {
   return baseMealsService
-    .get("/list")
+    .get('/list')
     .then((response) => {
       return Promise.resolve(response.data);
     })
@@ -17,7 +17,7 @@ const listAllMeals = () => {
 
 const listPopularMeals = () => {
   return baseMealsService
-    .get("/popular")
+    .get('/popular')
     .then((response) => {
       return Promise.resolve(response.data);
     })

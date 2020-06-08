@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const mealSchema = new mongoose.Schema({
   name: {
@@ -15,7 +15,7 @@ const mealSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ["Meat", "Fish", "Dessert", "Fast-food"],
+    enum: ['Meat', 'Fish', 'Dessert', 'Fast-food'],
   },
   price: {
     amount: {
@@ -30,6 +30,6 @@ const mealSchema = new mongoose.Schema({
   },
 });
 
-const Meal = mongoose.model("Meal", mealSchema);
+const Meal = mongoose.model('Meal', mealSchema);
 
 module.exports = Meal;

@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-const { join } = require("path");
-const express = require("express");
-const createError = require("http-errors");
-const connectMongo = require("connect-mongo");
-const cookieParser = require("cookie-parser");
-const expressSession = require("express-session");
-const logger = require("morgan");
-const mongoose = require("mongoose");
-const serveFavicon = require("serve-favicon");
-const basicAuthenticationDeserializer = require("./middleware/basic-authentication-deserializer.js");
-const bindUserToViewLocals = require("./middleware/bind-user-to-view-locals.js");
-const indexRouter = require("./routes/index");
-const authenticationRouter = require("./routes/authentication");
-const mealRouter = require("./routes/meal");
+const { join } = require('path');
+const express = require('express');
+const createError = require('http-errors');
+const connectMongo = require('connect-mongo');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const serveFavicon = require('serve-favicon');
+const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
+// const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');  we wont't need this, because we won't use res.locals.user
+const indexRouter = require('./routes/index');
+const authenticationRouter = require('./routes/authentication');
+const mealRouter = require('./routes/meal');
 
 const app = express();
 
-app.use(serveFavicon(join(__dirname, "public/images", "favicon.ico")));
-app.use(logger("dev"));
+app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
+app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -27,10 +27,10 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
-      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 1000,
+      sameSite: 'lax',
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === 'production',
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
@@ -39,11 +39,11 @@ app.use(
   })
 );
 app.use(basicAuthenticationDeserializer);
-app.use(bindUserToViewLocals);
+// app.use(bindUserToViewLocals); we wont't need this, because we won't use res.locals.user
 
-app.use("/", indexRouter);
-app.use("/authentication", authenticationRouter);
-app.use("/api/meals", mealRouter);
+app.use('/', indexRouter);
+app.use('/authentication', authenticationRouter);
+app.use('/api/meals', mealRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 // Catch all error handler
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
-  res.json({ type: "error", error: { message: error.message } });
+  res.json({ type: 'error', error: { message: error.message } });
 });
 
 module.exports = app;
