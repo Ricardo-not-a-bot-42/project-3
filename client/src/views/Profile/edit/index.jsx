@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { editProfile } from './../../../services/authentication';
+import { editProfile, loadUser } from './../../../services/authentication';
 
 class ProfileEditView extends Component {
   constructor(props) {
@@ -9,19 +9,21 @@ class ProfileEditView extends Component {
       email: '',
       address: '',
       contact: '',
-      creditCardToken: '',
+      creditCardToken: ''
     };
+    this.id = this.props.user._id;
+    console.log('this.props.user', this.props.user);
   }
 
   handleFormSubmission = (event) => {
     event.preventDefault();
     const { name, email, address, contact, creditCardToken } = this.state;
-    editProfile({
-      name: '',
-      email: '',
-      address: '',
-      contact: '',
-      creditCardToken: '',
+    editProfile(this.id, {
+      name,
+      email,
+      address,
+      contact,
+      creditCardToken
     }).then((user) => {
       console.log(user);
     });
@@ -31,69 +33,86 @@ class ProfileEditView extends Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
+  componentDidMount() {
+    console.log('user did mount', this.props.user);
+    loadUser(this.props.user)
+      .then((user) => {
+        this.setState({
+          name: user.name,
+          email: user.email,
+          address: user.address,
+          contact: user.contact,
+          creditCardToken: user.creditCardToken,
+          loaded: true
+        });
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
+
   render() {
-    console.log('this.props', this.props);
     return (
       <div>
         <h2>Your Profile</h2>
         {this.props.user && (
           <>
             <form onSubmit={this.handleFormSubmission}>
-              <label htmlFor='name-input'>Full Name</label>
+              <label htmlFor="name-input">Full Name</label>
               <input
-                id='name-input'
-                name='name'
-                type='name'
-                placeholder='Full Name'
-                value={this.props.user.name}
+                id="name-input"
+                name="name"
+                type="name"
+                placeholder="Full Name"
+                value={this.state.name}
                 onChange={this.handleInputChange}
               />
 
-              <label htmlFor='email-input'>E-mail</label>
+              <label htmlFor="email-input">E-mail</label>
               <input
-                id='email-input'
-                name='email'
-                type='email'
-                placeholder='E-mail'
-                value={this.props.user.email}
+                id="email-input"
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                value={this.state.email}
                 onChange={this.handleInputChange}
               />
 
-              <label htmlFor='address-input'>Delivery Address</label>
+              <label htmlFor="address-input">Delivery Address</label>
               <input
-                id='address-input'
-                name='address'
-                type='address'
-                placeholder='Delivery Address'
-                value={this.props.user.address}
+                id="address-input"
+                name="address"
+                type="address"
+                placeholder="Delivery Address"
+                value={this.state.address}
                 onChange={this.handleInputChange}
               />
 
-              <label htmlFor='contact-input'>Contact Number</label>
+              <label htmlFor="contact-input">Contact Number</label>
               <input
-                id='contact-input'
-                name='contact'
-                type='contact'
-                placeholder='911 111 111'
-                value={this.props.user.contact}
+                id="contact-input"
+                name="contact"
+                type="contact"
+                placeholder="911 111 111"
+                value={this.state.contact}
                 onChange={this.handleInputChange}
               />
 
-              <label htmlFor='creditCardToken-input'>Credit Card</label>
+              <label htmlFor="creditCardToken-input">Credit Card</label>
               <input
-                id='creditCardToken-input'
-                name='creditCardToken'
-                type='creditCardToken'
-                placeholder='creditCardToken Method'
-                value={this.props.user.creditCardToken}
+                id="creditCardToken-input"
+                name="creditCardToken"
+                type="creditCardToken"
+                placeholder="creditCardToken Method"
+                value={this.state.creditCardToken}
                 onChange={this.handleInputChange}
               />
 
-              <button className='bottom-button'>Submit Changes</button>
+              <button className="bottom-button">Submit Changes</button>
             </form>
           </>
         )}

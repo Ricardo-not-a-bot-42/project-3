@@ -63,7 +63,7 @@ class MealList extends Component {
                   </ul>
                 </div>
               </div>
-            ))) || <h3>Rate some meals to get recommendations!</h3>}
+            ))) || <h3>No meals to display!</h3>}
         </div>
       </div>
     );
