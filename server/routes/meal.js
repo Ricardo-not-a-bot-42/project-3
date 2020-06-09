@@ -71,6 +71,22 @@ mealRouter.post('/:id/edit', (req, res, next) => {
     });
 });
 
+mealRouter.post('/:id/addRating', (req, res, next) => {
+  const mealId = req.params.id;
+  const rating = req.body.body;
+  console.log(req.body);
+  Meal.findByIdAndUpdate(mealId, { ratings: rating })
+    .then((meal) => {
+      //console.log(meal);
+      res.json({
+        meal,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 mealRouter.post('/:id/delete', (req, res, next) => {
   const mealId = req.params.id;
   Meal.findByIdAndDelete(mealId)
