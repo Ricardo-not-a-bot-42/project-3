@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+import getRecommendation from './../helpers/collaborativeFiltering';
+
 const baseMealsService = axios.create({
   baseURL: '/api/meals/',
+});
+
+const baseAuthService = axios.create({
+  baseURL: '/api/authentication/',
 });
 
 const listAllMeals = () => {
@@ -24,6 +30,21 @@ const listPopularMeals = () => {
     .catch((error) => {
       return Promise.reject(error);
     });
+};
+
+const listRecommendedMeals = (user) => {
+  return baseAuthService.get('/list').then((users) => {
+    console.log(user, users.data.list);
+    const recommendations = getRecommendation(user, users.data.list);
+    if (recommendations.length) {
+      const body = recommendations;
+      return baseMealsService.post('/recommend', body).then((response) => {
+        return Promise.resolve(response.data);
+      });
+    } else {
+      return Promise.resolve('Test');
+    }
+  });
 };
 
 const listSingleMeal = (id) => {
@@ -95,6 +116,7 @@ const setRating = (id, body) => {
 export {
   listAllMeals,
   listPopularMeals,
+  listRecommendedMeals,
   listSingleMeal,
   createNewMeal,
   editMeal,

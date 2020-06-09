@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './style.scss';
 
-import { listAllMeals, listPopularMeals } from './../../services/meals';
+import {
+  listAllMeals,
+  listPopularMeals,
+  listRecommendedMeals,
+} from './../../services/meals';
 import MealList from './../../components/MealList';
 
 class FreezerView extends Component {
@@ -10,6 +14,7 @@ class FreezerView extends Component {
     this.state = {
       allMeals: [],
       popularMeals: [],
+      recommendedMeals: [],
       loaded: false,
     };
   }
@@ -29,7 +34,16 @@ class FreezerView extends Component {
       .then((meals) => {
         this.setState({
           popularMeals: meals.meals,
-          meals,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    listRecommendedMeals(this.props.user)
+      .then((meals) => {
+        this.setState({
+          recommendedMeals: meals.meals,
           loaded: true,
         });
       })
@@ -52,6 +66,11 @@ class FreezerView extends Component {
         <div className='categories-container'></div>
         {this.state.loaded && (
           <div>
+            <MealList
+              title='Recommended'
+              meals={this.state.recommendedMeals}
+              user={this.props.user}
+            />
             <MealList
               title='Popular'
               meals={popularMeals}

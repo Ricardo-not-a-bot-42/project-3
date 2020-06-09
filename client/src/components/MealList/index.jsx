@@ -15,11 +15,9 @@ class MealList extends Component {
   }
 
   increaseRating = (meal) => {
-    const name = meal.name;
     const ratings = this.state.ratings;
     const id = meal._id;
     const mealRatings = meal.ratings;
-    console.log(id);
     if (ratings.includes(meal.name)) {
       ratings.splice(ratings.indexOf(meal.name), 1);
       meal.ratings--;
@@ -40,31 +38,32 @@ class MealList extends Component {
       <div className='meal-list-container'>
         <h2>{this.props.title} Meals</h2>
         <div className='meal-list'>
-          {this.props.meals.map((meal) => (
-            <div className='meals-container' key={Math.random() * 40}>
-              <div className='img-container'>
-                <img src={meal.photoUrl} alt={meal.name} />
-                <h4>{meal.ratings}</h4>
-                <button onClick={() => this.increaseRating(meal)}>
-                  {(this.state.ratings.includes(meal.name) && '-') || '+'}
-                </button>
-              </div>
-              <div className='meal-info'>
-                <div className='name-price'>
-                  <Link to={`/meal/${meal._id}`}>
-                    <h4>{meal.name}</h4>
-                  </Link>
-                  <h5>{formatPrice(meal.price)}</h5>
+          {(this.props.meals.length &&
+            this.props.meals.map((meal) => (
+              <div className='meals-container' key={Math.random() * 40}>
+                <div className='img-container'>
+                  <img src={meal.photoUrl} alt={meal.name} />
+                  <h4>{meal.ratings}</h4>
+                  <button onClick={() => this.increaseRating(meal)}>
+                    {(this.state.ratings.includes(meal.name) && '-') || '+'}
+                  </button>
                 </div>
-                <h4>Ingredients</h4>
-                <ul>
-                  {meal.ingredients.map((ingredient) => {
-                    return <li>{ingredient}</li>;
-                  })}
-                </ul>
+                <div className='meal-info'>
+                  <div className='name-price'>
+                    <Link to={`/meal/${meal._id}`}>
+                      <h4>{meal.name}</h4>
+                    </Link>
+                    <h5>{formatPrice(meal.price)}</h5>
+                  </div>
+                  <h4>Ingredients</h4>
+                  <ul>
+                    {meal.ingredients.map((ingredient) => {
+                      return <li>{ingredient}</li>;
+                    })}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
+            ))) || <h3>Rate some meals to get recommendations!</h3>}
         </div>
       </div>
     );

@@ -18,7 +18,7 @@ authenticationRouter.post('/join-us', (req, res, next) => {
         address,
         contact,
         creditCardToken,
-        passwordHash: hash
+        passwordHash: hash,
       });
     })
     .then((user) => {
@@ -78,9 +78,21 @@ authenticationRouter.post('/signout', (req, res, next) => {
 
 authenticationRouter.get('/profile', (req, res, next) => {
   res.json({
-    user: req.user || null
+    user: req.user || null,
     // if there is a user, we pass a user, if not (undefined) we pass null
   });
+});
+
+authenticationRouter.get('/list', (req, res, next) => {
+  User.find()
+    .then((users) => {
+      res.json({
+        list: users,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 authenticationRouter.post('/profile/edit', (req, res, next) => {
@@ -91,12 +103,11 @@ authenticationRouter.post('/profile/edit', (req, res, next) => {
     .then((user) => {
       console.log(user);
       res.json({
-        user
+        user,
       });
     })
     .catch((error) => {
       console.log(error);
     });
 });
-
 module.exports = authenticationRouter;

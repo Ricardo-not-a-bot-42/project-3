@@ -14,6 +14,19 @@ mealRouter.get('/list', (req, res, next) => {
     });
 });
 
+mealRouter.post('/recommend', (req, res, next) => {
+  const list = req.body;
+  Meal.find({ name: list })
+    .then((meals) => {
+      res.json({
+        meals,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 mealRouter.get('/popular', (req, res, next) => {
   Meal.find()
     .sort({ ratings: -1 })
