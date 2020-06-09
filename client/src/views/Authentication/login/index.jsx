@@ -21,7 +21,7 @@ class AuthenticationLogInView extends Component {
   handleFormSubmission = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    // console.log(name, email, address, contact, payment, password);
+    // console.log(name, email, address, contact, creditCardToken, password);
 
     login({ email, password })
       .then((user) => {
