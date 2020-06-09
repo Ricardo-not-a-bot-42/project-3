@@ -36,62 +36,67 @@ class ProfileEditView extends Component {
   };
 
   render() {
-    console.log('rendered');
+    console.log('this.props', this.props);
     return (
       <div>
-        <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor='name-input'>Full Name</label>
-          <input
-            id='name-input'
-            name='name'
-            type='name'
-            placeholder='Full Name'
-            value={this.state.name}
-            onChange={this.handleInputChange}
-          />
+        <h2>Your Profile</h2>
+        {this.props.user && (
+          <>
+            <form onSubmit={this.handleFormSubmission}>
+              <label htmlFor='name-input'>Full Name</label>
+              <input
+                id='name-input'
+                name='name'
+                type='name'
+                placeholder='Full Name'
+                value={this.props.user.name}
+                onChange={this.handleInputChange}
+              />
 
-          <label htmlFor='email-input'>E-mail</label>
-          <input
-            id='email-input'
-            name='email'
-            type='email'
-            placeholder='E-mail'
-            value={this.state.email}
-            onChange={this.handleInputChange}
-          />
+              <label htmlFor='email-input'>E-mail</label>
+              <input
+                id='email-input'
+                name='email'
+                type='email'
+                placeholder='E-mail'
+                value={this.props.user.email}
+                onChange={this.handleInputChange}
+              />
 
-          <label htmlFor='address-input'>Delivery Address</label>
-          <input
-            id='address-input'
-            name='address'
-            type='address'
-            placeholder='Delivery Address'
-            value={this.state.address}
-            onChange={this.handleInputChange}
-          />
+              <label htmlFor='address-input'>Delivery Address</label>
+              <input
+                id='address-input'
+                name='address'
+                type='address'
+                placeholder='Delivery Address'
+                value={this.props.user.address}
+                onChange={this.handleInputChange}
+              />
 
-          <label htmlFor='contact-input'>Contact Number</label>
-          <input
-            id='contact-input'
-            name='contact'
-            type='contact'
-            placeholder='911 111 111'
-            value={this.state.contact}
-            onChange={this.handleInputChange}
-          />
+              <label htmlFor='contact-input'>Contact Number</label>
+              <input
+                id='contact-input'
+                name='contact'
+                type='contact'
+                placeholder='911 111 111'
+                value={this.props.user.contact}
+                onChange={this.handleInputChange}
+              />
 
-          <label htmlFor='creditCardToken-input'>Credit Card</label>
-          <input
-            id='creditCardToken-input'
-            name='creditCardToken'
-            type='creditCardToken'
-            placeholder='creditCardToken Method'
-            value={this.state.creditCardToken}
-            onChange={this.handleInputChange}
-          />
+              <label htmlFor='creditCardToken-input'>Credit Card</label>
+              <input
+                id='creditCardToken-input'
+                name='creditCardToken'
+                type='creditCardToken'
+                placeholder='creditCardToken Method'
+                value={this.props.user.creditCardToken}
+                onChange={this.handleInputChange}
+              />
 
-          <button className='bottom-button'>Register and continue</button>
-        </form>
+              <button className='bottom-button'>Submit Changes</button>
+            </form>
+          </>
+        )}
       </div>
     );
   }
