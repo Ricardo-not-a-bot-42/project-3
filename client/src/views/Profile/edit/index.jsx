@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { editProfile } from './../../../services/authentication';
+import { editProfile, loadUser } from './../../../services/authentication';
 
 class ProfileEditView extends Component {
   constructor(props) {
@@ -11,17 +11,19 @@ class ProfileEditView extends Component {
       contact: '',
       creditCardToken: ''
     };
+    this.id = this.props.user._id;
+    console.log('this.props.user', this.props.user);
   }
 
   handleFormSubmission = (event) => {
     event.preventDefault();
     const { name, email, address, contact, creditCardToken } = this.state;
-    editProfile({
-      name: '',
-      email: '',
-      address: '',
-      contact: '',
-      creditCardToken: ''
+    editProfile(this.id, {
+      name,
+      email,
+      address,
+      contact,
+      creditCardToken
     }).then((user) => {
       console.log(user);
     });
@@ -35,8 +37,25 @@ class ProfileEditView extends Component {
     });
   };
 
+  componentDidMount() {
+    console.log('user did mount', this.props.user);
+    loadUser(this.props.user)
+      .then((user) => {
+        this.setState({
+          name: user.name,
+          email: user.email,
+          address: user.address,
+          contact: user.contact,
+          creditCardToken: user.creditCardToken,
+          loaded: true
+        });
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
+
   render() {
-    console.log('this.props', this.props);
     return (
       <div>
         <h2>Your Profile</h2>
@@ -49,7 +68,7 @@ class ProfileEditView extends Component {
                 name="name"
                 type="name"
                 placeholder="Full Name"
-                value={this.props.user.name}
+                value={this.state.name}
                 onChange={this.handleInputChange}
               />
 
@@ -59,7 +78,7 @@ class ProfileEditView extends Component {
                 name="email"
                 type="email"
                 placeholder="E-mail"
-                value={this.props.user.email}
+                value={this.state.email}
                 onChange={this.handleInputChange}
               />
 
@@ -69,7 +88,7 @@ class ProfileEditView extends Component {
                 name="address"
                 type="address"
                 placeholder="Delivery Address"
-                value={this.props.user.address}
+                value={this.state.address}
                 onChange={this.handleInputChange}
               />
 
@@ -79,7 +98,7 @@ class ProfileEditView extends Component {
                 name="contact"
                 type="contact"
                 placeholder="911 111 111"
-                value={this.props.user.contact}
+                value={this.state.contact}
                 onChange={this.handleInputChange}
               />
 
@@ -89,7 +108,7 @@ class ProfileEditView extends Component {
                 name="creditCardToken"
                 type="creditCardToken"
                 placeholder="creditCardToken Method"
-                value={this.props.user.creditCardToken}
+                value={this.state.creditCardToken}
                 onChange={this.handleInputChange}
               />
 

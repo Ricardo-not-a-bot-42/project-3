@@ -55,6 +55,19 @@ const loadAuthenticatedUser = () => {
     });
 };
 
+const loadUser = (id) => {
+  return baseAuthenticationService
+    .get('/profile')
+    .then((response) => {
+      const data = response.data;
+      const user = data.user;
+      return Promise.resolve(user);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
 const addRating = (mealName) => {
   const body = {
     name: mealName
@@ -85,4 +98,4 @@ const editProfile = (id, body) => {
     });
 };
 
-export { joinUs, login, signOut, loadAuthenticatedUser, addRating, editProfile };
+export { joinUs, login, signOut, loadAuthenticatedUser, addRating, editProfile, loadUser };
