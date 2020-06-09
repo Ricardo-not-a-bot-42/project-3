@@ -93,7 +93,6 @@ class FreezerView extends Component {
       allMeals: filteredAll,
       searchValue: value,
     });
-    console.log(filteredAll);
   };
 
   categoryFiltering = (category) => {
