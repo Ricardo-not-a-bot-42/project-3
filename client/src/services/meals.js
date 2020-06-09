@@ -78,6 +78,20 @@ const deleteMeal = (id) => {
     });
 };
 
+const setRating = (id, body) => {
+  console.log('rate', body);
+  return baseMealsService
+    .post(`/${id}/addRating`, { body })
+    .then((response) => {
+      const data = response.data;
+      const meal = data.meal;
+      return Promise.resolve({ ...meal });
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
 export {
   listAllMeals,
   listPopularMeals,
@@ -85,4 +99,5 @@ export {
   createNewMeal,
   editMeal,
   deleteMeal,
+  setRating,
 };

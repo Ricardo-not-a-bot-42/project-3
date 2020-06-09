@@ -57,7 +57,6 @@ authenticationRouter.post('/login', (req, res, next) => {
 
 authenticationRouter.post('/addRating', (req, res, next) => {
   const user = req.user;
-  console.log(user);
   const mealName = req.body.name;
   const userRatings = req.user.ratings;
   if (userRatings.includes(mealName)) {
@@ -66,9 +65,7 @@ authenticationRouter.post('/addRating', (req, res, next) => {
     userRatings.push(mealName);
   }
   User.findByIdAndUpdate(user._id, { ratings: userRatings })
-    .then((document) => {
-      console.log(document);
-    })
+    .then((document) => {})
     .catch((error) => {
       next(error);
     });
