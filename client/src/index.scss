@@ -61,6 +61,19 @@ button {
   border: 1px solid #dedfe4;
   background-color: #f4f4f4;
   padding: 0.5em;
+  font-size: small;
+}
+
+.linkAsButton {
+  border-radius: 20px;
+  width: 30%;
+  margin: 1em;
+  border: 1px solid #dedfe4;
+  background-color: #f4f4f4;
+  padding: 0.25em;
+  text-decoration: none;
+  color: inherit;
+  font-size: small;
 }
 
 .bottom-button {

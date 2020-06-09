@@ -5,9 +5,9 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 
-const router = new Router();
+const authenticationRouter = new Router();
 
-router.post('/join-us', (req, res, next) => {
+authenticationRouter.post('/join-us', (req, res, next) => {
   const { name, email, address, contact, creditCardToken, password } = req.body;
   bcryptjs
     .hash(password, 10)
@@ -30,7 +30,7 @@ router.post('/join-us', (req, res, next) => {
     });
 });
 
-router.post('/login', (req, res, next) => {
+authenticationRouter.post('/login', (req, res, next) => {
   let user;
   const { email, password } = req.body;
   User.findOne({ email })
@@ -55,7 +55,7 @@ router.post('/login', (req, res, next) => {
     });
 });
 
-router.post('/addRating', (req, res, next) => {
+authenticationRouter.post('/addRating', (req, res, next) => {
   const user = req.user;
   console.log(user);
   const mealName = req.body.name;
@@ -74,16 +74,31 @@ router.post('/addRating', (req, res, next) => {
     });
 });
 
-router.post('/signout', (req, res, next) => {
+authenticationRouter.post('/signout', (req, res, next) => {
   req.session.destroy();
   res.json({});
 });
 
-router.get('/profile', (req, res, next) => {
+authenticationRouter.get('/profile', (req, res, next) => {
   res.json({
     user: req.user || null
     // if there is a user, we pass a user, if not (undefined) we pass null
   });
 });
 
-module.exports = router;
+authenticationRouter.post('/profile/edit', (req, res, next) => {
+  const userId = req.params.id;
+  console.log(req.body);
+  User.findByIdAndUpdate(userId)
+    .then((user) => {
+      console.log(user);
+      res.json({
+        user
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+module.exports = authenticationRouter;

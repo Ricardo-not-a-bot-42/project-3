@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseAuthenticationService = axios.create({
-  baseURL: '/api/authentication',
+  baseURL: '/api/authentication'
 });
 
 const joinUs = (body) => {
@@ -57,7 +57,7 @@ const loadAuthenticatedUser = () => {
 
 const addRating = (mealName) => {
   const body = {
-    name: mealName,
+    name: mealName
   };
   return baseAuthenticationService
     .post('/addRating', body)
@@ -71,4 +71,18 @@ const addRating = (mealName) => {
     });
 };
 
-export { joinUs, login, signOut, loadAuthenticatedUser, addRating };
+const editProfile = (id, body) => {
+  console.log(body);
+  return baseAuthenticationService
+    .post(`/profile/edit`, body)
+    .then((response) => {
+      const data = response.data;
+      const user = data.user;
+      return Promise.resolve({ ...user });
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+export { joinUs, login, signOut, loadAuthenticatedUser, addRating, editProfile };
