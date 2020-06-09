@@ -52,12 +52,14 @@ class App extends Component {
               <Route path="/" exact component={HomeView} />
               <Route
                 path="/profile"
+                exact
                 render={(props) => (
                   <ProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
               />
               <Route
                 path="/profile/edit"
+                exact
                 render={(props) => (
                   <ProfileEditView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
