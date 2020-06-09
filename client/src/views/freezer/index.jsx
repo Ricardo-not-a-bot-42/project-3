@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './style.scss';
 
-import { listAllMeals, listPopularMeals } from './../../services/meals';
+import {
+  listAllMeals,
+  listPopularMeals,
+  listRecommendedMeals,
+} from './../../services/meals';
 import MealList from './../../components/MealList';
 
 class FreezerView extends Component {
@@ -36,6 +40,8 @@ class FreezerView extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+    listRecommendedMeals(this.props.user);
   }
 
   componentDidMount() {

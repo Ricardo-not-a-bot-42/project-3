@@ -18,7 +18,7 @@ router.post('/join-us', (req, res, next) => {
         address,
         contact,
         creditCardToken,
-        passwordHash: hash
+        passwordHash: hash,
       });
     })
     .then((user) => {
@@ -78,9 +78,21 @@ router.post('/signout', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
   res.json({
-    user: req.user || null
+    user: req.user || null,
     // if there is a user, we pass a user, if not (undefined) we pass null
   });
+});
+
+router.get('/list', (req, res, next) => {
+  User.find()
+    .then((users) => {
+      res.json({
+        list: users,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 module.exports = router;

@@ -15,11 +15,9 @@ class MealList extends Component {
   }
 
   increaseRating = (meal) => {
-    const name = meal.name;
     const ratings = this.state.ratings;
     const id = meal._id;
     const mealRatings = meal.ratings;
-    console.log(id);
     if (ratings.includes(meal.name)) {
       ratings.splice(ratings.indexOf(meal.name), 1);
       meal.ratings--;
