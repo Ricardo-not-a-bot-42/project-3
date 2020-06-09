@@ -21,6 +21,11 @@ const schema = new mongoose.Schema({
   creditCardToken: {
     type: String,
   },
+  userType: {
+    type: String,
+    enum: ['regular', 'admin'],
+    default: 'regular'
+  },
   passwordHash: {
     type: String,
     required: true,
