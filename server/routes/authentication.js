@@ -96,9 +96,9 @@ authenticationRouter.get('/list', (req, res, next) => {
 });
 
 authenticationRouter.post('/profile/edit', (req, res, next) => {
-  const userId = req.params.id;
+  const userId = req.user._id;
   console.log(req.body);
-  User.findByIdAndUpdate(userId)
+  User.findByIdAndUpdate(userId, req.body)
     .then((user) => {
       console.log(user);
       res.json({
