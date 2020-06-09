@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 class HomeView extends Component {
@@ -7,10 +8,10 @@ class HomeView extends Component {
       <div>
         <section className="home-section-overview">
           <img src="/companyLogo.png" alt="company-logo" />
-          <h3>
+          <h4>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend auctor nisl at
             laoreet. Donec eu efficitur velit. Vivamus porttitor.
-          </h3>
+          </h4>
         </section>
         <section className="home-section-we-you">
           <article className="home-we-you">
@@ -46,6 +47,12 @@ class HomeView extends Component {
           <h3>Featured</h3>
           <span>Place here meal component</span>
         </section>
+
+        <div className="see-freezer">
+          <Link className="linkAsButton" to="/freezer">
+            See what's in the Freezer!
+          </Link>
+        </div>
       </div>
     );
   }

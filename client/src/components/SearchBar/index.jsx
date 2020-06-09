@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.scss';
 
 class SearchBar extends Component {
   handleSubmission(event) {
@@ -8,10 +9,12 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
-        <form action='' onSubmit={this.handleSubmission}>
+        <h4>Search by a specific dish</h4>
+        <form action="" onSubmit={this.handleSubmission}>
           <input
-            type='text'
-            placeholder='Search'
+            className="search-bar"
+            type="text"
+            placeholder="Search"
             value={this.props.value}
             onChange={(event) => this.props.updateMethod(event)}
           />

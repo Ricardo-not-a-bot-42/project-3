@@ -11,22 +11,25 @@ class ProfileEditView extends Component {
       contact: '',
       creditCardToken: ''
     };
-    this.id = this.props.user._id;
     console.log('this.props.user', this.props.user);
   }
 
   handleFormSubmission = (event) => {
     event.preventDefault();
     const { name, email, address, contact, creditCardToken } = this.state;
-    editProfile(this.id, {
+    editProfile({
       name,
       email,
       address,
       contact,
       creditCardToken
-    }).then((user) => {
-      console.log(user);
-    });
+    })
+      .then((user) => {
+        this.props.updateUser(user);
+        this.props.history.push('/profile');
+      })
+      // .then(console.log('props.setState after update', this.setState.user))
+      .catch((error) => console.log(error));
   };
 
   handleInputChange = (event) => {
@@ -39,20 +42,15 @@ class ProfileEditView extends Component {
 
   componentDidMount() {
     console.log('user did mount', this.props.user);
-    loadUser(this.props.user)
-      .then((user) => {
-        this.setState({
-          name: user.name,
-          email: user.email,
-          address: user.address,
-          contact: user.contact,
-          creditCardToken: user.creditCardToken,
-          loaded: true
-        });
-      })
-      .catch((error) => {
-        return Promise.reject(error);
-      });
+    const user = this.props.user;
+    this.setState({
+      name: user.name,
+      email: user.email,
+      address: user.address,
+      contact: user.contact,
+      creditCardToken: user.creditCardToken,
+      loaded: true
+    });
   }
 
   render() {
@@ -107,7 +105,7 @@ class ProfileEditView extends Component {
                 id="creditCardToken-input"
                 name="creditCardToken"
                 type="creditCardToken"
-                placeholder="creditCardToken Method"
+                placeholder="Credit Card"
                 value={this.state.creditCardToken}
                 onChange={this.handleInputChange}
               />

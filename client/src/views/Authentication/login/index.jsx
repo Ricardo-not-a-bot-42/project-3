@@ -26,6 +26,7 @@ class AuthenticationLogInView extends Component {
     login({ email, password })
       .then((user) => {
         this.props.updateUser(user);
+        this.props.history.push('/');
       })
       .catch((error) => {
         console.log(error);

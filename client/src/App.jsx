@@ -8,6 +8,7 @@ import FreezerView from './views/freezer';
 import MealView from './views/meal';
 import MealEditView from './views/meal/edit';
 import MealCreateView from './views/meal/create';
+import Footer from './views/Footer';
 
 import HomeView from './views/Home';
 import ProfileView from './views/Profile';
@@ -16,14 +17,17 @@ import ProfileEditView from './views/Profile/edit';
 import AuthenticationJoinUsView from './views/Authentication/joinus';
 import AuthenticationLogInView from './views/Authentication/login';
 
+import ErrorView from './views/Errors';
+
 import { loadAuthenticatedUser } from './services/authentication';
+import ProtectedRoute from './components/ProtectedRoute';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      loaded: false,
+      loaded: false
     };
   }
 
@@ -38,80 +42,62 @@ class App extends Component {
   updateUser = (user) => {
     this.setState({
       user,
-      loaded: true,
+      loaded: true
     });
   };
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         {this.state.loaded && (
           <BrowserRouter>
             <NavBar user={this.state.user} />
+
             <Switch>
-              <Route path='/' exact component={HomeView} />
+              <Route path="/" exact component={HomeView} />
               <Route
-                path='/profile'
+                path="/profile"
+                // authorized={this.state.user}
                 exact
                 render={(props) => (
-                  <ProfileView
-                    {...props}
-                    user={this.state.user}
-                    updateUser={this.updateUser}
-                  />
+                  <ProfileView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
               />
               <Route
-                path='/profile/edit'
+                path="/profile/edit"
                 exact
                 render={(props) => (
-                  <ProfileEditView
-                    {...props}
-                    user={this.state.user}
-                    updateUser={this.updateUser}
-                  />
+                  <ProfileEditView {...props} user={this.state.user} updateUser={this.updateUser} />
                 )}
               />
 
               <Route
-                path='/join-us'
+                path="/join-us"
                 exact
                 render={(props) => (
-                  <AuthenticationJoinUsView
-                    {...props}
-                    updateUser={this.updateUser}
-                  />
+                  <AuthenticationJoinUsView {...props} updateUser={this.updateUser} />
                 )}
               />
               <Route
-                path='/login'
+                path="/login"
                 exact
                 render={(props) => (
-                  <AuthenticationLogInView
-                    {...props}
-                    updateUser={this.updateUser}
-                  />
+                  <AuthenticationLogInView {...props} updateUser={this.updateUser} />
                 )}
               />
               <Route
-                path='/freezer'
+                path="/freezer"
                 exact
-                render={(props) => (
-                  <FreezerView {...props} user={this.state.user} />
-                )}
+                render={(props) => <FreezerView {...props} user={this.state.user} />}
               />
-              <Route path='/meal/create' exact component={MealCreateView} />
-              <Route
-                path='/meal/:id'
-                exact
-                render={(props) => <MealView {...props} />}
-              />
-              <Route
-                path='/meal/:id/edit'
-                exact
-                render={(props) => <MealEditView {...props} />}
-              />
+              <Route path="/meal/create" exact component={MealCreateView} />
+              <Route path="/meal/:id" exact render={(props) => <MealView {...props} />} />
+              <Route path="/meal/:id/edit" exact render={(props) => <MealEditView {...props} />} />
+
+              <Route path="/error/:code" component={ErrorView} />
+              <Redirect to="/error/404" />
             </Switch>
+            <Footer />
           </BrowserRouter>
         )}
       </div>
