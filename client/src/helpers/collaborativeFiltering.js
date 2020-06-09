@@ -5,11 +5,11 @@ const determineSimilarityQuocient = (userOne, userTwo) => {
       equalRates++;
     }
   }
+
   return equalRates / userOne.ratings.length;
 };
 
 const findMostSimilarUser = (user, userList) => {
-  console.log(userList);
   let simScore = 0;
   let mostSimUser = null;
   for (let userTwo of userList) {
@@ -18,7 +18,6 @@ const findMostSimilarUser = (user, userList) => {
     }
     let currentScore = 0;
     currentScore = determineSimilarityQuocient(user, userTwo);
-    console.log(currentScore);
     if (currentScore > simScore) {
       simScore = currentScore;
       mostSimUser = userTwo;
@@ -32,7 +31,7 @@ const getRecommendation = (user, userList) => {
   const userToGet = findMostSimilarUser(user, userList);
   console.log(userToGet);
   if (!userToGet) {
-    return ['No available movies'];
+    return ['No available meals'];
   }
   let mealsToRecommend = userToGet.ratings.filter((meal) => {
     return !user.ratings.includes(meal);

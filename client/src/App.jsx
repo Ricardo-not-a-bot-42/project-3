@@ -11,6 +11,7 @@ import MealCreateView from './views/meal/create';
 
 import HomeView from './views/Home';
 import ProfileView from './views/Profile';
+import ProfileEditView from './views/Profile/edit';
 
 import AuthenticationJoinUsView from './views/Authentication/joinus';
 import AuthenticationLogInView from './views/Authentication/login';
@@ -51,8 +52,20 @@ class App extends Component {
               <Route path='/' exact component={HomeView} />
               <Route
                 path='/profile'
+                exact
                 render={(props) => (
                   <ProfileView
+                    {...props}
+                    user={this.state.user}
+                    updateUser={this.updateUser}
+                  />
+                )}
+              />
+              <Route
+                path='/profile/edit'
+                exact
+                render={(props) => (
+                  <ProfileEditView
                     {...props}
                     user={this.state.user}
                     updateUser={this.updateUser}

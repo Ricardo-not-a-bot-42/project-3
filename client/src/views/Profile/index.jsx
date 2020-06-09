@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
+import { Link } from 'react-router-dom';
 
 import { signOut } from './../../services/authentication';
 
@@ -36,7 +37,9 @@ const ProfileView = (props) => {
           </div>
 
           <div className="profile-buttons">
-            <button>Edit Profile</button>
+            <Link className="linkAsButton" to="/profile/edit">
+              Edit Profile
+            </Link>
             <button>Past Orders</button>
           </div>
         </>

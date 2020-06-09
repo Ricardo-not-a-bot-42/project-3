@@ -36,7 +36,14 @@ const listRecommendedMeals = (user) => {
   return baseAuthService.get('/list').then((users) => {
     console.log(user, users.data.list);
     const recommendations = getRecommendation(user, users.data.list);
-    console.log(recommendations);
+    if (recommendations.length) {
+      const body = recommendations;
+      return baseMealsService.post('/recommend', body).then((response) => {
+        return Promise.resolve(response.data);
+      });
+    } else {
+      return Promise.resolve('Test');
+    }
   });
 };
 

@@ -84,6 +84,20 @@ const addRating = (mealName) => {
     });
 };
 
+const editProfile = (id, body) => {
+  console.log(body);
+  return baseAuthenticationService
+    .post(`/profile/edit`, body)
+    .then((response) => {
+      const data = response.data;
+      const user = data.user;
+      return Promise.resolve({ ...user });
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
 export {
   joinUs,
   login,
@@ -91,4 +105,5 @@ export {
   loadAuthenticatedUser,
   addRating,
   listAllUsers,
+  editProfile,
 };

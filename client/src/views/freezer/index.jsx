@@ -14,6 +14,7 @@ class FreezerView extends Component {
     this.state = {
       allMeals: [],
       popularMeals: [],
+      recommendedMeals: [],
       loaded: false,
     };
   }
@@ -33,15 +34,22 @@ class FreezerView extends Component {
       .then((meals) => {
         this.setState({
           popularMeals: meals.meals,
-          meals,
-          loaded: true,
         });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    listRecommendedMeals(this.props.user);
+    listRecommendedMeals(this.props.user)
+      .then((meals) => {
+        this.setState({
+          recommendedMeals: meals.meals,
+          loaded: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
@@ -58,6 +66,11 @@ class FreezerView extends Component {
         <div className='categories-container'></div>
         {this.state.loaded && (
           <div>
+            <MealList
+              title='Recommended'
+              meals={this.state.recommendedMeals}
+              user={this.props.user}
+            />
             <MealList
               title='Popular'
               meals={popularMeals}
