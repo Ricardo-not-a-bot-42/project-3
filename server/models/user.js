@@ -6,20 +6,23 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   email: {
     type: String,
     required: true,
     lowercase: true,
-    trim: true,
+    trim: true
   },
   address: {
     type: String,
-    required: true,
+    required: true
   },
   creditCardToken: {
-    type: String,
+    type: String
+  },
+  contact: {
+    type: String
   },
   userType: {
     type: String,
@@ -28,11 +31,11 @@ const schema = new mongoose.Schema({
   },
   passwordHash: {
     type: String,
-    required: true,
+    required: true
   },
   ratings: {
-    type: [String],
-  },
+    type: [String]
+  }
 });
 
 module.exports = mongoose.model('User', schema);

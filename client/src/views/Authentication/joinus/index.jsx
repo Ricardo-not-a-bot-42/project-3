@@ -9,7 +9,7 @@ class AuthenticationJoinUsView extends Component {
       email: '',
       address: '',
       contact: '',
-      payment: '',
+      creditCardToken: '',
       password: ''
     };
   }
@@ -24,10 +24,10 @@ class AuthenticationJoinUsView extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const { name, email, address, contact, payment, password } = this.state;
-    // console.log(name, email, address, contact, payment, password);
+    const { name, email, address, contact, creditCardToken, password } = this.state;
+    // console.log(name, email, address, contact, creditCardToken, password);
 
-    joinUs({ name, email, address, contact, payment, password })
+    joinUs({ name, email, address, contact, creditCardToken, password })
       .then((user) => {
         this.props.updateUser(user);
       })
@@ -81,13 +81,13 @@ class AuthenticationJoinUsView extends Component {
             onChange={this.handleInputChange}
           />
 
-          <label htmlFor="payment-input">Payment Method</label>
+          <label htmlFor="creditCardToken-input">Credit Card</label>
           <input
-            id="payment-input"
-            name="payment"
-            type="payment"
-            placeholder="Payment Method"
-            value={this.state.payment}
+            id="creditCardToken-input"
+            name="creditCardToken"
+            type="creditCardToken"
+            placeholder="creditCardToken Method"
+            value={this.state.creditCardToken}
             onChange={this.handleInputChange}
           />
 

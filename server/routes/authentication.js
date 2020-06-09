@@ -7,9 +7,8 @@ const User = require('./../models/user');
 
 const router = new Router();
 
-console.log('router join us reached');
 router.post('/join-us', (req, res, next) => {
-  const { name, email, address, contact, payment, password } = req.body;
+  const { name, email, address, contact, creditCardToken, password } = req.body;
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
@@ -18,8 +17,8 @@ router.post('/join-us', (req, res, next) => {
         email,
         address,
         contact,
-        payment,
-        passwordHash: hash,
+        creditCardToken,
+        passwordHash: hash
       });
     })
     .then((user) => {
@@ -82,7 +81,7 @@ router.post('/signout', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
   res.json({
-    user: req.user || null,
+    user: req.user || null
     // if there is a user, we pass a user, if not (undefined) we pass null
   });
 });

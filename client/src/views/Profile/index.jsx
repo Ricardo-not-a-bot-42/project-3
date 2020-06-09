@@ -32,7 +32,7 @@ const ProfileView = (props) => {
             <strong> Contact Number:</strong> {props.user.contact}
           </div>
           <div className="input">
-            <strong> Payment Method:</strong> {props.user.payment}
+            <strong> Credit Card:</strong> {props.user.creditCardToken}
           </div>
 
           <div className="profile-buttons">
