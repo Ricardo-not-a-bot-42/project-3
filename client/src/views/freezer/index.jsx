@@ -52,8 +52,12 @@ class FreezerView extends Component {
         <div className='categories-container'></div>
         {this.state.loaded && (
           <div>
-            <MealList title='Popular' meals={popularMeals} />
-            <MealList title='All' meals={allMeals} />
+            <MealList
+              title='Popular'
+              meals={popularMeals}
+              user={this.props.user}
+            />
+            <MealList title='All' meals={allMeals} user={this.props.user} />
           </div>
         )}
       </div>

@@ -30,20 +30,20 @@ app.use(
       maxAge: 60 * 60 * 24 * 1000,
       sameSite: 'lax',
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === 'production'
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
-      ttl: 60 * 60 * 24,
-    }),
+      ttl: 60 * 60 * 24
+    })
   })
 );
 app.use(basicAuthenticationDeserializer);
 // app.use(bindUserToViewLocals); we wont't need this, because we won't use res.locals.user
 
-app.use('/', indexRouter);
-app.use('/authentication', authenticationRouter);
+app.use('/api/authentication', authenticationRouter);
 app.use('/api/meals', mealRouter);
+app.use('/', indexRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

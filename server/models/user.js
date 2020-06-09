@@ -5,17 +5,29 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true
+    required: true,
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     lowercase: true,
-    trim: true
+    trim: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  creditCardToken: {
+    type: String,
   },
   passwordHash: {
-    type: String
-  }
+    type: String,
+    required: true,
+  },
+  ratings: {
+    type: [String],
+  },
 });
 
 module.exports = mongoose.model('User', schema);

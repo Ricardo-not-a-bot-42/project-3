@@ -1,19 +1,54 @@
 import React, { Component } from 'react';
+import { joinUs } from './../../../services/authentication';
 
 class AuthenticationJoinUsView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      address: '',
+      contact: '',
+      payment: '',
+      password: ''
+    };
+  }
+
+  //   handleInputChange = ({target: {name, value}}) => {
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmission = (event) => {
+    event.preventDefault();
+    const { name, email, address, contact, payment, password } = this.state;
+    // console.log(name, email, address, contact, payment, password);
+
+    joinUs({ name, email, address, contact, payment, password })
+      .then((user) => {
+        this.props.updateUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div>
         <h2>Join Us!</h2>
-        <form>
-          <label htmlFor="full-name-input">Full Name</label>
+        <form onSubmit={this.handleFormSubmission}>
+          <label htmlFor="name-input">Full Name</label>
           <input
-            id="full-name-input"
-            name="full-name"
-            type="full-name"
+            id="name-input"
+            name="name"
+            type="name"
             placeholder="Full Name"
-            value=""
-            onChange=""
+            value={this.state.name}
+            onChange={this.handleInputChange}
           />
 
           <label htmlFor="email-input">E-mail</label>
@@ -22,18 +57,18 @@ class AuthenticationJoinUsView extends Component {
             name="email"
             type="email"
             placeholder="E-mail"
-            value=""
-            onChange=""
+            value={this.state.email}
+            onChange={this.handleInputChange}
           />
 
-          <label htmlFor="delivery-input">Delivery Adress</label>
+          <label htmlFor="address-input">Delivery Address</label>
           <input
-            id="delivery-input"
-            name="delivery"
-            type="delivery"
-            placeholder="Delivery Adress"
-            value=""
-            onChange=""
+            id="address-input"
+            name="address"
+            type="address"
+            placeholder="Delivery Address"
+            value={this.state.address}
+            onChange={this.handleInputChange}
           />
 
           <label htmlFor="contact-input">Contact Number</label>
@@ -42,8 +77,8 @@ class AuthenticationJoinUsView extends Component {
             name="contact"
             type="contact"
             placeholder="911 111 111"
-            value=""
-            onChange=""
+            value={this.state.contact}
+            onChange={this.handleInputChange}
           />
 
           <label htmlFor="payment-input">Payment Method</label>
@@ -52,8 +87,8 @@ class AuthenticationJoinUsView extends Component {
             name="payment"
             type="payment"
             placeholder="Payment Method"
-            value=""
-            onChange=""
+            value={this.state.payment}
+            onChange={this.handleInputChange}
           />
 
           <label htmlFor="password-input">Password</label>
@@ -62,8 +97,8 @@ class AuthenticationJoinUsView extends Component {
             name="password"
             type="password"
             placeholder="Strong Password"
-            value=""
-            onChange=""
+            value={this.state.password}
+            onChange={this.handleInputChange}
           />
 
           <button className="bottom-button">Register and continue</button>
