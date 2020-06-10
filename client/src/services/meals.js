@@ -60,6 +60,20 @@ const listSingleMeal = (id) => {
     });
 };
 
+const listCartMeals = (ids) => {
+  const body = ids;
+  return baseMealsService
+    .post(`/findIds`, body)
+    .then((response) => {
+      const data = response.data;
+      const meals = data.meals;
+      return Promise.resolve(meals);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
 const createNewMeal = (body) => {
   console.log(body.name);
   return baseMealsService
@@ -118,6 +132,7 @@ export {
   listPopularMeals,
   listRecommendedMeals,
   listSingleMeal,
+  listCartMeals,
   createNewMeal,
   editMeal,
   deleteMeal,

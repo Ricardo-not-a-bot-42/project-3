@@ -15,6 +15,7 @@ class MealView extends Component {
     listSingleMeal(this.id).then((meal) => {
       this.setState({
         meal,
+        quantity: 1,
         loaded: true,
       });
     });
@@ -28,6 +29,14 @@ class MealView extends Component {
       .catch((error) => {
         console.log('Error', error);
       });
+  };
+
+  addQuantity = (value) => {
+    let quantity = this.state.quantity;
+    quantity += value;
+    this.setState({
+      quantity: Math.max(quantity, 0),
+    });
   };
 
   render() {
@@ -48,10 +57,31 @@ class MealView extends Component {
                 return <li>{ingredient}</li>;
               })}
             </ul>
-            <div className='admin-functions'>
-              <button onClick={this.delete}>Delete</button>
-              <Link to={`/meal/${this.id}/edit`}>Edit</Link>
-            </div>
+            {(this.props.user.userType === 'admin' && (
+              <div className='admin-functions'>
+                <button onClick={this.delete}>Delete</button>
+                <Link to={`/meal/${this.id}/edit`}>Edit</Link>
+              </div>
+            )) || (
+              <div className='cart-functions'>
+                <div>
+                  <button onClick={() => this.addQuantity(-1)}>-</button>
+                  <h3>Qty: {this.state.quantity}</h3>
+                  <button onClick={() => this.addQuantity(1)}>+</button>
+                </div>
+                {(this.state.quantity && (
+                  <button
+                    onClick={() => this.props.add(meal, this.state.quantity)}
+                  >
+                    Add {meal.price.amount * this.state.quantity}
+                  </button>
+                )) || (
+                  <button disabled>
+                    Add {meal.price.amount * this.state.quantity}
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         )) || <div>Loading</div>}
       </div>
