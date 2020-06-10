@@ -6,7 +6,7 @@ mealRouter.get('/list', (req, res, next) => {
   Meal.find()
     .then((meals) => {
       res.json({
-        meals
+        meals,
       });
     })
     .catch((error) => {
@@ -27,12 +27,25 @@ mealRouter.post('/recommend', (req, res, next) => {
     });
 });
 
+mealRouter.post('/findIds', (req, res, next) => {
+  const list = req.body;
+  Meal.find({ _id: list })
+    .then((meals) => {
+      res.json({
+        meals,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 mealRouter.get('/popular', (req, res, next) => {
   Meal.find()
     .sort({ ratings: -1 })
     .then((meals) => {
       res.json({
-        meals
+        meals,
       });
     })
     .catch((error) => {
@@ -45,7 +58,7 @@ mealRouter.get('/:id', (req, res, next) => {
   Meal.findById(mealId)
     .then((meal) => {
       res.json({
-        meal
+        meal,
       });
     })
     .catch((error) => {
@@ -60,7 +73,7 @@ mealRouter.post('/create', (req, res, next) => {
     .then((meal) => {
       console.log(meal);
       res.json({
-        meal
+        meal,
       });
     })
     .catch((error) => {
@@ -76,7 +89,7 @@ mealRouter.post('/:id/edit', (req, res, next) => {
     .then((meal) => {
       console.log(meal);
       res.json({
-        meal
+        meal,
       });
     })
     .catch((error) => {
@@ -92,7 +105,7 @@ mealRouter.post('/:id/addRating', (req, res, next) => {
     .then((meal) => {
       //console.log(meal);
       res.json({
-        meal
+        meal,
       });
     })
     .catch((error) => {
