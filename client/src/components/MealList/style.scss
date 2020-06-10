@@ -2,6 +2,10 @@ $color-lightergrey: #f9f6f7;
 $color-lightgrey: #dedfe4;
 $color-grey: #8e8b8c;
 
+.meal-list-container {
+  margin-bottom: 4em;
+}
+
 .meal-list {
   display: flex;
   flex-direction: row;
@@ -12,6 +16,8 @@ $color-grey: #8e8b8c;
   display: flex;
   flex-direction: column;
   margin-left: 1.5em;
+  background-color: #f9f6f7;
+  border-radius: 20px;
   .img-container {
     text-align: start;
     img {
@@ -46,6 +52,8 @@ $color-grey: #8e8b8c;
     margin-bottom: 0;
     border-bottom: 1px solid $color-lightgrey;
     padding-bottom: 1em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
     .name-price {
       display: flex;

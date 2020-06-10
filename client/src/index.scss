@@ -101,14 +101,14 @@ h4 {
   margin: 0 auto;
   margin-top: 2em;
   margin-bottom: 0.5em;
-  padding-bottom: 0.2em;
+  padding: 0.5em;
   font-weight: 700;
   display: flex;
   justify-content: center;
   // background-color: $color-lightergrey;
   // border-radius: 4px;
   color: $color-grey;
-  border-bottom: 3px solid $color-grey;
+  border-top: 2px solid $color-lightgrey;
 }
 
 .remove_bullets {
