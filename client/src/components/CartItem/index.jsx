@@ -4,20 +4,24 @@ import formatPrice from './../../helpers/format-price';
 function CartItem(props) {
   console.log(props);
   return (
-    <div>
-      <div className='cart-item-info'>
-        <img src='' alt='' />
-        <div className='cart-item-name-price'>
-          <h3>{props.meal.name}</h3>
-          <h3>{formatPrice(props.meal.price)}</h3>
-        </div>
+    <div className="order-info">
+      <img src={props.meal.photoUrl} alt="" />
+      <div className="cart-item-name-price">
+        <div>{props.meal.name}</div>
+        <div>{formatPrice(props.meal.price)}</div>
       </div>
-      <div className='cart-item-quantity'>
-        <button onClick={() => props.add(props.meal, props.quantity - 1)}>
+      <div className="cart-item-quantity linkAsButton">
+        <button
+          className="add-remove-button"
+          onClick={() => props.add(props.meal, props.quantity - 1)}
+        >
           -
         </button>
-        <h3>Qty: {props.quantity}</h3>
-        <button onClick={() => props.add(props.meal, props.quantity + 1)}>
+        <span className="cart-qtd">{props.quantity}</span>
+        <button
+          className="add-remove-button"
+          onClick={() => props.add(props.meal, props.quantity + 1)}
+        >
           +
         </button>
       </div>

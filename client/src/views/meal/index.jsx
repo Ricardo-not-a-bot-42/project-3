@@ -69,9 +69,13 @@ class MealView extends Component {
             )) || (
               <div className="cart-functions">
                 <div className="cart-qtd linkAsButton">
-                  <button onClick={() => this.addQuantity(-1)}>-</button>
+                  <button className="add-remove-button" onClick={() => this.addQuantity(-1)}>
+                    -
+                  </button>
                   <span className="qtd ">{this.state.quantity}</span>
-                  <button onClick={() => this.addQuantity(1)}>+</button>
+                  <button className="add-remove-button" onClick={() => this.addQuantity(1)}>
+                    +
+                  </button>
                 </div>
                 <div className="cart-update">
                   {(this.state.quantity && (

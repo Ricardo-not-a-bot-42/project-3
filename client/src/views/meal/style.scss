@@ -46,7 +46,7 @@ small {
 .cart-functions {
   position: absolute;
   width: 100%;
-  bottom: 1em;
+  bottom: 0.2em;
   margin-top: 2em;
   display: flex;
   flex-direction: row;
@@ -60,12 +60,6 @@ small {
     flex-direction: row;
     justify-content: space-around;
     width: 10em;
-
-    button {
-      background-color: inherit;
-      border-radius: none;
-      box-shadow: none;
-    }
   }
 
   .cart-update {
