@@ -82,7 +82,7 @@ const addRating = (mealName) => {
     });
 };
 
-const editProfile = (id, body) => {
+const editProfile = (body) => {
   console.log(body);
   return baseAuthenticationService
     .post(`/profile/edit`, body)

@@ -30,6 +30,7 @@ class AuthenticationJoinUsView extends Component {
     joinUs({ name, email, address, contact, creditCardToken, password })
       .then((user) => {
         this.props.updateUser(user);
+        this.props.history.push('/profile');
       })
       .catch((error) => {
         console.log(error);
@@ -86,7 +87,7 @@ class AuthenticationJoinUsView extends Component {
             id="creditCardToken-input"
             name="creditCardToken"
             type="creditCardToken"
-            placeholder="creditCardToken Method"
+            placeholder="Credit Card"
             value={this.state.creditCardToken}
             onChange={this.handleInputChange}
           />

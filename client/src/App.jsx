@@ -8,6 +8,7 @@ import FreezerView from './views/freezer';
 import MealView from './views/meal';
 import MealEditView from './views/meal/edit';
 import MealCreateView from './views/meal/create';
+import Footer from './views/Footer';
 
 import HomeView from './views/Home';
 import ProfileView from './views/Profile';
@@ -18,7 +19,10 @@ import ShoppingCartView from './views/ShoppingCart';
 import AuthenticationJoinUsView from './views/Authentication/joinus';
 import AuthenticationLogInView from './views/Authentication/login';
 
+import ErrorView from './views/Errors';
+
 import { loadAuthenticatedUser } from './services/authentication';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const deepCloneObject = (object) => JSON.parse(JSON.stringify(object));
 
@@ -90,6 +94,7 @@ class App extends Component {
               <Route path='/' exact component={HomeView} />
               <Route
                 path='/profile'
+                // authorized={this.state.user}
                 exact
                 render={(props) => (
                   <ProfileView
@@ -135,7 +140,12 @@ class App extends Component {
                 path='/shopping-cart'
                 exact
                 render={(props) => (
-                  <ShoppingCartView {...props} user={this.state.user} />
+                  <ShoppingCartView
+                    {...props}
+                    user={this.state.user}
+                    cart={this.state.shoppingCart}
+                    add={this.addToCart}
+                  />
                 )}
               />
               <Route
@@ -162,7 +172,22 @@ class App extends Component {
                 exact
                 render={(props) => <MealEditView {...props} />}
               />
+              <Route path='/meal/create' exact component={MealCreateView} />
+              <Route
+                path='/meal/:id'
+                exact
+                render={(props) => <MealView {...props} />}
+              />
+              <Route
+                path='/meal/:id/edit'
+                exact
+                render={(props) => <MealEditView {...props} />}
+              />
+
+              <Route path='/error/:code' component={ErrorView} />
+              <Redirect to='/error/404' />
             </Switch>
+            <Footer />
           </BrowserRouter>
         )}
       </div>

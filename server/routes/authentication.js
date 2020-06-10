@@ -5,6 +5,8 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 
+const routeGuard = require('../middleware/route-guard');
+
 const authenticationRouter = new Router();
 
 authenticationRouter.post('/join-us', (req, res, next) => {
@@ -18,7 +20,7 @@ authenticationRouter.post('/join-us', (req, res, next) => {
         address,
         contact,
         creditCardToken,
-        passwordHash: hash,
+        passwordHash: hash
       });
     })
     .then((user) => {
@@ -78,7 +80,7 @@ authenticationRouter.post('/signout', (req, res, next) => {
 
 authenticationRouter.get('/profile', (req, res, next) => {
   res.json({
-    user: req.user || null,
+    user: req.user || null
     // if there is a user, we pass a user, if not (undefined) we pass null
   });
 });
@@ -87,7 +89,7 @@ authenticationRouter.get('/list', (req, res, next) => {
   User.find()
     .then((users) => {
       res.json({
-        list: users,
+        list: users
       });
     })
     .catch((error) => {
@@ -97,13 +99,12 @@ authenticationRouter.get('/list', (req, res, next) => {
 
 authenticationRouter.post('/profile/edit', (req, res, next) => {
   const userId = req.user._id;
-  // const userDetails = { ...req.body };
   console.log('req.user', req.user._id);
   User.findByIdAndUpdate(userId, req.body)
     .then((user) => {
       console.log(user);
       res.json({
-        user,
+        user
       });
     })
     .catch((error) => {

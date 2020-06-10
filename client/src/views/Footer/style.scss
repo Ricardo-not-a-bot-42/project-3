@@ -1,0 +1,36 @@
+.footer {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  bottom: 0px;
+  padding: 0.5em;
+  margin-top: 2em;
+  background-color: #dedfe4;
+  color: black;
+  font-size: smaller;
+  small {
+    font-size: xx-small;
+  }
+}
+.person-group {
+  display: flex;
+  flex-direction: row;
+}
+.person {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  border-left: thin;
+  font-size: smaller;
+  margin-left: 1em;
+}
+
+.logos {
+  margin-left: 0.5em;
+  align-items: center;
+}
+
+.social-media-logo {
+  max-width: 1em;
+}

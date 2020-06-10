@@ -1,0 +1,23 @@
+.show-all-button {
+  margin-top: 0;
+  margin-bottom: 3em;
+  width: 40%;
+}
+
+.second-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0.5em 2em;
+  background-color: #f9f6f7;
+  border-radius: 4px;
+  .category-button {
+    // max-width: 30%;
+    background-color: white;
+    border: none;
+    margin: 0.5em;
+  }
+  .category-image {
+    max-width: 100%;
+  }
+}
