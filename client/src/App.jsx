@@ -23,6 +23,7 @@ import ErrorView from './views/Errors';
 
 import { loadAuthenticatedUser } from './services/authentication';
 import ProtectedRoute from './components/ProtectedRoute';
+import CheckoutView from './views/Checkout';
 
 const deepCloneObject = (object) => JSON.parse(JSON.stringify(object));
 
@@ -145,6 +146,17 @@ class App extends Component {
                     user={this.state.user}
                     cart={this.state.shoppingCart}
                     add={this.addToCart}
+                  />
+                )}
+              />
+              <Route
+                path='/checkout'
+                exact
+                render={(props) => (
+                  <CheckoutView
+                    {...props}
+                    user={this.state.user}
+                    cart={this.state.shoppingCart}
                   />
                 )}
               />

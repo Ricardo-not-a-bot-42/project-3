@@ -20,24 +20,26 @@ const ProfileView = (props) => {
       <h2>Your Profile</h2>
       {props.user && (
         <>
-          <div className="input">
+          <div className='input'>
             <strong> Full Name:</strong> {props.user.name}
           </div>
-          <div className="input">
+          <div className='input'>
             <strong> E-mail:</strong> {props.user.email}
           </div>
-          <div className="input">
+          <div className='input'>
             <strong> Delivery Address:</strong> {props.user.address}
           </div>
-          <div className="input">
+          <div className='input'>
             <strong> Contact Number:</strong> {props.user.contact}
           </div>
-          <div className="input">
-            <strong> Credit Card:</strong> {props.user.creditCardToken}
+          <div className='input'>
+            <strong> Credit Card:</strong>
+            {props.user.creditCardToken.paymentMethod.card.brand.toUpperCase()}{' '}
+            {props.user.creditCardToken.paymentMethod.card.last4}
           </div>
 
-          <div className="profile-buttons">
-            <Link className="linkAsButton" to="/profile/edit">
+          <div className='profile-buttons'>
+            <Link className='linkAsButton' to='/profile/edit'>
               Edit Profile
             </Link>
             <button>Past Orders</button>
@@ -45,7 +47,7 @@ const ProfileView = (props) => {
         </>
       )}
 
-      <button onClick={singOutAndLiftUserState} className="bottom-button">
+      <button onClick={singOutAndLiftUserState} className='bottom-button'>
         Logout
       </button>
     </div>

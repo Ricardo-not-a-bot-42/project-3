@@ -14,6 +14,7 @@ const basicAuthenticationDeserializer = require('./middleware/basic-authenticati
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const mealRouter = require('./routes/meal');
+const orderRouter = require('./routes/order');
 
 const app = express();
 
@@ -30,12 +31,12 @@ app.use(
       maxAge: 60 * 60 * 24 * 1000,
       sameSite: 'lax',
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+      secure: process.env.NODE_ENV === 'production',
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
-      ttl: 60 * 60 * 24
-    })
+      ttl: 60 * 60 * 24,
+    }),
   })
 );
 app.use(basicAuthenticationDeserializer);
@@ -43,6 +44,7 @@ app.use(basicAuthenticationDeserializer);
 
 app.use('/api/authentication', authenticationRouter);
 app.use('/api/meals', mealRouter);
+app.use('/api/order', orderRouter);
 app.use('/', indexRouter);
 
 // Catch missing routes and forward to error handler

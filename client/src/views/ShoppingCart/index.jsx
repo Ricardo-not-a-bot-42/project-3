@@ -16,6 +16,9 @@ class ShoppingCartView extends Component {
     return (
       <div>
         <h1>Your Shopping Cart</h1>
+        {(this.props.cart.length && (
+          <Link to='/checkout'>Procceed to Checkout</Link>
+        )) || <button disabled>Procceed to Checkout</button>}
         {(this.props.cart.length &&
           this.props.cart.map((item) => {
             return <CartItem {...item} add={this.props.add} />;
@@ -32,9 +35,6 @@ class ShoppingCartView extends Component {
           {formatPrice(totalPrice.fifteenMealDiscount)}
         </h3>
         <h2>Final Price: {formatPrice(totalPrice.totalPrice)}</h2>
-        {(this.props.cart.length && (
-          <Link to='/'>Procceed to Checkout</Link>
-        )) || <button disabled>Procceed to Checkout</button>}
       </div>
     );
   }
