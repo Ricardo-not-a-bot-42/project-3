@@ -6,7 +6,7 @@ $color-grey: #8e8b8c;
 $color-darkgrey: #545253;
 $color-lightbrow: #e7d9c4;
 $color-white: #fff;
-$color-shadow: rgba(135, 123, 102, 1);
+$color-shadow: #abad9a;
 
 * {
   box-sizing: border-box;
@@ -72,6 +72,7 @@ button {
   background-color: $color-lightbrow;
   padding: 0.5em;
   font-size: small;
+  box-shadow: 8px 10px 8px -4px $color-shadow;
 }
 
 .linkAsButton {
@@ -84,6 +85,7 @@ button {
   text-decoration: none;
   color: inherit;
   font-size: small;
+  box-shadow: 8px 10px 8px -4px $color-shadow;
 }
 
 .bottom-button {
@@ -94,6 +96,7 @@ button {
   position: absolute;
   bottom: 2em;
   right: 1em;
+  box-shadow: 8px 10px 8px -4px $color-shadow;
 }
 
 h4 {
