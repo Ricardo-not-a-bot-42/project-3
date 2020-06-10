@@ -1,7 +1,11 @@
+$color-blue: #a8c6d3;
+
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #ff971d;
+  background-color: $color-blue;
+  font-size: small;
+  font-weight: 600;
 
   .links {
     display: flex;

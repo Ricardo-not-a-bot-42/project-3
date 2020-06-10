@@ -1,11 +1,19 @@
+$color-blue: #a8c6d3;
+$color-green: #cbcfab;
+$color-lightgrey: #f9f6f7;
+$color-grey: #dedfe4;
+$color-darkgrey: #545253;
+$color-lightbrow: #e7d9c4;
+$color-white: #fff;
+$color-shadow: rgba(135, 123, 102, 1);
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -51,26 +59,26 @@ form {
     padding: 0.5em;
     width: 60vw;
     border-radius: 4px;
-    border: 1px solid #dedfe4;
+    border: 1px solid $color-grey;
   }
 }
 
 button {
-  border-radius: 20px;
+  border-radius: 10px;
   width: 40%;
   margin: 1em;
-  border: 1px solid #dedfe4;
-  background-color: #f4f4f4;
+  border: 1px solid $color-lightbrow;
+  background-color: $color-lightbrow;
   padding: 0.5em;
   font-size: small;
 }
 
 .linkAsButton {
-  border-radius: 20px;
+  border-radius: 10px;
   width: 30%;
   margin: 1em;
-  border: 1px solid #dedfe4;
-  background-color: #f4f4f4;
+  border: 1px solid $color-green;
+  background-color: $color-green;
   padding: 0.25em;
   text-decoration: none;
   color: inherit;
@@ -78,9 +86,9 @@ button {
 }
 
 .bottom-button {
-  border-radius: 20px;
-  border: 1px solid #ff971d;
-  background-color: #fff8f8;
+  border-radius: 10px;
+  border: 1px solid $color-green;
+  background-color: $color-green;
   width: 40%;
   position: absolute;
   bottom: 2em;

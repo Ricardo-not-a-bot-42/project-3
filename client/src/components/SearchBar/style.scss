@@ -1,7 +1,9 @@
+$color-lightgrey: #f9f6f7;
 .search-bar {
   border-radius: 5px;
+  border: 1px solid $color-lightgrey;
   width: 80%;
-  background-color: #ececec;
+  background-color: $color-lightgrey;
   margin-top: 0;
   margin-bottom: 3em;
 }

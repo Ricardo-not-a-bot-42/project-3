@@ -44,7 +44,7 @@ class HomeView extends Component {
         </section>
 
         <section className="home-section-3">
-          <h3>Featured</h3>
+          <h4>Featured</h4>
           <span>Place here meal component</span>
         </section>
 
