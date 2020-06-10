@@ -43,15 +43,17 @@ class ShoppingCartView extends Component {
           <div className="total-final">
             <div>{formatPrice(totalPrice.totalPrice)}</div>
           </div>
-          {(this.props.cart.length && (
-            <Link className="linkAsButton" to="/freezer">
-              Procceed to Checkout
-            </Link>
-          )) || (
-            <Link className="linkAsButton checkout" to="/freezer">
-              Return to freezer
-            </Link>
-          )}
+          <div>
+            {(this.props.cart.length && (
+              <Link className="bottom-linkAsButton " to="/freezer">
+                Procceed to Checkout
+              </Link>
+            )) || (
+              <Link className="bottom-linkAsButton" to="/freezer">
+                Return to freezer
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     );

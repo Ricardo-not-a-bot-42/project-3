@@ -44,7 +44,7 @@ class MealList extends Component {
                 <div className="img-container">
                   <img src={meal.photoUrl} alt={meal.name} />
                   <small> ★ {meal.ratings} | Rate this meal</small>
-                  <button onClick={() => this.increaseRating(meal)}>
+                  <button className="add-remove-button" onClick={() => this.increaseRating(meal)}>
                     {(this.state.ratings.includes(meal.name) && '-') || '+'}
                   </button>
                 </div>

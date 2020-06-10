@@ -1,3 +1,5 @@
+$color-darkgrey: #545253;
+
 .profile-buttons {
   padding-top: 3em;
   display: flex;
@@ -6,5 +8,9 @@
 }
 
 .input {
-  margin: 1em;
+  margin: 1em 2em;
+}
+
+strong {
+  color: $color-darkgrey;
 }

@@ -1,6 +1,6 @@
 $color-grey: #8e8b8c;
-$color-shadow: #abad9a;
-$color-green: #cbcfab;
+$color-blue: #bee4f4;
+$color-lightgrey: #dedfe4;
 
 .order-info {
   width: 100%;
@@ -73,11 +73,15 @@ h4 {
 
 .checkout {
   border-radius: 10px;
-  border: 1px solid $color-green;
-  background-color: $color-green;
+  border: 1px solid $color-blue;
   width: 40%;
   position: absolute;
   bottom: 3em;
   right: 1em;
-  box-shadow: 8px 10px 8px -4px $color-shadow;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+}
+
+.checkout {
+  position: absolute;
+  bottom: 3em;
 }

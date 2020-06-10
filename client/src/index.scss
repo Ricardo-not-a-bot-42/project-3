@@ -1,12 +1,10 @@
-$color-blue: #a8c6d3;
-$color-green: #cbcfab;
+$color-darkblue: #5a8ca1;
+$color-blue: #bee4f4;
 $color-lightergrey: #f9f6f7;
 $color-lightgrey: #dedfe4;
 $color-grey: #8e8b8c;
 $color-darkgrey: #545253;
-$color-lightbrow: #e7d9c4;
 $color-white: #fff;
-$color-shadow: #abad9a;
 
 * {
   box-sizing: border-box;
@@ -69,11 +67,11 @@ button {
   height: 3em;
   width: 40%;
   margin: 1em;
-  border: 1px solid $color-lightbrow;
-  background-color: $color-lightbrow;
+  background-color: $color-blue;
+  border: 1px solid $color-darkblue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
   padding: 0.5em;
   font-size: small;
-  box-shadow: 8px 10px 8px -4px $color-shadow;
 }
 
 .linkAsButton {
@@ -81,11 +79,27 @@ button {
   height: 3em;
   width: 40%;
   margin: 1em;
-  border: 1px solid $color-lightbrow;
-  background-color: $color-lightbrow;
+  background-color: $color-blue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
   padding: 0.5em;
   font-size: small;
-  box-shadow: 8px 10px 8px -4px $color-shadow;
+  text-decoration: none;
+  color: inherit;
+  font-size: small;
+}
+
+.bottom-linkAsButton {
+  position: absolute;
+  bottom: 3em;
+  right: 1em;
+  border-radius: 10px;
+  height: 3em;
+  width: 40%;
+  margin: 1em;
+  background-color: $color-blue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  padding: 0.5em;
+  font-size: small;
   text-decoration: none;
   color: inherit;
   font-size: small;
@@ -93,13 +107,13 @@ button {
 
 .bottom-button {
   border-radius: 10px;
-  border: 1px solid $color-green;
-  background-color: $color-green;
+  border: 1px solid $color-darkblue;
+  background-color: $color-blue;
   width: 40%;
   position: absolute;
   bottom: 3em;
   right: 1em;
-  box-shadow: 8px 10px 8px -4px $color-shadow;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
 }
 
 h2 {
@@ -145,8 +159,13 @@ h4 {
 
 .add-remove-button {
   background-color: inherit;
-  height: 1.5em;
+  height: 1em;
   border-radius: 0;
   box-shadow: none;
   padding: 0px;
+}
+
+.text-align-left {
+  margin-left: 2em;
+  text-align: left;
 }
