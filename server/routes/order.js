@@ -1,12 +1,11 @@
 const { Router } = require('express');
 const orderRouter = new Router();
 const Meal = require('./../models/meals');
+const Order = require('./../models/order');
 
 const stripe = require('stripe');
 
-const stripeInstance = stripe(
-  'sk_test_51GsQBUF1yLVpeRpUgETu6AQTsuJKXDo0sBVpkrZNo0PBiC5yvJE9KNyDitvwM0rwoh0h3agArukOCZG3LXDszL4600pbB1aqkt'
-);
+const stripeInstance = stripe(process.env.STRIPE_SECRET);
 
 orderRouter.post('/create', (req, res, next) => {
   console.log(req.body);
@@ -46,19 +45,33 @@ orderRouter.post('/create', (req, res, next) => {
         currency: 'EUR',
       };
       console.log(total);
-      return stripeInstance.customers.create();
+      if (!req.user.customerId) {
+        return stripeInstance.customers.create();
+      } else {
+        return Promise.resolve();
+      }
     })
     .then((document) => {
+      if (req.user.customerId) {
+        return Promise.resolve();
+      }
       customer = document;
       return stripeInstance.paymentMethods.attach(token, {
         customer: customer.id,
       });
     })
     .then((method) => {
-      console.log(total.amount);
+      let paymentMethod = token;
+      let customerId;
+      if (req.user.customerId) {
+        customerId = req.user.customerId;
+        paymentMethod = req.user.creditCardToken.paymentMethod.id;
+      } else {
+        customerId = customer.id;
+      }
       return stripeInstance.paymentIntents.create({
-        customer: customer.id,
-        payment_method: token,
+        customer: customerId,
+        payment_method: paymentMethod,
         amount: total.amount,
         currency: total.currency,
         error_on_requires_action: true,
@@ -66,9 +79,36 @@ orderRouter.post('/create', (req, res, next) => {
         save_payment_method: true,
       });
     })
-    .then((intent) => {
-      console.log(intent);
-      res.json({});
+    .then((payment) => {
+      if (payment.status !== 'succeeded') {
+        return Promise.reject(new Error('Payment proccessing failed'));
+      } else {
+        return Order.create({
+          cart: cart,
+          total: total,
+          payment: payment.id,
+          address: address,
+          user: req.user._id,
+        });
+      }
+    })
+    .then((order) => {
+      res.json({
+        order,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+orderRouter.get('/list', (req, res, next) => {
+  Order.find({ user: req.user._id })
+    .then((orders) => {
+      console.log(orders);
+      res.json({
+        orders,
+      });
     })
     .catch((error) => {
       console.log(error);

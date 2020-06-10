@@ -1,9 +1,19 @@
+$color-lightergrey: #f9f6f7;
+$color-white: #fff;
+$color-darkgrey: #545253;
+
 .home-section-overview {
   padding: 1em;
   img {
     max-width: 30%;
   }
 }
+h4 {
+  font-weight: 700;
+  color: $color-darkgrey;
+  border-bottom: thick;
+}
+
 .home-section-we-you {
   display: flex;
   flex-direction: row;
@@ -18,7 +28,7 @@
   padding-top: 0.5em;
   width: 45%;
   margin: 0.5em;
-  background-color: #f9f6f7;
+  background-color: $color-lightergrey;
   border-radius: 4px;
   h4 {
     margin: 0;
@@ -35,9 +45,9 @@
 }
 
 .we-you-card {
-  background-color: white;
+  background-color: $color-white;
   border-radius: 4px;
-  font-size: smaller;
+  font-size: 0.8em;
   display: flex;
   flex-direction: column;
   margin: 0.3em;

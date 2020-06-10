@@ -1,27 +1,43 @@
+$color-blue: #a8c6d3;
+
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #ff971d;
+  background-color: $color-blue;
+  font-size: small;
+  font-weight: 600;
+}
 
-  .links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 30%;
-    margin: 1em;
-  }
+.links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 60%;
+  margin: 0;
+}
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-  button {
-    border: 0;
-  }
-  img {
-    width: 2em;
-    height: 2em;
-    margin: 0.5em;
-  }
+button {
+  border: 0;
+}
+
+.profile {
+  padding-right: 1em;
+}
+
+.logo {
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+}
+
+.shopping-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 1em;
 }

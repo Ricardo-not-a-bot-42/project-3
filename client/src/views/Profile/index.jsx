@@ -33,16 +33,22 @@ const ProfileView = (props) => {
             <strong> Contact Number:</strong> {props.user.contact}
           </div>
           <div className='input'>
-            <strong> Credit Card:</strong>
-            {props.user.creditCardToken.paymentMethod.card.brand.toUpperCase()}{' '}
-            {props.user.creditCardToken.paymentMethod.card.last4}
+            {props.user.creditCardToken && (
+              <div>
+                <strong> Credit Card:</strong>
+                {props.user.creditCardToken.paymentMethod.card.brand.toUpperCase()}{' '}
+                {props.user.creditCardToken.paymentMethod.card.last4}
+              </div>
+            )}
           </div>
 
           <div className='profile-buttons'>
             <Link className='linkAsButton' to='/profile/edit'>
               Edit Profile
             </Link>
-            <button>Past Orders</button>
+            <Link className='linkAsButton' to='/profile/past-orders'>
+              Past Orders
+            </Link>
           </div>
         </>
       )}

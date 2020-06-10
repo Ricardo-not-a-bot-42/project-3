@@ -22,6 +22,9 @@ const schema = new mongoose.Schema({
     type: Object,
     default: {},
   },
+  customerId: {
+    type: String,
+  },
   contact: {
     type: String,
   },

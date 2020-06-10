@@ -16,4 +16,10 @@ const createOrder = (data) => {
     });
 };
 
-export { createOrder };
+const listOrders = () => {
+  return baseOrderService.get('/list').then((response) => {
+    console.log(response);
+  });
+};
+
+export { createOrder, listOrders };

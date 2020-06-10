@@ -5,14 +5,32 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 
+const stripe = require('stripe');
+
+const stripeInstance = stripe(process.env.STRIPE_SECRET);
+
 const routeGuard = require('../middleware/route-guard');
 
 const authenticationRouter = new Router();
 
 authenticationRouter.post('/join-us', (req, res, next) => {
   const { name, email, address, contact, creditCardToken, password } = req.body;
-  bcryptjs
-    .hash(password, 10)
+  let customer;
+  stripeInstance.customers
+    .create()
+    .then((document) => {
+      customer = document;
+      return stripeInstance.paymentMethods.attach(
+        creditCardToken.paymentMethod.id,
+        {
+          customer: customer.id,
+        }
+      );
+    })
+    .then((method) => {
+      console.log('+', customer);
+      return bcryptjs.hash(password, 10);
+    })
     .then((hash) => {
       return User.create({
         name,
@@ -20,7 +38,8 @@ authenticationRouter.post('/join-us', (req, res, next) => {
         address,
         contact,
         creditCardToken,
-        passwordHash: hash
+        customerId: customer.id,
+        passwordHash: hash,
       });
     })
     .then((user) => {
@@ -28,6 +47,7 @@ authenticationRouter.post('/join-us', (req, res, next) => {
       res.json({ user });
     })
     .catch((error) => {
+      console.log(error);
       next(error);
     });
 });
@@ -80,7 +100,7 @@ authenticationRouter.post('/signout', (req, res, next) => {
 
 authenticationRouter.get('/profile', (req, res, next) => {
   res.json({
-    user: req.user || null
+    user: req.user || null,
     // if there is a user, we pass a user, if not (undefined) we pass null
   });
 });
@@ -89,7 +109,7 @@ authenticationRouter.get('/list', (req, res, next) => {
   User.find()
     .then((users) => {
       res.json({
-        list: users
+        list: users,
       });
     })
     .catch((error) => {
@@ -104,7 +124,7 @@ authenticationRouter.post('/profile/edit', (req, res, next) => {
     .then((user) => {
       console.log(user);
       res.json({
-        user
+        user,
       });
     })
     .catch((error) => {

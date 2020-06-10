@@ -9,7 +9,6 @@ class ProfileEditView extends Component {
       email: '',
       address: '',
       contact: '',
-      creditCardToken: '',
     };
     console.log('this.props.user', this.props.user);
   }
@@ -22,7 +21,6 @@ class ProfileEditView extends Component {
       email,
       address,
       contact,
-      creditCardToken,
     })
       .then((user) => {
         this.props.updateUser(user);
@@ -99,17 +97,6 @@ class ProfileEditView extends Component {
                 value={this.state.contact}
                 onChange={this.handleInputChange}
               />
-
-              <label htmlFor='creditCardToken-input'>Credit Card</label>
-              <input
-                id='creditCardToken-input'
-                name='creditCardToken'
-                type='creditCardToken'
-                placeholder='Credit Card'
-                value={this.state.creditCardToken}
-                onChange={this.handleInputChange}
-              />
-
               <button className='bottom-button'>Submit Changes</button>
             </form>
           </>

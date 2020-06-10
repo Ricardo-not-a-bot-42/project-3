@@ -13,6 +13,7 @@ import Footer from './views/Footer';
 import HomeView from './views/Home';
 import ProfileView from './views/Profile';
 import ProfileEditView from './views/Profile/edit';
+import PastOrdersView from './views/Profile/pastorders';
 
 import ShoppingCartView from './views/ShoppingCart';
 
@@ -115,6 +116,11 @@ class App extends Component {
                     updateUser={this.updateUser}
                   />
                 )}
+              />
+              <Route
+                path='/profile/past-orders'
+                exact
+                render={(props) => <PastOrdersView />}
               />
 
               <Route
