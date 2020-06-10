@@ -7,28 +7,30 @@ import './style.scss';
 
 const NavBar = (props) => {
   return (
-    <div className='navbar'>
-      <Link to='/'>
-        <img
-          className='company-logo'
-          src='/companyLogo.png'
-          alt='company-logo'
-        />
+    <div className="navbar">
+      <Link to="/">
+        <img className="logo" src="/images/grey_white_logo.png" alt="company-logo" />
       </Link>
 
       {(!props.user && (
         <>
-          <div className='links'>
-            <Link to='/login'>Login</Link>
-            <Link to='/join-us'>Join Us</Link>
+          <div className="links">
+            <Link to="/login">Login</Link>
+            <Link to="/join-us">Join Us</Link>
           </div>
         </>
       )) || (
         <>
-          <div className='links'>
-            <Link to='/profile'>{props.user.name}'s Profile</Link>
-            <ShoppingCartTotal cart={props.cart} />
-            <Link to='/shopping-cart'>Cart</Link>
+          <div className="links">
+            <div className="profile">
+              <Link to="/profile">{props.user.name}'s Profile</Link>
+            </div>
+            <div className="shopping-cart">
+              <Link to="/shopping-cart">
+                <img className="logo" src="/images/freezer.png" alt="freezer" />
+              </Link>
+              <ShoppingCartTotal cart={props.cart} />
+            </div>
           </div>
         </>
       )}

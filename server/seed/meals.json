@@ -4,8 +4,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pizza",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Pizza",
+    "price": { "amount": "1300", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -13,8 +13,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Pasta",
+    "price": { "amount": "1100", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -22,8 +22,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard Lasagna",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Pasta",
+    "price": { "amount": "1150", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -31,8 +31,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Fish",
+    "price": { "amount": "1800", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -40,8 +40,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Meat",
+    "price": { "amount": "1400", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -49,8 +49,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Meat",
+    "price": { "amount": "900", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -58,8 +58,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Meat",
+    "price": { "amount": "700", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -67,8 +67,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Meat",
+    "price": { "amount": "800", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -76,8 +76,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Fish",
+    "price": { "amount": "1200", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -85,8 +85,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Meat",
+    "price": { "amount": "1300", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -94,8 +94,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Fish",
+    "price": { "amount": "2000", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -103,8 +103,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Salad",
+    "price": { "amount": "700", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -112,8 +112,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Fish",
+    "price": { "amount": "1250", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -121,8 +121,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Soup",
+    "price": { "amount": "300", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -130,8 +130,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Meat",
+    "price": { "amount": "1200", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -139,8 +139,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Pasta",
+    "price": { "amount": "800", "currency": "EUR" },
     "ratings": 0
   },
   {
@@ -148,8 +148,8 @@
     "photoUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
     "description": "Standard pasta",
     "ingredients": ["cheese", "dough"],
-    "category": "Fast-food",
-    "price": { "amount": "3.99", "currency": "EUR" },
+    "category": "Pasta",
+    "price": { "amount": "900", "currency": "EUR" },
     "ratings": 0
   }
 ]

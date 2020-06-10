@@ -7,7 +7,7 @@ class HomeView extends Component {
     return (
       <div>
         <section className="home-section-overview">
-          <img src="/companyLogo.png" alt="company-logo" />
+          <img src="/images/grey_blue_logo.png" alt="company-logo" />
           <h4>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend auctor nisl at
             laoreet. Donec eu efficitur velit. Vivamus porttitor.
@@ -36,7 +36,7 @@ class HomeView extends Component {
                 <img src="/images/heat.png" alt="heat" />
               </div>
               <div className="we-you-card">
-                <small>Eat</small>
+                <small>Enjoy!</small>
                 <img src="/images/Tableware.png" alt="Tableware" />
               </div>
             </div>

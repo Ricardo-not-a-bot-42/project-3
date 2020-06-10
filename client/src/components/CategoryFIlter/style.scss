@@ -1,4 +1,4 @@
-$color-lightgrey: #f9f6f7;
+$color-lightergrey: #f9f6f7;
 $color-white: #fff;
 
 .show-all-button {
@@ -12,13 +12,13 @@ $color-white: #fff;
   flex-direction: row;
   justify-content: space-evenly;
   margin: 0.5em 2em;
-  background-color: $color-lightgrey;
+  background-color: $color-lightergrey;
   border-radius: 4px;
   .category-button {
     // max-width: 30%;
     background-color: $color-white;
     border: none;
-    margin: 0.5em;
+    margin: 0.3em;
   }
   .category-image {
     max-width: 100%;

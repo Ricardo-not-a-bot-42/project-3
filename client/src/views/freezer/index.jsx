@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 
-import {
-  listAllMeals,
-  listPopularMeals,
-  listRecommendedMeals,
-} from './../../services/meals';
+import { listAllMeals, listPopularMeals, listRecommendedMeals } from './../../services/meals';
 import MealList from './../../components/MealList';
 import SearchBar from './../../components/SearchBar';
 import CategoryFilter from './../../components/CategoryFIlter';
@@ -19,7 +15,7 @@ class FreezerView extends Component {
       recommendedMeals: [],
       searchValue: '',
       categoryFilter: '',
-      loaded: false,
+      loaded: false
     };
     this.recommendedMeals = [];
     this.popularMeals = [];
@@ -31,7 +27,7 @@ class FreezerView extends Component {
       .then((meals) => {
         this.allMeals = meals.meals;
         this.setState({
-          allMeals: meals.meals,
+          allMeals: meals.meals
         });
       })
       .catch((error) => {
@@ -43,7 +39,7 @@ class FreezerView extends Component {
         this.popularMeals = meals.meals;
         const topMeals = meals.meals.splice(0, meals.meals.length - 10);
         this.setState({
-          popularMeals: topMeals,
+          popularMeals: topMeals
         });
       })
       .catch((error) => {
@@ -55,7 +51,7 @@ class FreezerView extends Component {
         this.recommendedMeals = meals.meals;
         this.setState({
           recommendedMeals: meals.meals,
-          loaded: true,
+          loaded: true
         });
       })
       .catch((error) => {
@@ -91,7 +87,7 @@ class FreezerView extends Component {
       recommendedMeals: filteredRecommended,
       popularMeals: filteredPopular,
       allMeals: filteredAll,
-      searchValue: value,
+      searchValue: value
     });
   };
 
@@ -122,7 +118,7 @@ class FreezerView extends Component {
       recommendedMeals: filteredRecommended,
       popularMeals: filteredPopular,
       allMeals: filteredAll,
-      categoryFilter: category,
+      categoryFilter: category
     });
   };
 
@@ -134,29 +130,23 @@ class FreezerView extends Component {
     const allMeals = this.state.allMeals;
     const popularMeals = this.state.popularMeals;
     return (
-      <div className='freezer-container'>
-        <div className='search-bar-container'>
-          <SearchBar
-            updateMethod={this.searchFilter}
-            value={this.state.searchValue}
-          />
+      <div className="freezer-container">
+        <div className="search-bar-container">
+          <SearchBar updateMethod={this.searchFilter} value={this.state.searchValue} />
         </div>
-        <div className='categories-container'>
+        <div className="categories-container">
           <CategoryFilter clickMethod={this.categoryFiltering} />
         </div>
         {this.state.loaded && (
           <div>
             <MealList
-              title='Recommended'
+              className="group-header"
+              title="Recommended"
               meals={this.state.recommendedMeals}
               user={this.props.user}
             />
-            <MealList
-              title='Popular'
-              meals={popularMeals}
-              user={this.props.user}
-            />
-            <MealList title='All' meals={allMeals} user={this.props.user} />
+            <MealList title="Popular" meals={popularMeals} user={this.props.user} />
+            <MealList title="All" meals={allMeals} user={this.props.user} />
           </div>
         )}
       </div>

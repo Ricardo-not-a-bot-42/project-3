@@ -10,7 +10,7 @@ class MealList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ratings: this.props.user.ratings,
+      ratings: this.props.user.ratings
     };
   }
 
@@ -29,46 +29,46 @@ class MealList extends Component {
     }
     addRating(meal.name);
     this.setState({
-      ratings: ratings,
+      ratings: ratings
     });
   };
   // console.log('user', props.user);
   render() {
     return (
-      <div className='meal-list-container'>
-        <h2>{this.props.title} Meals</h2>
-        <div className='meal-list'>
+      <div className="meal-list-container">
+        <h4>{this.props.title} Meals</h4>
+        <div className="meal-list">
           {(this.props.meals.length &&
             this.props.meals.map((meal) => (
-              <div className='meals-container' key={Math.random() * 40}>
-                <div className='img-container'>
+              <div className="meals-container" key={Math.random() * 40}>
+                <div className="img-container">
                   <img src={meal.photoUrl} alt={meal.name} />
-                  <h4>{meal.ratings}</h4>
+                  <small> ★ {meal.ratings}/5</small>
                   <button onClick={() => this.increaseRating(meal)}>
                     {(this.state.ratings.includes(meal.name) && '-') || '+'}
                   </button>
                 </div>
-                <div className='meal-info'>
-                  <div className='name-price'>
+                <div className="meal-info">
+                  <div className="name-price">
                     <Link to={`/meal/${meal._id}`}>
-                      <h4>{meal.name}</h4>
+                      <p>{meal.name}</p>
                     </Link>
-                    <h5>{formatPrice(meal.price)}</h5>
+                    <span>{formatPrice(meal.price)}</span>
                   </div>
-                  <h4>Ingredients</h4>
-                  <ul>
+                  <span className="ingredients">
+                    Ingredients:{'  '}
                     {meal.ingredients.map((ingredient) => {
-                      return <li>{ingredient}</li>;
+                      return <span>{ingredient} </span>;
                     })}
-                  </ul>
+                  </span>
                 </div>
               </div>
             ))) || (
-            <h3>
+            <p>
               No meals to display!
               {this.props.title === 'Recommended' &&
                 ' (Make sure to rate some meals to get recommendations)'}
-            </h3>
+            </p>
           )}
         </div>
       </div>

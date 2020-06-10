@@ -14,12 +14,8 @@ class CategoryFilter extends Component {
 
         <h4>Filter the results by category</h4>
         <div className="second-section">
-          <button className="category-button" onClick={() => this.props.clickMethod('Desert')}>
-            <img className="category-image" src="/images/desert.png" alt="desert" />
-          </button>
-
-          <button className="category-button" onClick={() => this.props.clickMethod('Pork')}>
-            <img className="category-image" src="/images/pork.png" alt="pork" />
+          <button className="category-button" onClick={() => this.props.clickMethod('Soup')}>
+            <img className="category-image" src="/images/soup.png" alt="soup" />
           </button>
 
           <button className="category-button" onClick={() => this.props.clickMethod('Fish')}>
@@ -27,11 +23,23 @@ class CategoryFilter extends Component {
           </button>
 
           <button className="category-button" onClick={() => this.props.clickMethod('Beef')}>
-            <img className="category-image" src="/images/beef.png" alt="beef" />
+            <img className="category-image" src="/images/meat.png" alt="meat" />
           </button>
 
           <button className="category-button" onClick={() => this.props.clickMethod('Salad')}>
             <img className="category-image" src="/images/salad.png" alt="salad" />
+          </button>
+
+          <button className="category-button" onClick={() => this.props.clickMethod('Pizza')}>
+            <img className="category-image" src="/images/pizza.png" alt="pizza" />
+          </button>
+
+          <button className="category-button" onClick={() => this.props.clickMethod('Pasta')}>
+            <img className="category-image" src="/images/pasta.png" alt="pasta" />
+          </button>
+
+          <button className="category-button" onClick={() => this.props.clickMethod('Desert')}>
+            <img className="category-image" src="/images/desert.png" alt="desert" />
           </button>
         </div>
       </div>
