@@ -43,8 +43,8 @@ class MealList extends Component {
               <div className="meals-container" key={Math.random() * 40}>
                 <div className="img-container">
                   <img src={meal.photoUrl} alt={meal.name} />
-                  <small> ★ {meal.ratings}/5</small>
-                  <button onClick={() => this.increaseRating(meal)}>
+                  <small> ★ {meal.ratings} | Rate this meal</small>
+                  <button className="add-remove-button" onClick={() => this.increaseRating(meal)}>
                     {(this.state.ratings.includes(meal.name) && '-') || '+'}
                   </button>
                 </div>

@@ -16,7 +16,7 @@ $color-grey: #8e8b8c;
   display: flex;
   flex-direction: column;
   margin-left: 1.5em;
-  background-color: #f9f6f7;
+  background-color: $color-lightergrey;
   border-radius: 20px;
   .img-container {
     text-align: start;
@@ -32,6 +32,8 @@ $color-grey: #8e8b8c;
 
     button {
       width: 2em;
+      height: 2em;
+      background-color: $color-lightgrey;
       border-radius: 5px;
       padding: 0.2em;
       margin-left: 1em;

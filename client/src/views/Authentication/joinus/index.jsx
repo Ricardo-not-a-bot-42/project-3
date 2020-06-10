@@ -32,7 +32,7 @@ class AuthenticationJoinUsView extends Component {
       email: '',
       address: '',
       contact: '',
-      creditCardToken: '',
+      addPaymentInfo: false,
       password: '',
     };
     this.stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
@@ -46,34 +46,56 @@ class AuthenticationJoinUsView extends Component {
     });
   };
 
+  togglePaymentAdd = () => {
+    this.setState({
+      addPaymentInfo: !this.state.addPaymentInfo,
+    });
+  };
+
   handleFormSubmission = (event, stripe, elements) => {
     event.preventDefault();
     const { name, email, address, contact, password } = this.state;
-
-    stripe
-      .createPaymentMethod({
-        type: 'card',
-        card: elements.getElement(CardElement),
-      })
-      .then((data) => {
-        const creditCardToken = data;
-        console.log(creditCardToken);
-        return joinUs({
-          name,
-          email,
-          address,
-          contact,
-          creditCardToken,
-          password,
+    if (this.state.addPaymentInfo) {
+      stripe
+        .createPaymentMethod({
+          type: 'card',
+          card: elements.getElement(CardElement),
+        })
+        .then((data) => {
+          const creditCardToken = data;
+          console.log(creditCardToken);
+          return joinUs({
+            name,
+            email,
+            address,
+            contact,
+            creditCardToken,
+            password,
+          });
+        })
+        .then((user) => {
+          this.props.updateUser(user);
+          this.props.history.push('/profile');
+        })
+        .catch((error) => {
+          console.log(error);
         });
+    } else {
+      return joinUs({
+        name,
+        email,
+        address,
+        contact,
+        password,
       })
-      .then((user) => {
-        this.props.updateUser(user);
-        this.props.history.push('/profile');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((user) => {
+          this.props.updateUser(user);
+          this.props.history.push('/profile');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   render() {
@@ -127,9 +149,17 @@ class AuthenticationJoinUsView extends Component {
                   value={this.state.contact}
                   onChange={this.handleInputChange}
                 />
-
-                <label htmlFor='creditCardToken-input'>Credit Card</label>
-                <CardElement options={STRIPE_INPUT_OPTIONS} />
+                {(this.state.addPaymentInfo && (
+                  <div>
+                    <label htmlFor='creditCardToken-input'>Credit Card</label>
+                    <CardElement options={STRIPE_INPUT_OPTIONS} />
+                    <button onClick={this.togglePaymentAdd}>Cancel</button>
+                  </div>
+                )) || (
+                  <button onClick={this.togglePaymentAdd}>
+                    Add payment method
+                  </button>
+                )}
 
                 <label htmlFor='password-input'>Password</label>
                 <input

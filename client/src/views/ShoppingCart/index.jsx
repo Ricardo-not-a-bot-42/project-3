@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './style.scss';
 
 import CartItem from './../../components/CartItem';
 import { cartTotalPrice, cartMealTotal } from './../../helpers/cartTotalPrice';
@@ -15,26 +16,45 @@ class ShoppingCartView extends Component {
     const totalPrice = cartTotalPrice(this.props.cart);
     return (
       <div>
-        <h1>Your Shopping Cart</h1>
-        {(this.props.cart.length && (
-          <Link to='/checkout'>Procceed to Checkout</Link>
-        )) || <button disabled>Procceed to Checkout</button>}
+        <h2>Your Shopping Cart</h2>
         {(this.props.cart.length &&
           this.props.cart.map((item) => {
             return <CartItem {...item} add={this.props.add} />;
-          })) || <h3>Your cart is empty</h3>}
-        <h1>Order Details</h1>
-        <h2>Total Meals: {totalMeals}</h2>
-        <h2>Initial Price: {formatPrice(totalPrice.initialPrice)}</h2>
-        <h3>
-          Get 10% off when ordering 5+ meals: -
-          {formatPrice(totalPrice.tenMealDiscount)}
-        </h3>
-        <h3>
-          Get 15% off when ordering 10+ meals: -
-          {formatPrice(totalPrice.fifteenMealDiscount)}
-        </h3>
-        <h2>Final Price: {formatPrice(totalPrice.totalPrice)}</h2>
+          })) || <p>Your cart is empty</p>}
+        <h4>Order Details</h4>
+        <div className='order-details'>
+          <div className='total'>
+            <div>Total Meals: {totalMeals}</div>
+            <div>{formatPrice(totalPrice.initialPrice)}</div>
+          </div>
+
+          <div className='discount'>
+            <div>Get 10% off when ordering 5+ meals:</div>
+            <div>-{formatPrice(totalPrice.tenMealDiscount)}</div>
+          </div>
+
+          <div className='discount'>
+            <div>Get 15% off when ordering 10+ meals:</div>
+            <div>-{formatPrice(totalPrice.fifteenMealDiscount)}</div>
+          </div>
+
+          {/* <p>Get 10% off when ordering 5+ meals: -{formatPrice(totalPrice.tenMealDiscount)}</p>
+        <p>Get 15% off when ordering 10+ meals: -{formatPrice(totalPrice.fifteenMealDiscount)}</p> */}
+          <div className='total-final'>
+            <div>{formatPrice(totalPrice.totalPrice)}</div>
+          </div>
+          <div>
+            {(this.props.cart.length && (
+              <Link className='bottom-linkAsButton ' to='/checkout'>
+                Procceed to Checkout
+              </Link>
+            )) || (
+              <Link className='bottom-linkAsButton' to='/freezer'>
+                Return to freezer
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
     );
   }

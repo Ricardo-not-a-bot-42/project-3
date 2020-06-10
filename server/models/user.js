@@ -18,6 +18,13 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  subscribed: {
+    type: Boolean,
+    default: false,
+  },
+  subscriptionId: {
+    type: String,
+  },
   creditCardToken: {
     type: Object,
     default: {},

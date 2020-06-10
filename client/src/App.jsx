@@ -23,6 +23,7 @@ import AuthenticationLogInView from './views/Authentication/login';
 import ErrorView from './views/Errors';
 
 import { loadAuthenticatedUser } from './services/authentication';
+import { checkSubscription } from './services/orders';
 import ProtectedRoute from './components/ProtectedRoute';
 import CheckoutView from './views/Checkout';
 
@@ -47,6 +48,7 @@ class App extends Component {
   }
 
   updateUser = (user) => {
+    checkSubscription();
     this.setState({
       user,
       loaded: true,
@@ -55,9 +57,6 @@ class App extends Component {
 
   addToCart = (meal, quantity) => {
     if (this.state.shoppingCart.find((item) => item.meal._id === meal._id)) {
-      // const updatedShoppingBasket = [...this.state.shoppingBasket];
-      // If I did a shallow clone as I had in the line above,
-      // when changing the quantity I would be mutating the original shoppingBasket child objects
       const updatedShoppingCart = deepCloneObject(this.state.shoppingCart);
       const cartMealIndex = this.state.shoppingCart.findIndex(
         (item) => item.meal._id === meal._id

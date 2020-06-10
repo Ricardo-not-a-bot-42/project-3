@@ -1,0 +1,74 @@
+$color-lightergrey: #f9f6f7;
+$color-lightgrey: #dedfe4;
+$color-grey: #8e8b8c;
+
+// admin-functions
+
+.single-meal-container {
+  position: relative;
+  margin: 3em 1.5em;
+  border-radius: 20px;
+  background-color: $color-lightergrey;
+  border-bottom: 1px solid $color-lightgrey;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  height: 80vh;
+  img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 0;
+  }
+  .meal-body {
+    margin: 0 2em;
+    text-align: left;
+    ul {
+      margin-top: 0em;
+    }
+  }
+}
+.name-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 2em;
+  align-items: center;
+}
+
+small {
+  position: relative;
+  bottom: 0em;
+  left: 0em;
+  margin-left: 1em;
+  margin-bottom: 0;
+}
+
+.cart-functions {
+  position: absolute;
+  width: 100%;
+  bottom: 0.2em;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .cart-qtd {
+    height: 3em;
+    align-items: center;
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 10em;
+  }
+
+  .cart-update {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    button {
+      height: 3em;
+      width: 10em;
+    }
+  }
+}

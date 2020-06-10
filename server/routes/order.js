@@ -2,6 +2,7 @@ const { Router } = require('express');
 const orderRouter = new Router();
 const Meal = require('./../models/meals');
 const Order = require('./../models/order');
+const User = require('./../models/user');
 
 const stripe = require('stripe');
 
@@ -74,6 +75,7 @@ orderRouter.post('/create', (req, res, next) => {
         payment_method: paymentMethod,
         amount: total.amount,
         currency: total.currency,
+        receipt_email: req.user.email,
         error_on_requires_action: true,
         confirm: true,
         save_payment_method: true,
@@ -99,6 +101,75 @@ orderRouter.post('/create', (req, res, next) => {
     })
     .catch((error) => {
       console.log(error);
+    });
+});
+
+orderRouter.post('/create-subscription', (req, res, next) => {
+  const { customerId, creditCardToken } = req.user;
+  const priceId = 'price_1Gsaa6F1yLVpeRpUmjGZJszx';
+  return stripeInstance.customers
+    .update(req.user.customerId, {
+      invoice_settings: {
+        default_payment_method: creditCardToken.paymentMethod.id,
+      },
+    })
+    .then(() => {
+      return stripeInstance.subscriptions.create({
+        customer: customerId,
+        items: [{ price: priceId }],
+        expand: ['latest_invoice.payment_intent'],
+      });
+    })
+    .then((subscription) => {
+      console.log(subscription);
+      const status = subscription.status === 'active' ? true : false;
+      const subscriptionId = subscription.id;
+      console.log(status);
+      return User.findByIdAndUpdate(req.user._id, {
+        subscribed: status,
+        subscriptionId,
+      });
+    })
+    .then((user) => {
+      return Promise.resolve();
+    })
+    .catch((error) => {
+      console.log(error);
+      next(error);
+    });
+});
+
+orderRouter.post('/check-subscription', (req, res, next) => {
+  if (!req.user.subscriptionId) {
+    return;
+  }
+  return stripeInstance.subscriptions
+    .retrieve(req.user.subscriptionId)
+    .then((subscription) => {
+      console.log(subscription);
+      const status = subscription.status === 'active' ? true : false;
+      if (req.user.subscribed !== status) {
+        User.findByIdAndUpdate(req.user._id, { subscribed: status }).then(
+          () => {
+            return Promise.resolve();
+          }
+        );
+      } else {
+        return Promise.resolve();
+      }
+    });
+});
+
+orderRouter.post('/cancel-subscription', (req, res, next) => {
+  stripeInstance.subscriptions
+    .del(req.user.subscriptionId)
+    .then((subscription) => {
+      return User.findByIdAndUpdate(req.user._id, {
+        subscribed: false,
+        subscriptionId: null,
+      }).then(() => {
+        return Promise.resolve();
+      });
     });
 });
 

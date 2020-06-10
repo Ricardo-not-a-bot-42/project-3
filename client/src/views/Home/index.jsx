@@ -8,10 +8,10 @@ class HomeView extends Component {
       <div>
         <section className="home-section-overview">
           <img src="/images/grey_blue_logo.png" alt="company-logo" />
-          <h4>
+          <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend auctor nisl at
             laoreet. Donec eu efficitur velit. Vivamus porttitor.
-          </h4>
+          </div>
         </section>
         <section className="home-section-we-you">
           <article className="home-we-you">

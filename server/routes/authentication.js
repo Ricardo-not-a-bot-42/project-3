@@ -16,40 +16,62 @@ const authenticationRouter = new Router();
 authenticationRouter.post('/join-us', (req, res, next) => {
   const { name, email, address, contact, creditCardToken, password } = req.body;
   let customer;
-  stripeInstance.customers
-    .create()
-    .then((document) => {
-      customer = document;
-      return stripeInstance.paymentMethods.attach(
-        creditCardToken.paymentMethod.id,
-        {
-          customer: customer.id,
-        }
-      );
-    })
-    .then((method) => {
-      console.log('+', customer);
-      return bcryptjs.hash(password, 10);
-    })
-    .then((hash) => {
-      return User.create({
-        name,
-        email,
-        address,
-        contact,
-        creditCardToken,
-        customerId: customer.id,
-        passwordHash: hash,
+  if (creditCardToken) {
+    stripeInstance.customers
+      .create()
+      .then((document) => {
+        customer = document;
+        return stripeInstance.paymentMethods.attach(
+          creditCardToken.paymentMethod.id,
+          {
+            customer: customer.id,
+          }
+        );
+      })
+      .then((method) => {
+        console.log('+', customer);
+        return bcryptjs.hash(password, 10);
+      })
+      .then((hash) => {
+        return User.create({
+          name,
+          email,
+          address,
+          contact,
+          creditCardToken,
+          customerId: customer.id,
+          passwordHash: hash,
+        });
+      })
+      .then((user) => {
+        req.session.user = user._id;
+        res.json({ user });
+      })
+      .catch((error) => {
+        console.log(error);
+        next(error);
       });
-    })
-    .then((user) => {
-      req.session.user = user._id;
-      res.json({ user });
-    })
-    .catch((error) => {
-      console.log(error);
-      next(error);
-    });
+  } else {
+    bcryptjs
+      .hash(password, 10)
+      .then((hash) => {
+        return User.create({
+          name,
+          email,
+          address,
+          contact,
+          passwordHash: hash,
+        });
+      })
+      .then((user) => {
+        req.session.user = user._id;
+        res.json({ user });
+      })
+      .catch((error) => {
+        console.log(error);
+        next(error);
+      });
+  }
 });
 
 authenticationRouter.post('/login', (req, res, next) => {
