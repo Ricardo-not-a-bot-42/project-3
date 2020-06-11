@@ -36,7 +36,7 @@ class MealList extends Component {
   render() {
     return (
       <div className="meal-list-container">
-        <h4>{this.props.title} Meals</h4>
+        <h3>{this.props.title} Meals</h3>
         <div className="meal-list">
           {(this.props.meals.length &&
             this.props.meals.map((meal) => (

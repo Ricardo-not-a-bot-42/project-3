@@ -5,7 +5,7 @@ class CategoryFilter extends Component {
   render() {
     return (
       <div>
-        <h4>Filter the results by category</h4>
+        <h3>Filter the results by category</h3>
         <div className="second-section">
           <button className="category-button" onClick={() => this.props.clickMethod('Soup')}>
             <img className="category-image" src="/images/soup.png" alt="soup" />
@@ -44,7 +44,7 @@ export default CategoryFilter;
 
 {
   /* <div className="first-section">
-<h4>Show all the items in the Freezer</h4>
+<h3>Show all the items in the Freezer</h3>
 <button className="show-all-button" onClick={() => this.props.clickMethod('')}>
   Show all
 </button>

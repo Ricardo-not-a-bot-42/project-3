@@ -53,7 +53,7 @@ const ProfileView = (props) => {
             <div className="buttons-links">
               <div className="profile-buttons">
                 <Link className="linkAsButton page-buttons-links" to="/profile/edit">
-                  Edit Profile
+                  Edit <br /> Profile
                 </Link>
                 <Link className="linkAsButton page-buttons-links" to="/profile/past-orders">
                   View Past Orders

@@ -15,7 +15,7 @@ class HomeView extends Component {
         </section>
         <section className="home-section-we-you">
           <article className="home-we-you">
-            <h4>We</h4>
+            <h3>We</h3>
             <div className="home-steps">
               <div className="we-you-card">
                 <small>Cook & Freeze</small>
@@ -29,7 +29,7 @@ class HomeView extends Component {
           </article>
 
           <article className="home-we-you">
-            <h4>You</h4>
+            <h3>You</h3>
             <div className="home-steps">
               <div className="we-you-card">
                 <small>Heat</small>
@@ -44,7 +44,7 @@ class HomeView extends Component {
         </section>
 
         <section className="home-section-3">
-          <h4>Featured</h4>
+          <h3>Featured</h3>
           <span>Place here meal component</span>
         </section>
 

@@ -15,6 +15,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 85%;
 }
 
 code {
@@ -80,7 +81,7 @@ h2 {
   color: $color-darkgrey;
 }
 
-h4 {
+h3 {
   width: 90%;
   margin: 0 auto;
   margin-top: 2em;
@@ -130,6 +131,13 @@ button {
   box-shadow: 8px 10px 8px -4px $color-lightgrey;
   padding: 0.5em;
   font-size: small;
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
 }
 
 .linkAsButton {
@@ -144,6 +152,13 @@ button {
   text-decoration: none;
   color: inherit;
   font-size: small;
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
 }
 
 .bottom-linkAsButton {
@@ -152,7 +167,7 @@ button {
   right: 1em;
   border-radius: 10px;
   height: 3em;
-  width: 40%;
+  width: auto;
   margin: 1em;
   background-color: $color-blue;
   border: 1px solid $color-darkblue;
@@ -162,6 +177,14 @@ button {
   text-decoration: none;
   color: inherit;
   font-size: small;
+
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
 }
 
 .bottom-button {
@@ -173,12 +196,22 @@ button {
   bottom: 3em;
   right: 1em;
   box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  &:hover &:active {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
 }
 
-button:hover {
-  color: #fff;
-  cursor: pointer;
-  background-color: #7795f8;
-  transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+.page-buttons-links-grey {
+  background-color: $color-lightgrey;
+  border: 1px solid $color-blue;
+  box-shadow: none;
+  vertical-align: center;
+  width: 7em;
+  height: 4em;
+  padding: 0.5;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
 }
