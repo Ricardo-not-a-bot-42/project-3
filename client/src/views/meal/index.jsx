@@ -53,12 +53,12 @@ class MealView extends Component {
             <div className="name-rating">
               <h2>{meal.name}</h2>
               <div> ★ {meal.ratings} </div>
-              <div className="cart-qtd linkAsButtonGrey">
-                <button className="add-remove-button" onClick={() => this.addQuantity(-1)}>
+              <div className="cart-qtd">
+                <button className="add-rem " onClick={() => this.addQuantity(-1)}>
                   -
                 </button>
-                <span className="qtd ">{this.state.quantity}</span>
-                <button className="add-remove-button" onClick={() => this.addQuantity(1)}>
+                <span>{this.state.quantity}</span>
+                <button className="add-rem" onClick={() => this.addQuantity(1)}>
                   +
                 </button>
               </div>

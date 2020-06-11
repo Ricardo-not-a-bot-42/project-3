@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createNewMeal } from './../../../services/meals';
+import './style.scss';
 
 class MealCreateView extends Component {
   constructor() {
@@ -12,21 +13,13 @@ class MealCreateView extends Component {
       category: '',
       price: 0,
       ratings: 0,
-      ingredientPlaceholder: '',
+      ingredientPlaceholder: ''
     };
   }
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const {
-      name,
-      description,
-      photoUrl,
-      ingredients,
-      category,
-      price,
-      ratings,
-    } = this.state;
+    const { name, description, photoUrl, ingredients, category, price, ratings } = this.state;
     createNewMeal({
       name,
       description,
@@ -34,7 +27,7 @@ class MealCreateView extends Component {
       ingredients,
       category,
       price: { amount: price, currency: 'EUR' },
-      ratings,
+      ratings
     }).then((meal) => {
       console.log(meal);
     });
@@ -44,7 +37,7 @@ class MealCreateView extends Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -53,7 +46,7 @@ class MealCreateView extends Component {
     ingredients.push(this.state.ingredientPlaceholder);
     this.setState({
       ingredients,
-      ingredientPlaceholder: '',
+      ingredientPlaceholder: ''
     });
   };
 
@@ -61,79 +54,83 @@ class MealCreateView extends Component {
     const ingredients = this.state.ingredients;
     ingredients.splice(ingredients.indexOf(ingredient), 1);
     this.setState({
-      ingredients,
+      ingredients
     });
   };
 
   render() {
     return (
-      <div className='single-meal-container'>
-        <form onSubmit={this.handleFormSubmission}>
-          <input
-            type='text'
-            name='photoUrl'
-            value={this.state.photoUrl}
-            placeholder='Meal Image'
-            onChange={this.handleInputChange}
-          />
-          <div>
+      <div className="edit-view">
+        <h2>Add New Meal</h2>
+        <div className="form-edit-container">
+          <h3>Add Meal Details</h3>
+          <form onSubmit={this.handleFormSubmission}>
+            <label htmlFor="photoUrl-input">Image Url</label>
             <input
-              type='text'
-              name='name'
+              type="text"
+              name="photoUrl"
+              value={this.state.photoUrl}
+              placeholder="Meal Image"
+              onChange={this.handleInputChange}
+            />
+            <label htmlFor="name-input">Name</label>
+            <input
+              type="text"
+              name="name"
               value={this.state.name}
-              placeholder='Meal Name'
+              placeholder="Meal Name"
               onChange={this.handleInputChange}
             />
+            <label htmlFor="description-input">Description</label>
             <input
-              type='text'
-              name='description'
+              type="text"
+              name="description"
               value={this.state.description}
-              placeholder='Description'
+              placeholder="Description"
               onChange={this.handleInputChange}
             />
+            <label htmlFor="category-input">Category</label>
             <input
-              type='text'
-              name='category'
+              type="text"
+              name="category"
               value={this.state.category}
-              placeholder='Category'
+              placeholder="Category"
               onChange={this.handleInputChange}
             />
+            <h3>Add Ingredients list</h3>
             {this.state.ingredients.map((ingredient) => {
               return (
-                <div className='ingredient-list-create'>
+                <div className="ingredient-list-create">
                   <h3>{ingredient}</h3>
-                  <button
-                    onClick={(event) =>
-                      this.removeIngredient(event, ingredient)
-                    }
-                  >
-                    -
-                  </button>
+                  <button onClick={(event) => this.removeIngredient(event, ingredient)}>-</button>
                 </div>
               );
             })}
-            <div>
+            <div className="ingredient-list-create ">
               <input
-                type='text'
-                name='ingredientPlaceholder'
+                type="text"
+                name="ingredientPlaceholder"
                 value={this.state.ingredientPlaceholder}
-                placeholder='Ingredient'
+                placeholder="Insert Ingredient"
                 onChange={this.handleInputChange}
               />
-              <button onClick={this.addIngredient} type='button'>
+              <button className="add-rem" onClick={this.addIngredient} type="button">
                 +
               </button>
             </div>
+            <label htmlFor="category-input">
+              Price <small>(€ x 100)</small>
+            </label>
             <input
-              type='number'
-              name='price'
+              type="number"
+              name="price"
               value={this.state.price.amount}
-              placeholder='Price'
+              placeholder="Price"
               onChange={this.handleInputChange}
             />
-          </div>
-          <button>Submit</button>
-        </form>
+            <button className="final-button">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }

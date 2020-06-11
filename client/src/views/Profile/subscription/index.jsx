@@ -66,9 +66,9 @@ class SubscriptionView extends Component {
                     <div className="cart-item-name-price">
                       <div>{meal.name}</div>
                     </div>
-                    <div className="cart-item-quantity linkAsButton">
+                    <div className="cart-qtd">
                       <button
-                        className="add-remove-button"
+                        className="add-rem"
                         onClick={() =>
                           updateSubscription(meal).then((user) => {
                             this.props.updateUser(user);

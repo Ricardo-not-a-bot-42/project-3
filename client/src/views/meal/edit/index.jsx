@@ -119,7 +119,7 @@ class MealEditView extends Component {
                 <div className="ingredient-list-create">
                   <div>{ingredient}</div>
                   <button
-                    className="remove-button"
+                    className="add-rem"
                     onClick={(event) => this.removeIngredient(event, ingredient)}
                   >
                     Remove item
@@ -136,7 +136,7 @@ class MealEditView extends Component {
                   placeholder="New ingredient"
                   onChange={this.handleInputChange}
                 />
-                <button onClick={this.addIngredient} type="button">
+                <button className="add-rem" onClick={this.addIngredient} type="button">
                   Add
                 </button>
               </div>
@@ -151,7 +151,7 @@ class MealEditView extends Component {
               placeholder="Price"
               onChange={this.handleInputChange}
             />
-            <button className=" final-button">Submit</button>
+            <button className="final-button">Submit</button>
           </form>
         </div>
       </div>

@@ -33,11 +33,10 @@ $color-white: #fff;
   }
 }
 .name-rating {
-  // background-color: red;
+  margin: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 1em;
   align-items: center;
 
   h2 {
@@ -85,6 +84,11 @@ small {
 }
 
 .cart-qtd {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   background-color: $color-lightgrey;
   font-size: small;
   border-radius: 5px;
@@ -92,11 +96,18 @@ small {
   box-shadow: none;
   height: 2em;
   width: 5em;
-  align-items: center;
   font-size: small;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   padding: 0;
   margin: 0;
+
+  .add-rem {
+    position: relative;
+    display: flex;
+    bottom: 1.5em;
+    background-color: inherit;
+    height: 1em;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0px;
+  }
 }

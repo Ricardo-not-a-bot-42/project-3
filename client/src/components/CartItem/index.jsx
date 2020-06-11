@@ -11,18 +11,12 @@ function CartItem(props) {
         <div>{props.meal.name}</div>
         <div>{formatPrice(props.meal.price)}</div>
       </div>
-      <div className="cart-item-quantity linkAsButton">
-        <button
-          className="add-remove-button"
-          onClick={() => props.add(props.meal, props.quantity - 1)}
-        >
+      <div className="cart-qtd">
+        <button className="add-rem" onClick={() => props.add(props.meal, props.quantity - 1)}>
           -
         </button>
         <span className="cart-qtd">{props.quantity}</span>
-        <button
-          className="add-remove-button"
-          onClick={() => props.add(props.meal, props.quantity + 1)}
-        >
+        <button className="add-rem" onClick={() => props.add(props.meal, props.quantity + 1)}>
           +
         </button>
       </div>

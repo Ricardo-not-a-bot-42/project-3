@@ -98,7 +98,7 @@ class ProfileEditView extends Component {
                 value={this.state.contact}
                 onChange={this.handleInputChange}
               />
-              <button className="bottom-button">Submit Changes</button>
+              <button className="">Submit Changes</button>
             </form>
           </>
         )}
