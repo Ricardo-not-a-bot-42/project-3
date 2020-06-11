@@ -14,6 +14,7 @@ import HomeView from './views/Home';
 import ProfileView from './views/Profile';
 import ProfileEditView from './views/Profile/edit';
 import PastOrdersView from './views/Profile/pastorders';
+import SubscriptionView from './views/Profile/subscription';
 
 import ShoppingCartView from './views/ShoppingCart';
 
@@ -110,6 +111,17 @@ class App extends Component {
                 exact
                 render={(props) => (
                   <ProfileEditView
+                    {...props}
+                    user={this.state.user}
+                    updateUser={this.updateUser}
+                  />
+                )}
+              />
+              <Route
+                path='/profile/subscription'
+                exact
+                render={(props) => (
+                  <SubscriptionView
                     {...props}
                     user={this.state.user}
                     updateUser={this.updateUser}

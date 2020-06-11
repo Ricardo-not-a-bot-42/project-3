@@ -3,7 +3,11 @@ import './style.scss';
 import { Link } from 'react-router-dom';
 
 import { signOut } from './../../services/authentication';
-import { createSubscription, checkSubscription, cancelSubscription } from './../../services/orders';
+import {
+  createSubscription,
+  checkSubscription,
+  cancelSubscription,
+} from './../../services/orders';
 
 const ProfileView = (props) => {
   console.log('props', props);
@@ -22,7 +26,7 @@ const ProfileView = (props) => {
       <div>
         {props.user && (
           <>
-            <div className="input text-align-left">
+            <div className='input text-align-left'>
               <div>
                 <strong> Full Name:</strong> {props.user.name}
               </div>
@@ -42,32 +46,39 @@ const ProfileView = (props) => {
               <div>
                 {props.user.creditCardToken && (
                   <div>
-                    <strong> Credit Card:</strong>
+                    <strong> Credit Card:</strong>{' '}
                     {props.user.creditCardToken.paymentMethod.card.brand.toUpperCase()}{' '}
+                    •••• •••• ••••{' '}
                     {props.user.creditCardToken.paymentMethod.card.last4}
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="buttons-links">
-              <div className="profile-buttons">
-                <Link className="linkAsButton page-buttons-links" to="/profile/edit">
+            <div className='buttons-links'>
+              <div className='profile-buttons'>
+                <Link
+                  className='linkAsButton page-buttons-links'
+                  to='/profile/edit'
+                >
                   Edit <br /> Profile
                 </Link>
-                <Link className="linkAsButton page-buttons-links" to="/profile/past-orders">
+                <Link
+                  className='linkAsButton page-buttons-links'
+                  to='/profile/past-orders'
+                >
                   View Past Orders
                 </Link>
+                <Link className='linkAsButton' to='/profile/subscription'>
+                  View Subscription
+                </Link>
               </div>
-              <div className="subscription-buttons">
-                <button className="page-buttons-links" onClick={() => createSubscription()}>
-                  Create Subscription
-                </button>
-                <button className="page-buttons-links" onClick={() => checkSubscription()}>
+              <div className='subscription-buttons'>
+                <button
+                  className='page-buttons-links'
+                  onClick={() => checkSubscription()}
+                >
                   Check Subscription
-                </button>
-                <button className="page-buttons-links" onClick={() => cancelSubscription()}>
-                  Cancel Subscription
                 </button>
               </div>
             </div>
@@ -75,7 +86,7 @@ const ProfileView = (props) => {
         )}
       </div>
 
-      <button onClick={singOutAndLiftUserState} className="bottom-button">
+      <button onClick={singOutAndLiftUserState} className='bottom-button'>
         Logout
       </button>
     </div>

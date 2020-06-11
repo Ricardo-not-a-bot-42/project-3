@@ -25,6 +25,9 @@ const schema = new mongoose.Schema({
   subscriptionId: {
     type: String,
   },
+  subscription: {
+    type: Object,
+  },
   creditCardToken: {
     type: Object,
     default: {},

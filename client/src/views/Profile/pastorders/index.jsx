@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { listOrders } from './../../../services/orders';
+import generateKey from './../../../helpers/randomKeyGen';
 
 import OrderItem from './../../../components/OrderItem';
 
@@ -34,7 +35,7 @@ class PastOrdersView extends Component {
           <div>
             <h2>Past Orders</h2>
             {this.state.orders.map((order) => {
-              return <OrderItem order={order} />;
+              return <OrderItem order={order} key={generateKey()} />;
             })}
           </div>
         )}

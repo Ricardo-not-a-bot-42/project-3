@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import formatPrice from './../../helpers/format-price';
 import { listCartMeals } from './../../services/meals';
+import generateKey from './../../helpers/randomKeyGen';
 import './style.scss';
 
 class OrderItem extends Component {

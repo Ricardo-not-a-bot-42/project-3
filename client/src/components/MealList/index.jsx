@@ -4,13 +4,14 @@ import './style.scss';
 import formatPrice from './../../helpers/format-price';
 import { addRating } from './../../services/authentication';
 import { setRating } from './../../services/meals';
+import generateKey from './../../helpers/randomKeyGen';
 import { Link } from 'react-router-dom';
 
 class MealList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ratings: this.props.user.ratings
+      ratings: this.props.user.ratings,
     };
   }
 
@@ -29,42 +30,45 @@ class MealList extends Component {
     }
     addRating(meal.name);
     this.setState({
-      ratings: ratings
+      ratings: ratings,
     });
   };
   // console.log('user', props.user);
   render() {
     return (
-      <div className="meal-list-container">
+      <div className='meal-list-container'>
         <h3>{this.props.title} Meals</h3>
-        <div className="meal-list">
+        <div className='meal-list'>
           {(this.props.meals.length &&
             this.props.meals.map((meal) => (
-              <div className="meals-container" key={Math.random() * 40}>
-                <div className="img-container">
+              <div className='meals-container' key={generateKey()}>
+                <div className='img-container'>
                   <img src={meal.photoUrl} alt={meal.name} />
                   <small> ★ {meal.ratings} | Rate this meal</small>
-                  <button className="add-remove-button" onClick={() => this.increaseRating(meal)}>
+                  <button
+                    className='add-remove-button'
+                    onClick={() => this.increaseRating(meal)}
+                  >
                     {(this.state.ratings.includes(meal.name) && '-') || '+'}
                   </button>
                 </div>
-                <div className="meal-info">
-                  <div className="name-price">
+                <div className='meal-info'>
+                  <div className='name-price'>
                     <Link to={`/meal/${meal._id}`}>
                       <p>{meal.name}</p>
                     </Link>
                     <span>{formatPrice(meal.price)}</span>
                   </div>
-                  <span className="ingredients">
+                  <span className='ingredients'>
                     Ingredients:{'  '}
                     {meal.ingredients.map((ingredient) => {
-                      return <span>{ingredient} </span>;
+                      return <span key={generateKey()}>{ingredient} </span>;
                     })}
                   </span>
                 </div>
               </div>
             ))) || (
-            <div className="display-nothing">
+            <div className='display-nothing'>
               <p>
                 No meals to display!
                 {this.props.title === 'Recommended' &&

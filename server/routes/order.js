@@ -42,7 +42,7 @@ orderRouter.post('/create', (req, res, next) => {
       }
 
       total = {
-        amount: Math.round(totalAmount * 100),
+        amount: Math.round(totalAmount),
         currency: 'EUR',
       };
       console.log(total);
@@ -106,7 +106,7 @@ orderRouter.post('/create', (req, res, next) => {
 
 orderRouter.post('/create-subscription', (req, res, next) => {
   const { customerId, creditCardToken } = req.user;
-  const priceId = 'price_1Gsaa6F1yLVpeRpUmjGZJszx';
+  const priceId = 'price_1Gso9DF1yLVpeRpUbyR1kY7i';
   return stripeInstance.customers
     .update(req.user.customerId, {
       invoice_settings: {
@@ -128,6 +128,11 @@ orderRouter.post('/create-subscription', (req, res, next) => {
       return User.findByIdAndUpdate(req.user._id, {
         subscribed: status,
         subscriptionId,
+        subscription: {
+          created: subscription.created,
+          started: subscription.start_date,
+          ends: subscription.current_period_end,
+        },
       });
     })
     .then((user) => {
@@ -148,12 +153,20 @@ orderRouter.post('/check-subscription', (req, res, next) => {
     .then((subscription) => {
       console.log(subscription);
       const status = subscription.status === 'active' ? true : false;
-      if (req.user.subscribed !== status) {
-        User.findByIdAndUpdate(req.user._id, { subscribed: status }).then(
-          () => {
-            return Promise.resolve();
-          }
-        );
+      if (
+        req.user.subscribed !== status ||
+        req.user.subscription.ends !== subscription.current_period_end
+      ) {
+        User.findByIdAndUpdate(req.user._id, {
+          subscribed: status,
+          subscription: {
+            created: subscription.created,
+            started: subscription.start_date,
+            ends: subscription.current_period_end,
+          },
+        }).then((response) => {
+          return Promise.resolve();
+        });
       } else {
         return Promise.resolve();
       }
