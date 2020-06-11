@@ -1,6 +1,21 @@
+$color-lightgrey: #dedfe4;
+
 .order {
   margin-top: 2em;
   margin-bottom: 2em;
   line-height: 2em;
   //   background-color: red;
+}
+button {
+  width: auto;
+  height: auto;
+  padding: 0.5em;
+}
+
+.order-info {
+  padding: 0.5em;
+  display: flex;
+  max-width: 90%;
+  border: 1px solid $color-lightgrey;
+  border-radius: 10px;
 }

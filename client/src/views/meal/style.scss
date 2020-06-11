@@ -33,6 +33,14 @@ $color-grey: #8e8b8c;
   justify-content: space-between;
   margin: 0 2em;
   align-items: center;
+
+  h2 {
+    justify-content: start;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+  }
 }
 
 small {

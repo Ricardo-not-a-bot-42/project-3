@@ -1,0 +1,39 @@
+.order-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  margin-top: 2em;
+
+  img {
+    margin-left: 2em;
+    width: 20%;
+    border-radius: 10px;
+  }
+
+  .cart-item-name-price {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: start;
+    text-align: left;
+    margin-left: 0.5em;
+    font-size: small;
+  }
+
+  .cart-item-quantity {
+    height: 2em;
+    width: 20%;
+    align-items: center;
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-right: 2em;
+    span {
+      font-size: smaller;
+    }
+  }
+}

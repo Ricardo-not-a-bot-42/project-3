@@ -56,7 +56,7 @@ class OrderItem extends Component {
                 <strong>Amount: </strong>
                 {formatPrice(this.props.order.total)}
               </div>
-              <button onClick={this.toggleExpansion}>Show order details</button>
+              <button onClick={this.toggleExpansion}>Order Details</button>
             </div>
 
             <div className="order-expand">

@@ -24,12 +24,17 @@ const NavBar = (props) => {
           <div className="links">
             <div className="profile">
               <Link to="/profile">{props.user.name}'s Profile</Link>
+              <Link to="/profile/subscription">
+                {(props.user.subscriptionId && (
+                  <img className="logo" src="/images/subscribed.png" alt="subscribed" />
+                )) || <small>Not subscribed</small>}
+              </Link>
             </div>
             <div className="shopping-cart">
+              <img className="logo" src="/images/freezer.png" alt="freezer" />
               <Link to="/shopping-cart">
-                <img className="logo" src="/images/freezer.png" alt="freezer" />
+                <ShoppingCartTotal cart={props.cart} />
               </Link>
-              <ShoppingCartTotal cart={props.cart} />
             </div>
           </div>
         </>
