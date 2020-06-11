@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import formatPrice from './../../helpers/format-price';
 import { listCartMeals } from './../../services/meals';
+import generateKey from './../../helpers/randomKeyGen';
 
 class OrderItem extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class OrderItem extends Component {
             {this.state.expanded &&
               this.state.meals.map((meal) => {
                 return (
-                  <div className='order-info'>
+                  <div className='order-info' key={generateKey()}>
                     <img src={meal.photoUrl} alt='' />
                     <div className='cart-item-name-price'>
                       <div>{meal.name}</div>

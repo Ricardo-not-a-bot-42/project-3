@@ -59,14 +59,11 @@ const ProfileView = (props) => {
               <Link className='linkAsButton' to='/profile/past-orders'>
                 Past Orders
               </Link>
-              <button onClick={() => createSubscription()}>
-                Create Subscription
-              </button>
+              <Link className='linkAsButton' to='/profile/subscription'>
+                View Subscription
+              </Link>
               <button onClick={() => checkSubscription()}>
                 Check Subscription
-              </button>
-              <button onClick={() => cancelSubscription()}>
-                Cancel Subscription
               </button>
             </div>
           </>

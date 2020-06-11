@@ -5,6 +5,7 @@ import './style.scss';
 import CartItem from './../../components/CartItem';
 import { cartTotalPrice, cartMealTotal } from './../../helpers/cartTotalPrice';
 import formatPrice from './../../helpers/format-price';
+import generateKey from './../../helpers/randomKeyGen';
 
 class ShoppingCartView extends Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class ShoppingCartView extends Component {
         <h2>Your Shopping Cart</h2>
         {(this.props.cart.length &&
           this.props.cart.map((item) => {
-            return <CartItem {...item} add={this.props.add} />;
+            return (
+              <CartItem {...item} add={this.props.add} key={generateKey()} />
+            );
           })) || <p>Your cart is empty</p>}
         <h4>Order Details</h4>
         <div className='order-details'>
