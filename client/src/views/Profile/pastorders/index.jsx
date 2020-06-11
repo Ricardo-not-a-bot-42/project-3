@@ -4,12 +4,14 @@ import generateKey from './../../../helpers/randomKeyGen';
 
 import OrderItem from './../../../components/OrderItem';
 
+import './style.scss';
+
 class PastOrdersView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       orders: [],
-      loaded: false,
+      loaded: false
     };
   }
   getOrders = () => {
@@ -17,7 +19,7 @@ class PastOrdersView extends Component {
       console.log('orders: ', orders);
       this.setState({
         orders,
-        loaded: true,
+        loaded: true
       });
     });
   };

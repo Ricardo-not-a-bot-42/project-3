@@ -37,7 +37,7 @@ class MealList extends Component {
   render() {
     return (
       <div className='meal-list-container'>
-        <h4>{this.props.title} Meals</h4>
+        <h3>{this.props.title} Meals</h3>
         <div className='meal-list'>
           {(this.props.meals.length &&
             this.props.meals.map((meal) => (
@@ -68,11 +68,13 @@ class MealList extends Component {
                 </div>
               </div>
             ))) || (
-            <p>
-              No meals to display!
-              {this.props.title === 'Recommended' &&
-                ' (Make sure to rate some meals to get recommendations)'}
-            </p>
+            <div className='display-nothing'>
+              <p>
+                No meals to display!
+                {this.props.title === 'Recommended' &&
+                  ' (Make sure to rate some meals to get recommendations)'}
+              </p>
+            </div>
           )}
         </div>
       </div>

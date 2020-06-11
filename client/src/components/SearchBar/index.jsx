@@ -9,7 +9,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
-        <h4>Search by a specific dish</h4>
+        <h3>Search by a specific dish</h3>
         <form action="" onSubmit={this.handleSubmission}>
           <input
             className="search-bar"

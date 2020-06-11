@@ -15,11 +15,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 85%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .App {
@@ -67,61 +67,6 @@ form {
   }
 }
 
-button {
-  border-radius: 10px;
-  height: 3em;
-  width: 40%;
-  margin: 1em;
-  background-color: $color-blue;
-  border: 1px solid $color-darkblue;
-  box-shadow: 8px 10px 8px -4px $color-lightgrey;
-  padding: 0.5em;
-  font-size: small;
-}
-
-.linkAsButton {
-  border-radius: 10px;
-  height: 3em;
-  width: 40%;
-  margin: 1em;
-  background-color: $color-blue;
-  box-shadow: 8px 10px 8px -4px $color-lightgrey;
-  padding: 0.5em;
-  font-size: small;
-  text-decoration: none;
-  color: inherit;
-  font-size: small;
-}
-
-.bottom-linkAsButton {
-  position: absolute;
-  bottom: 3em;
-  right: 1em;
-  border-radius: 10px;
-  height: 3em;
-  width: 40%;
-  margin: 1em;
-  background-color: $color-blue;
-  border: 1px solid $color-darkblue;
-  box-shadow: 8px 10px 8px -4px $color-lightgrey;
-  padding: 0.5em;
-  font-size: small;
-  text-decoration: none;
-  color: inherit;
-  font-size: small;
-}
-
-.bottom-button {
-  border-radius: 10px;
-  border: 1px solid $color-darkblue;
-  background-color: $color-blue;
-  width: 40%;
-  position: absolute;
-  bottom: 3em;
-  right: 1em;
-  box-shadow: 8px 10px 8px -4px $color-lightgrey;
-}
-
 h2 {
   width: 90%;
   margin: 0 auto;
@@ -136,7 +81,7 @@ h2 {
   color: $color-darkgrey;
 }
 
-h4 {
+h3 {
   width: 90%;
   margin: 0 auto;
   margin-top: 2em;
@@ -174,4 +119,99 @@ h4 {
 .text-align-left {
   margin-left: 2em;
   text-align: left;
+}
+
+button {
+  border-radius: 10px;
+  height: 3em;
+  width: 40%;
+  margin: 1em;
+  background-color: $color-blue;
+  border: 1px solid $color-darkblue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  padding: 0.5em;
+  font-size: small;
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
+}
+
+.linkAsButton {
+  border-radius: 10px;
+  height: 3em;
+  width: 40%;
+  margin: 1em;
+  background-color: $color-blue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  padding: 0.5em;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+  font-size: small;
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
+}
+
+.bottom-linkAsButton {
+  position: absolute;
+  bottom: 3em;
+  right: 1em;
+  border-radius: 10px;
+  height: 3em;
+  width: auto;
+  margin: 1em;
+  background-color: $color-blue;
+  border: 1px solid $color-darkblue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  padding: 0.5em;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+  font-size: small;
+
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
+}
+
+.bottom-button {
+  border-radius: 10px;
+  border: 1px solid $color-darkblue;
+  background-color: $color-blue;
+  width: 40%;
+  position: absolute;
+  bottom: 3em;
+  right: 1em;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  &:hover &:active {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
+}
+
+.page-buttons-links-grey {
+  background-color: $color-lightgrey;
+  border: 1px solid $color-blue;
+  box-shadow: none;
+  vertical-align: center;
+  width: 7em;
+  height: 4em;
+  padding: 0.5;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
 }

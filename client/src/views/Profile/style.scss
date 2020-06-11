@@ -1,16 +1,44 @@
+$color-darkblue: #5a8ca1;
+$color-blue: #bee4f4;
+$color-lightergrey: #f9f6f7;
+$color-lightgrey: #dedfe4;
+$color-grey: #8e8b8c;
 $color-darkgrey: #545253;
+$color-white: #fff;
 
-.profile-buttons {
-  padding-top: 3em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+strong {
+  color: $color-darkgrey;
 }
 
 .input {
   margin: 1em 2em;
 }
+.buttons-links {
+  margin-top: 3em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.profile-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
-strong {
-  color: $color-darkgrey;
+.subscription-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-buttons-links {
+  background-color: $color-lightgrey;
+  border: 1px solid $color-blue;
+  box-shadow: none;
+  vertical-align: center;
+  width: 7em;
+  height: 4em;
+  padding: 0.5;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
 }

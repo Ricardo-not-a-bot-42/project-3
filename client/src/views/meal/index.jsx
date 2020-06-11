@@ -50,7 +50,7 @@ class MealView extends Component {
           <div className='single-meal-container'>
             <img src={meal.photoUrl} alt='' />
             <div className='name-rating'>
-              <h3>{meal.name}</h3>
+              <h4>{meal.name}</h4>
               <small> ★ {meal.ratings} </small>
             </div>
             <div className='meal-body'>
@@ -107,6 +107,9 @@ class MealView extends Component {
             )}
           </div>
         )) || <div>Loading</div>}
+        <div className='bottom-linkAsButton'>
+          <Link to='/freezer'>Return to Freezer</Link>
+        </div>
       </div>
     );
   }
