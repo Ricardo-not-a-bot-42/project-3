@@ -53,6 +53,21 @@ class MealView extends Component {
             <div className="name-rating">
               <h2>{meal.name}</h2>
               <div> ★ {meal.ratings} </div>
+              <div className="cart-qtd linkAsButtonGrey">
+                <button className="add-remove-button" onClick={() => this.addQuantity(-1)}>
+                  -
+                </button>
+                <span className="qtd ">{this.state.quantity}</span>
+                <button className="add-remove-button" onClick={() => this.addQuantity(1)}>
+                  +
+                </button>
+              </div>
+              <div>
+                {formatPrice({
+                  amount: meal.price.amount * this.state.quantity,
+                  currency: meal.price.currency
+                })}
+              </div>
             </div>
             <div className="meal-body">
               <p>{meal.description}</p>
@@ -62,6 +77,7 @@ class MealView extends Component {
                   return <li key={generateKey()}>{ingredient}</li>;
                 })}
               </ul>
+              <div></div>
             </div>
             {(this.props.user.userType === 'admin' && (
               <div className="admin-functions">
@@ -70,25 +86,10 @@ class MealView extends Component {
               </div>
             )) || (
               <div className="cart-functions">
-                <div className="cart-qtd linkAsButtonGrey">
-                  <button className="add-remove-button" onClick={() => this.addQuantity(-1)}>
-                    -
-                  </button>
-                  <span className="qtd ">{this.state.quantity}</span>
-                  <button className="add-remove-button" onClick={() => this.addQuantity(1)}>
-                    +
-                  </button>
-                </div>
                 <div className="cart-update">
                   {(this.state.quantity && (
                     <button onClick={() => this.props.add(meal, this.state.quantity)}>
-                      <span>Add </span>
-                      <span>
-                        {formatPrice({
-                          amount: meal.price.amount * this.state.quantity,
-                          currency: meal.price.currency
-                        })}
-                      </span>
+                      <span>Add to Cart</span>
                     </button>
                   )) || <button disabled>Add {meal.price.amount * this.state.quantity}</button>}
                   {this.props.user.subscribed && this.props.user.subscriptionMeals.length < 10 && (

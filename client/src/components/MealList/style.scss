@@ -17,7 +17,6 @@ $color-grey: #8e8b8c;
 .meals-container {
   display: flex;
   flex-direction: column;
-  margin-left: 2em;
   margin-right: 2em;
   background-color: $color-lightergrey;
   border-radius: 20px;
@@ -25,34 +24,12 @@ $color-grey: #8e8b8c;
   padding-bottom: 1em;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  height: 65vh;
-  .img-container {
-    text-align: start;
-    img {
-      width: 20em;
-      border-radius: 20px;
-      margin-bottom: 0;
-    }
-    small {
-      margin-left: 1em;
-      margin-bottom: 0;
-    }
+  height: 26em;
 
-    button {
-      width: 2em;
-      height: 2em;
-      background-color: $color-lightgrey;
-      border-radius: 5px;
-      padding: 0.2em;
-      margin-left: 1em;
-    }
-    small {
-      position: relative;
-      bottom: 0em;
-      left: 0em;
-      margin-left: 1em;
-      margin-bottom: 0;
-    }
+  img {
+    width: 20em;
+    border-radius: 20px;
+    margin-bottom: 0;
   }
   .meal-info {
     display: flex;
@@ -78,4 +55,29 @@ $color-grey: #8e8b8c;
 
 .display-nothing {
   width: 100%;
+}
+
+.meal-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  // background-color: red;
+  button {
+    padding: 0;
+    margin: 0 0 0 1em;
+    width: 2em;
+    height: 2em;
+    background-color: $color-lightgrey;
+    border-radius: 5px;
+  }
+  // small {
+  //   position: relative;
+  //   bottom: 0em;
+  //   left: 0em;
+  //   margin-left: 1em;
+  //   margin-bottom: 0;
+  // }
 }

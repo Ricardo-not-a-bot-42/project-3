@@ -2,6 +2,11 @@ $color-lightergrey: #f9f6f7;
 $color-white: #fff;
 $color-darkgrey: #545253;
 
+.home {
+  height: 100%;
+  margin-bottom: 2rem;
+}
+
 .home-section-overview {
   padding: 1em;
   line-height: 2em;
@@ -71,4 +76,8 @@ $color-darkgrey: #545253;
 
 .home-section-3 {
   margin-bottom: 5em;
+}
+
+.see-freezer {
+  margin-bottom: 3em;
 }

@@ -33,10 +33,11 @@ $color-white: #fff;
   }
 }
 .name-rating {
+  // background-color: red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 2em;
+  margin: 0 1em;
   align-items: center;
 
   h2 {
@@ -44,12 +45,14 @@ $color-white: #fff;
     text-align: left;
     padding: 0;
     margin: 0;
-    width: 80%;
+    width: 40%;
   }
 }
 
 small {
   position: relative;
+  padding: 0;
+  margin: 0;
   bottom: 0em;
   left: 0em;
   margin-left: 1em;
@@ -65,20 +68,12 @@ small {
   flex-direction: row;
   justify-content: space-between;
 
-  .cart-qtd {
-    height: 3em;
-    align-items: center;
-    font-size: small;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 10em;
-  }
-
   .cart-update {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+
     button {
       background-color: $color-lightgrey;
       border: 1px solid $color-blue;
@@ -87,4 +82,21 @@ small {
       width: 10em;
     }
   }
+}
+
+.cart-qtd {
+  background-color: $color-lightgrey;
+  font-size: small;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+  height: 2em;
+  width: 5em;
+  align-items: center;
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
 }
