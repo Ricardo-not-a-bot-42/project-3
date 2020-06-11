@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { listSingleMeal, deleteMeal } from './../../services/meals';
+import { updateSubscription } from './../../services/authentication';
 import { Link } from 'react-router-dom';
 import formatPrice from './../../helpers/format-price';
 import generateKey from './../../helpers/randomKeyGen';
@@ -90,6 +91,19 @@ class MealView extends Component {
                       </span>
                     </button>
                   )) || <button disabled>Add {meal.price.amount * this.state.quantity}</button>}
+                  {this.props.user.subscribed && this.props.user.subscriptionMeals.length < 10 && (
+                    <div>
+                      <button
+                        onClick={() =>
+                          updateSubscription(this.state.meal).then((user) => {
+                            this.props.updateUser(user);
+                          })
+                        }
+                      >
+                        Add to subscription
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

@@ -40,10 +40,9 @@ class FreezerView extends Component {
 
     listPopularMeals()
       .then((meals) => {
-        this.popularMeals = meals.meals;
-        const topMeals = meals.meals.splice(0, meals.meals.length - 10);
+        this.popularMeals = meals.meals.splice(0, 10);
         this.setState({
-          popularMeals: topMeals,
+          popularMeals: this.popularMeals,
         });
       })
       .catch((error) => {

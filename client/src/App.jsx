@@ -44,15 +44,16 @@ class App extends Component {
     loadAuthenticatedUser()
       .then((user) => {
         this.updateUser(user);
+        this.setState({
+          loaded: true,
+        });
       })
       .catch((error) => console.log(error));
   }
 
   updateUser = (user) => {
-    checkSubscription();
     this.setState({
       user,
-      loaded: true,
     });
   };
 
@@ -84,7 +85,11 @@ class App extends Component {
     console.log(this.state.shoppingCart);
   };
 
-  emptyCart = () => {};
+  emptyCart = () => {
+    this.setState({
+      shoppingCart: [],
+    });
+  };
 
   render() {
     return (
@@ -93,7 +98,13 @@ class App extends Component {
           <BrowserRouter>
             <NavBar user={this.state.user} cart={this.state.shoppingCart} />
             <Switch>
-              <Route path='/' exact component={HomeView} />
+              <Route
+                path='/'
+                exact
+                render={(props) => (
+                  <HomeView {...props} user={this.state.user} />
+                )}
+              />
               <Route
                 path='/profile'
                 // authorized={this.state.user}
@@ -174,6 +185,7 @@ class App extends Component {
                     {...props}
                     user={this.state.user}
                     cart={this.state.shoppingCart}
+                    emptyCart={this.emptyCart}
                   />
                 )}
               />
@@ -193,6 +205,7 @@ class App extends Component {
                     {...props}
                     user={this.state.user}
                     add={this.addToCart}
+                    updateUser={this.updateUser}
                   />
                 )}
               />

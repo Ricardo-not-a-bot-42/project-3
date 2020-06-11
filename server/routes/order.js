@@ -125,18 +125,23 @@ orderRouter.post('/create-subscription', (req, res, next) => {
       const status = subscription.status === 'active' ? true : false;
       const subscriptionId = subscription.id;
       console.log(status);
-      return User.findByIdAndUpdate(req.user._id, {
-        subscribed: status,
-        subscriptionId,
-        subscription: {
-          created: subscription.created,
-          started: subscription.start_date,
-          ends: subscription.current_period_end,
+      return User.findByIdAndUpdate(
+        req.user._id,
+        {
+          subscribed: status,
+          subscriptionId,
+          subscription: {
+            created: subscription.created,
+            started: subscription.start_date,
+            ends: subscription.current_period_end,
+          },
+          subscriptionMeals: [],
         },
-      });
+        { new: true }
+      );
     })
     .then((user) => {
-      return Promise.resolve();
+      res.json({ user: user });
     })
     .catch((error) => {
       console.log(error);
@@ -157,18 +162,22 @@ orderRouter.post('/check-subscription', (req, res, next) => {
         req.user.subscribed !== status ||
         req.user.subscription.ends !== subscription.current_period_end
       ) {
-        User.findByIdAndUpdate(req.user._id, {
-          subscribed: status,
-          subscription: {
-            created: subscription.created,
-            started: subscription.start_date,
-            ends: subscription.current_period_end,
+        User.findByIdAndUpdate(
+          req.user._id,
+          {
+            subscribed: status,
+            subscription: {
+              created: subscription.created,
+              started: subscription.start_date,
+              ends: subscription.current_period_end,
+            },
           },
-        }).then((response) => {
-          return Promise.resolve();
+          { new: true }
+        ).then((user) => {
+          res.json({ user: user });
         });
       } else {
-        return Promise.resolve();
+        res.json({});
       }
     });
 });
@@ -177,11 +186,17 @@ orderRouter.post('/cancel-subscription', (req, res, next) => {
   stripeInstance.subscriptions
     .del(req.user.subscriptionId)
     .then((subscription) => {
-      return User.findByIdAndUpdate(req.user._id, {
-        subscribed: false,
-        subscriptionId: null,
-      }).then(() => {
-        return Promise.resolve();
+      return User.findByIdAndUpdate(
+        req.user._id,
+        {
+          subscribed: false,
+          subscriptionId: null,
+          subscription: {},
+          subscriptionMeals: [],
+        },
+        { new: true }
+      ).then((user) => {
+        res.json({ user: user });
       });
     });
 });
