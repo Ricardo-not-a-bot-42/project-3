@@ -64,11 +64,13 @@ class MealList extends Component {
                 </div>
               </div>
             ))) || (
-            <p>
-              No meals to display!
-              {this.props.title === 'Recommended' &&
-                ' (Make sure to rate some meals to get recommendations)'}
-            </p>
+            <div className="display-nothing">
+              <p>
+                No meals to display!
+                {this.props.title === 'Recommended' &&
+                  ' (Make sure to rate some meals to get recommendations)'}
+              </p>
+            </div>
           )}
         </div>
       </div>

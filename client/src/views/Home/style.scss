@@ -52,10 +52,13 @@ $color-darkgrey: #545253;
   flex-direction: column;
   margin: 0.3em;
   width: 100%;
+  height: 6em;
   align-items: center;
   justify-content: space-evenly;
   padding: 0.1em;
   small {
+    background-color: red;
+    margin: 0auto;
     width: 100%;
     padding: 0;
     top: 0.5em;

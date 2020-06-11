@@ -15,8 +15,8 @@ class CategoryFilter extends Component {
             <img className="category-image" src="/images/fish.png" alt="fish" />
           </button>
 
-          <button className="category-button" onClick={() => this.props.clickMethod('Beef')}>
-            <img className="category-image" src="/images/meat.png" alt="meat" />
+          <button className="category-button" onClick={() => this.props.clickMethod('Meat')}>
+            <img className="category-image" src="/images/meat.png" alt="Meat" />
           </button>
 
           <button className="category-button" onClick={() => this.props.clickMethod('Salad')}>
