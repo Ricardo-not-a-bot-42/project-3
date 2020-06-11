@@ -10,14 +10,22 @@ $color-grey: #8e8b8c;
   display: flex;
   flex-direction: row;
   overflow: scroll;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .meals-container {
   display: flex;
   flex-direction: column;
-  margin-left: 1.5em;
+  margin-left: 2em;
+  margin-right: 2em;
   background-color: $color-lightergrey;
   border-radius: 20px;
+  border-bottom: 1px solid $color-lightgrey;
+  padding-bottom: 1em;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 65vh;
   .img-container {
     text-align: start;
     img {
@@ -52,10 +60,6 @@ $color-grey: #8e8b8c;
     text-align: start;
     margin: auto 0.5;
     margin-bottom: 0;
-    border-bottom: 1px solid $color-lightgrey;
-    padding-bottom: 1em;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
 
     .name-price {
       display: flex;

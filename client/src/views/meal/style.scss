@@ -1,6 +1,10 @@
+$color-darkblue: #5a8ca1;
+$color-blue: #bee4f4;
 $color-lightergrey: #f9f6f7;
 $color-lightgrey: #dedfe4;
 $color-grey: #8e8b8c;
+$color-darkgrey: #545253;
+$color-white: #fff;
 
 // admin-functions
 
@@ -12,7 +16,8 @@ $color-grey: #8e8b8c;
   border-bottom: 1px solid $color-lightgrey;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  height: 70vh;
+  height: 77vh;
+  font-size: small;
 
   img {
     width: 100%;
@@ -75,6 +80,9 @@ small {
     flex-direction: row;
     justify-content: space-between;
     button {
+      background-color: $color-lightgrey;
+      border: 1px solid $color-blue;
+      box-shadow: 8px 10px 8px -4px $color-lightgrey;
       height: 3em;
       width: 10em;
     }
