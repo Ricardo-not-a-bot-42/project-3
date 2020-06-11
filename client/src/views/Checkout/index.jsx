@@ -49,7 +49,7 @@ class CheckoutView extends Component {
     });
     return createOrder({ address, cart, token })
       .then((result) => {
-        console.log(result);
+        this.props.history.push('/profile/past-orders');
       })
       .catch((error) => {
         console.log(error);

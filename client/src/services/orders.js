@@ -9,7 +9,6 @@ const createOrder = (data) => {
     .post('/create', data)
     .then((response) => {
       const responseBody = response.data;
-      console.log(responseBody);
       return Promise.resolve();
     })
     .catch((error) => {
@@ -19,27 +18,23 @@ const createOrder = (data) => {
 
 const listOrders = () => {
   return baseOrderService.get('/list').then((response) => {
-    console.log(response);
-    return Promise.resolve();
+    return Promise.resolve(response.data.orders);
   });
 };
 
 const createSubscription = () => {
   return baseOrderService.post('/create-subscription').then((response) => {
-    console.log(response);
     return Promise.resolve();
   });
 };
 const cancelSubscription = () => {
   return baseOrderService.post('/cancel-subscription').then((response) => {
-    console.log(response);
     return Promise.resolve();
   });
 };
 
 const checkSubscription = () => {
   return baseOrderService.post('/check-subscription').then((response) => {
-    console.log(response);
     return Promise.resolve();
   });
 };
