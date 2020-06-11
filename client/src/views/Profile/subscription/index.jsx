@@ -6,6 +6,7 @@ import {
 } from './../../../services/orders';
 import { updateSubscription } from './../../../services/authentication';
 import CartItem from './../../../components/CartItem';
+import './style.scss';
 
 class SubscriptionView extends Component {
   constructor(props) {
@@ -32,19 +33,22 @@ class SubscriptionView extends Component {
         {(this.state.subscribed && (
           <div>
             <h2>Subscribed</h2>
-            <h5>
-              Subscribed on:{' '}
-              {new Date(
-                this.props.user.subscription.created * 1000
-              ).toDateString()}
-            </h5>
-            <h5>
-              Next payment on:{' '}
-              {new Date(
-                this.props.user.subscription.ends * 1000
-              ).toDateString()}
-            </h5>
+            <div className='subscription-details'>
+              <div>
+                <strong>Subscribed on: </strong>
+                {new Date(
+                  this.props.user.subscription.created * 1000
+                ).toDateString()}
+              </div>
+              <div>
+                <strong>Next payment on: </strong>
+                {new Date(
+                  this.props.user.subscription.ends * 1000
+                ).toDateString()}
+              </div>
+            </div>
             <button
+              className='bottom-button'
               onClick={() => {
                 cancelSubscription().then((user) => {
                   console.log(user);
@@ -91,11 +95,15 @@ class SubscriptionView extends Component {
         )) || (
           <div>
             <h2>Weekly Freezer Drop-Off</h2>
-            <h4>
-              For just 50€, pick and choose 10 meals to be delivered at the
-              beggining of the following week, and cancel anytime.
-            </h4>
-            <h4>Feel free to contact us for any questions you might have!</h4>
+            <div className='weekle-freezer'>
+              <div>
+                For just 50€, pick and choose 10 meals to be delivered at the
+                beggining of the following week, and cancel anytime.
+              </div>
+              <div>
+                Feel free to contact us for any questions you might have!
+              </div>
+            </div>
             <button
               onClick={() =>
                 createSubscription().then((user) => {

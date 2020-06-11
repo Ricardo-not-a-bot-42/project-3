@@ -1,5 +1,6 @@
 import React from 'react';
 import formatPrice from './../../helpers/format-price';
+import './style.scss';
 
 function CartItem(props) {
   console.log(props);

@@ -1,4 +1,6 @@
 $color-blue: #bee4f4;
+$color-lightgrey: #dedfe4;
+$color-darkblue: #5a8ca1;
 
 .navbar {
   display: flex;
@@ -6,13 +8,15 @@ $color-blue: #bee4f4;
   background-color: $color-blue;
   font-size: small;
   font-weight: 600;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  border-bottom: 1px solid white;
 }
 
 .links {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 50%;
+  width: 60%;
   margin: 0;
 }
 

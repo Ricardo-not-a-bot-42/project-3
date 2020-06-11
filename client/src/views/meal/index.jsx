@@ -51,8 +51,8 @@ class MealView extends Component {
           <div className='single-meal-container'>
             <img src={meal.photoUrl} alt='' />
             <div className='name-rating'>
-              <h4>{meal.name}</h4>
-              <small> ★ {meal.ratings} </small>
+              <h2>{meal.name}</h2>
+              <div> ★ {meal.ratings} </div>
             </div>
             <div className='meal-body'>
               <p>{meal.description}</p>

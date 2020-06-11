@@ -37,9 +37,10 @@ class HomeView extends Component {
         <section className='home-section-overview'>
           <img src='/images/grey_blue_logo.png' alt='company-logo' />
           <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            eleifend auctor nisl at laoreet. Donec eu efficitur velit. Vivamus
-            porttitor.
+            Home and hand-made meals with natural and mindfully-sourced
+            ingredients sustainably delivered at your home. <br /> Because we
+            believe that eating healthy and having a balanced diet should be
+            easy!
           </div>
         </section>
         <section className='home-section-we-you'>

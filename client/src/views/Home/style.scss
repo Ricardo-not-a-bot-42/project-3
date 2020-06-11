@@ -4,6 +4,7 @@ $color-darkgrey: #545253;
 
 .home-section-overview {
   padding: 1em;
+  line-height: 2em;
   img {
     max-width: 30%;
   }
@@ -29,7 +30,7 @@ $color-darkgrey: #545253;
   margin: 0.5em;
   background-color: $color-lightergrey;
   border-radius: 4px;
-  h4 {
+  h3 {
     margin: 0;
     border: none;
   }
