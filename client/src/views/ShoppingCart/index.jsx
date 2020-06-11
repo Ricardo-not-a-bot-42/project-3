@@ -15,6 +15,8 @@ class ShoppingCartView extends Component {
   render() {
     const totalMeals = cartMealTotal(this.props.cart);
     const totalPrice = cartTotalPrice(this.props.cart);
+    const color_five = totalMeals >= 5 ? 'green' : 'red';
+    const color_ten = totalMeals >= 10 ? 'green' : 'red';
     return (
       <div>
         <h2>Your Shopping Cart</h2>
@@ -25,34 +27,40 @@ class ShoppingCartView extends Component {
             );
           })) || <p>Your cart is empty</p>}
         <h3>Order Details</h3>
-        <div className="order-details">
-          <div className="total">
+        <div className='order-details'>
+          <div className='total'>
             <div>Total Meals: {totalMeals}</div>
             <div>{formatPrice(totalPrice.initialPrice)}</div>
           </div>
 
-          <div className="discount">
-            <div>Get 10% off when ordering 5+ meals:</div>
-            <div>-{formatPrice(totalPrice.tenMealDiscount)}</div>
+          <div className='discount'>
+            <div style={{ color: color_five }}>
+              Get 10% off when ordering 5+ meals:
+            </div>
+            <div style={{ color: color_five }}>
+              -{formatPrice(totalPrice.tenMealDiscount)}
+            </div>
           </div>
 
-          <div className="discount">
-            <div>Get 15% off when ordering 10+ meals:</div>
-            <div>-{formatPrice(totalPrice.fifteenMealDiscount)}</div>
+          <div className='discount'>
+            <div style={{ color: color_ten }}>
+              Get 15% off when ordering 10+ meals:
+            </div>
+            <div style={{ color: color_ten }}>
+              -{formatPrice(totalPrice.fifteenMealDiscount)}
+            </div>
           </div>
 
-          {/* <p>Get 10% off when ordering 5+ meals: -{formatPrice(totalPrice.tenMealDiscount)}</p>
-        <p>Get 15% off when ordering 10+ meals: -{formatPrice(totalPrice.fifteenMealDiscount)}</p> */}
-          <div className="total-final">
+          <div className='total-final'>
             <div>{formatPrice(totalPrice.totalPrice)}</div>
           </div>
           <div>
             {(this.props.cart.length && (
-              <Link className="bottom-linkAsButton " to="/checkout">
+              <Link className='bottom-linkAsButton ' to='/checkout'>
                 Procceed to Checkout
               </Link>
             )) || (
-              <Link className="bottom-linkAsButton" to="/freezer">
+              <Link className='bottom-linkAsButton' to='/freezer'>
                 Return to freezer
               </Link>
             )}

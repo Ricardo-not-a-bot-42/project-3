@@ -40,8 +40,6 @@ const checkSubscription = () => {
     if (response.data.user) {
       const user = response.data.user;
       return Promise.resolve(user);
-    } else {
-      return Promise.resolve();
     }
   });
 };

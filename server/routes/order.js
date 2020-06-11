@@ -177,7 +177,7 @@ orderRouter.post('/check-subscription', (req, res, next) => {
           res.json({ user: user });
         });
       } else {
-        res.json({});
+        res.json({ user: req.user });
       }
     });
 });

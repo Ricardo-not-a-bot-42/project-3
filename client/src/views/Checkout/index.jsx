@@ -13,8 +13,7 @@ import { createOrder } from './../../services/orders';
 
 import './style.scss';
 
-const STRIPE_PUBLIC_KEY =
-  'pk_test_51GsQBUF1yLVpeRpUg5evAiOWKNoS28XDt0TfrQKi8HYKrvPG2m8WUQODeiCuDY4XAvQ91BvaZDN6N9BAx7F8yUEP00CgFS2eH3';
+const STRIPE_PUBLIC_KEY = process.env.REACT_APP_STRIPE_API_PUBLIC_KEY;
 
 const STRIPE_INPUT_OPTIONS = {
   style: {

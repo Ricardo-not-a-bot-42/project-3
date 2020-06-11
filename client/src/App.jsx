@@ -43,6 +43,13 @@ class App extends Component {
   componentDidMount() {
     loadAuthenticatedUser()
       .then((user) => {
+        if (user) {
+          return checkSubscription();
+        } else {
+          return Promise.resolve(user);
+        }
+      })
+      .then((user) => {
         this.updateUser(user);
         this.setState({
           loaded: true,
@@ -105,20 +112,24 @@ class App extends Component {
                   <HomeView {...props} user={this.state.user} />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/profile'
-                // authorized={this.state.user}
+                authorized={this.state.user}
+                redirect={'/login'}
                 exact
                 render={(props) => (
                   <ProfileView
                     {...props}
                     user={this.state.user}
                     updateUser={this.updateUser}
+                    emptyCart={this.emptyCart}
                   />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/profile/edit'
+                authorized={this.state.user}
+                redirect={'/login'}
                 exact
                 render={(props) => (
                   <ProfileEditView
@@ -128,8 +139,10 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/profile/subscription'
+                authorized={this.state.user}
+                redirect={'/login'}
                 exact
                 render={(props) => (
                   <SubscriptionView
@@ -139,8 +152,10 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/profile/past-orders'
+                authorized={this.state.user}
+                redirect={'/login'}
                 exact
                 render={(props) => <PastOrdersView />}
               />
@@ -165,8 +180,10 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/shopping-cart'
+                authorized={this.state.user}
+                redirect={'/login'}
                 exact
                 render={(props) => (
                   <ShoppingCartView
@@ -177,8 +194,10 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/checkout'
+                authorized={this.state.user}
+                redirect={'/login'}
                 exact
                 render={(props) => (
                   <CheckoutView
@@ -196,7 +215,15 @@ class App extends Component {
                   <FreezerView {...props} user={this.state.user} />
                 )}
               />
-              <Route path='/meal/create' exact component={MealCreateView} />
+              <ProtectedRoute
+                path='/meal/create'
+                authorized={
+                  this.state.user && this.state.user.userType === 'admin'
+                }
+                redirect={'/freezer'}
+                exact
+                component={MealCreateView}
+              />
               <Route
                 path='/meal/:id'
                 exact
@@ -209,23 +236,15 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <ProtectedRoute
                 path='/meal/:id/edit'
+                authorized={
+                  this.state.user && this.state.user.userType === 'admin'
+                }
+                redirect={'/freezer'}
                 exact
                 render={(props) => <MealEditView {...props} />}
               />
-              <Route path='/meal/create' exact component={MealCreateView} />
-              <Route
-                path='/meal/:id'
-                exact
-                render={(props) => <MealView {...props} />}
-              />
-              <Route
-                path='/meal/:id/edit'
-                exact
-                render={(props) => <MealEditView {...props} />}
-              />
-
               <Route path='/error/:code' component={ErrorView} />
               <Redirect to='/error/404' />
             </Switch>
