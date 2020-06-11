@@ -25,9 +25,9 @@ const NavBar = (props) => {
             <div className="profile">
               <Link to="/profile">{props.user.name}'s Profile</Link>
               <Link to="/profile/subscription">
-                {(props.user.subscriptionId && (
+                {props.user.subscriptionId && (
                   <img className="logo" src="/images/subscribed.png" alt="subscribed" />
-                )) || <small>Not subscribed</small>}
+                )}
               </Link>
             </div>
             <div className="shopping-cart">
