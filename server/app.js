@@ -18,6 +18,8 @@ const orderRouter = require('./routes/order');
 
 const app = express();
 
+app.use(express.static(join(__dirname, '../client/build')));
+
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,7 +33,6 @@ app.use(
       maxAge: 60 * 60 * 24 * 1000,
       sameSite: 'lax',
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
@@ -46,6 +47,10 @@ app.use('/api/authentication', authenticationRouter);
 app.use('/api/meals', mealRouter);
 app.use('/api/order', orderRouter);
 app.use('/', indexRouter);
+
+app.get('*', (req, res, next) => {
+  res.sendFile(join(__dirname, '../client/build/index.html'));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

@@ -70,7 +70,7 @@ class MealView extends Component {
               </div>
             )) || (
               <div className='cart-functions'>
-                <div className='cart-qtd linkAsButton'>
+                <div className='cart-qtd linkAsButtonGrey'>
                   <button
                     className='add-remove-button'
                     onClick={() => this.addQuantity(-1)}

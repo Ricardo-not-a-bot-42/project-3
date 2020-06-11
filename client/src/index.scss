@@ -161,6 +161,28 @@ button {
   }
 }
 
+.linkAsButtonGrey {
+  border-radius: 10px;
+  height: 3em;
+  width: 40%;
+  margin: 1em;
+  background-color: $color-lightgrey;
+  border: 1px solid $color-blue;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  padding: 0.5em;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+  font-size: small;
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
+}
+
 .bottom-linkAsButton {
   position: absolute;
   bottom: 3em;
