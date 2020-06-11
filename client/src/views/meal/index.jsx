@@ -98,7 +98,7 @@ class MealView extends Component {
                     </button>
                   )) || (
                     <button disabled>
-                      Add {meal.price.amount * this.state.quantity}
+                      <span>Add to Cart</span>
                     </button>
                   )}
                   {this.props.user.subscribed &&

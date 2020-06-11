@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {
   createSubscription,
   checkSubscription,
-  cancelSubscription
+  cancelSubscription,
 } from './../../../services/orders';
 import { updateSubscription } from './../../../services/authentication';
 import CartItem from './../../../components/CartItem';
+import generateKey from './../../../helpers/randomKeyGen';
 import './style.scss';
 
 class SubscriptionView extends Component {
@@ -13,13 +14,13 @@ class SubscriptionView extends Component {
     super(props);
     this.state = {
       subscribed: this.props.user.subscribed,
-      subscriptionMeals: []
+      subscriptionMeals: [],
     };
   }
 
   updateSubMealList = () => {
     this.setState({
-      subscriptionMeals: this.props.user.subscriptionMeals
+      subscriptionMeals: this.props.user.subscriptionMeals,
     });
   };
 
@@ -33,23 +34,27 @@ class SubscriptionView extends Component {
         {(this.state.subscribed && (
           <div>
             <h2>Subscribed</h2>
-            <div className="subscription-details">
+            <div className='subscription-details'>
               <div>
                 <strong>Subscribed on: </strong>
-                {new Date(this.props.user.subscription.created * 1000).toDateString()}
+                {new Date(
+                  this.props.user.subscription.created * 1000
+                ).toDateString()}
               </div>
               <div>
                 <strong>Next payment on: </strong>
-                {new Date(this.props.user.subscription.ends * 1000).toDateString()}
+                {new Date(
+                  this.props.user.subscription.ends * 1000
+                ).toDateString()}
               </div>
             </div>
             <button
-              className="bottom-button"
+              className='bottom-button'
               onClick={() => {
                 cancelSubscription().then((user) => {
                   console.log(user);
                   this.setState({
-                    subscribed: user.subscribed
+                    subscribed: user.subscribed,
                   });
                   this.props.updateUser(user);
                 });
@@ -58,22 +63,24 @@ class SubscriptionView extends Component {
               Cancel Subscription
             </button>
             <div>
-              <h4>Meals to Deliver - {this.props.user.subscriptionMeals.length}/10</h4>
+              <h4>
+                Meals to Deliver - {this.props.user.subscriptionMeals.length}/10
+              </h4>
               {this.props.user.subscriptionMeals.map((meal) => {
                 return (
-                  <div className="order-info">
-                    <img src={meal.photoUrl} alt="" />
-                    <div className="cart-item-name-price">
+                  <div className='order-info' key={generateKey()}>
+                    <img src={meal.photoUrl} alt='' />
+                    <div className='cart-item-name-price'>
                       <div>{meal.name}</div>
                     </div>
-                    <div className="cart-qtd">
+                    <div className='cart-qtd'>
                       <button
-                        className="add-rem"
+                        className='add-rem'
                         onClick={() =>
                           updateSubscription(meal).then((user) => {
                             this.props.updateUser(user);
                             this.setState({
-                              subscriptionMeals: user.subscriptionMeals
+                              subscriptionMeals: user.subscriptionMeals,
                             });
                           })
                         }
@@ -89,19 +96,21 @@ class SubscriptionView extends Component {
         )) || (
           <div>
             <h2>Weekly Freezer Drop-Off</h2>
-            <div className="weekle-freezer">
+            <div className='weekle-freezer'>
               <div>
-                For just 50€, pick and choose 10 meals to be delivered at the beggining of the
-                following week, and cancel anytime.
+                For just 50€, pick and choose 10 meals to be delivered at the
+                beggining of the following week, and cancel anytime.
               </div>
-              <div>Feel free to contact us for any questions you might have!</div>
+              <div>
+                Feel free to contact us for any questions you might have!
+              </div>
             </div>
             <button
               onClick={() =>
                 createSubscription().then((user) => {
                   this.props.updateUser(user);
                   this.setState({
-                    subscribed: user.subscribed
+                    subscribed: user.subscribed,
                   });
                 })
               }

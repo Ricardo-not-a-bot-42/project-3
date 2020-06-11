@@ -48,18 +48,19 @@ class FreezerView extends Component {
       .catch((error) => {
         console.log(error);
       });
-
-    listRecommendedMeals(this.props.user)
-      .then((meals) => {
-        this.recommendedMeals = meals.meals;
-        this.setState({
-          recommendedMeals: meals.meals,
-          loaded: true,
+    if (this.props.user) {
+      listRecommendedMeals(this.props.user)
+        .then((meals) => {
+          this.recommendedMeals = meals.meals;
+          this.setState({
+            recommendedMeals: meals.meals,
+            loaded: true,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    }
   }
 
   searchFilter = (event) => {
@@ -145,12 +146,14 @@ class FreezerView extends Component {
         </div>
         {this.state.loaded && (
           <div>
-            <MealList
-              className='group-header'
-              title='Recommended'
-              meals={this.state.recommendedMeals}
-              user={this.props.user}
-            />
+            {this.props.user && (
+              <MealList
+                className='group-header'
+                title='Recommended'
+                meals={this.state.recommendedMeals}
+                user={this.props.user}
+              />
+            )}
             <MealList
               title='Popular'
               meals={popularMeals}

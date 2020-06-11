@@ -196,8 +196,8 @@ class App extends Component {
               />
               <ProtectedRoute
                 path='/checkout'
-                authorized={this.state.user}
-                redirect={'/login'}
+                authorized={this.state.user && this.state.shoppingCart.length}
+                redirect={'/'}
                 exact
                 render={(props) => (
                   <CheckoutView

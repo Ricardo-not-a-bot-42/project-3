@@ -203,6 +203,7 @@ orderRouter.post('/cancel-subscription', (req, res, next) => {
 
 orderRouter.get('/list', (req, res, next) => {
   Order.find({ user: req.user._id })
+    .sort({ dateCreated: -1 })
     .then((orders) => {
       console.log(orders);
       res.json({
