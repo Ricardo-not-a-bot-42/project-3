@@ -38,12 +38,23 @@ class OrderItem extends Component {
     return (
       <div className="order">
         {this.state.loaded && (
-          <div className="text-align-lefts">
+          <div className="text-align-left">
             <div className="order-body">
-              <div>Ordered on: {new Date(this.props.order.dateCreated).toDateString()}</div>
-              <div>Delivered to: {this.props.order.address}</div>
-              <div>Items: {this.props.order.cart.length}</div>
-              <div>Amount: {formatPrice(this.props.order.total)}</div>
+              <div>
+                <strong>Ordered on: </strong>{' '}
+                {new Date(this.props.order.dateCreated).toDateString()}
+              </div>
+              <div>
+                <strong>Delivered to: </strong> {this.props.order.address}
+              </div>
+              <div>
+                <strong>Items: </strong>
+                {this.props.order.cart.length}
+              </div>
+              <div>
+                <strong>Amount: </strong>
+                {formatPrice(this.props.order.total)}
+              </div>
               <button onClick={this.toggleExpansion}>Show order details</button>
             </div>
 
