@@ -8,8 +8,8 @@ const createOrder = (data) => {
   return baseOrderService
     .post('/create', data)
     .then((response) => {
-      const responseBody = response.data;
-      return Promise.resolve();
+      const order = response.data.order;
+      return Promise.resolve(order);
     })
     .catch((error) => {
       return Promise.reject(error);
@@ -24,18 +24,25 @@ const listOrders = () => {
 
 const createSubscription = () => {
   return baseOrderService.post('/create-subscription').then((response) => {
-    return Promise.resolve();
+    const user = response.data.user;
+    return Promise.resolve(user);
   });
 };
 const cancelSubscription = () => {
   return baseOrderService.post('/cancel-subscription').then((response) => {
-    return Promise.resolve();
+    const user = response.data.user;
+    return Promise.resolve(user);
   });
 };
 
 const checkSubscription = () => {
   return baseOrderService.post('/check-subscription').then((response) => {
-    return Promise.resolve();
+    if (response.data.user) {
+      const user = response.data.user;
+      return Promise.resolve(user);
+    } else {
+      return Promise.resolve();
+    }
   });
 };
 

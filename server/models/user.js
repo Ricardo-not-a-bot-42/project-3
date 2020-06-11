@@ -28,6 +28,10 @@ const schema = new mongoose.Schema({
   subscription: {
     type: Object,
   },
+  subscriptionMeals: {
+    type: [Object],
+    maxlength: 10,
+  },
   creditCardToken: {
     type: Object,
     default: {},

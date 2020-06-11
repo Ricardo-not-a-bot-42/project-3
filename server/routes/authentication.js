@@ -108,11 +108,43 @@ authenticationRouter.post('/addRating', (req, res, next) => {
   } else {
     userRatings.push(mealName);
   }
-  User.findByIdAndUpdate(user._id, { ratings: userRatings })
-    .then((document) => {})
+  User.findByIdAndUpdate(user._id, { ratings: userRatings }, { new: true })
+    .then((user) => {
+      res.json({ user: user });
+    })
     .catch((error) => {
       next(error);
     });
+});
+
+authenticationRouter.post('/updateSubscriptionMeals', (req, res, next) => {
+  const user = req.user;
+  const meal = req.body.meal;
+  const meals = req.user.subscriptionMeals;
+  const mealIndex = meals.findIndex((item) => item._id === meal._id);
+  console.log(mealIndex);
+  if (mealIndex >= 0) {
+    meals.splice(mealIndex, 1);
+  } else {
+    meals.push(meal);
+  }
+  if (meals.length > 10) {
+    return;
+  } else {
+    User.findByIdAndUpdate(
+      user._id,
+      { subscriptionMeals: meals },
+      { new: true }
+    )
+      .then((user) => {
+        res.json({
+          user,
+        });
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
 });
 
 authenticationRouter.post('/signout', (req, res, next) => {
@@ -142,7 +174,7 @@ authenticationRouter.get('/list', (req, res, next) => {
 authenticationRouter.post('/profile/edit', (req, res, next) => {
   const userId = req.user._id;
   console.log('req.user', req.user._id);
-  User.findByIdAndUpdate(userId, req.body)
+  User.findByIdAndUpdate(userId, req.body, { new: true })
     .then((user) => {
       console.log(user);
       res.json({

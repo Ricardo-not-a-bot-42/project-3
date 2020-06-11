@@ -82,6 +82,21 @@ const addRating = (mealName) => {
     });
 };
 
+const updateSubscription = (meal) => {
+  const body = {
+    meal: meal,
+  };
+  return baseAuthenticationService
+    .post('/updateSubscriptionMeals', body)
+    .then((response) => {
+      const user = response.data.user;
+      return Promise.resolve(user);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
 const editProfile = (body) => {
   console.log(body);
   return baseAuthenticationService
@@ -89,7 +104,7 @@ const editProfile = (body) => {
     .then((response) => {
       const data = response.data;
       const user = data.user;
-      return Promise.resolve({ ...user });
+      return Promise.resolve(user);
     })
     .catch((error) => {
       return Promise.reject(error);
@@ -102,6 +117,7 @@ export {
   signOut,
   loadAuthenticatedUser,
   addRating,
+  updateSubscription,
   editProfile,
   loadUser,
 };
