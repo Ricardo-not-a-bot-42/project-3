@@ -1,3 +1,11 @@
+$color-darkblue: #5a8ca1;
+$color-blue: #bee4f4;
+$color-lightergrey: #f9f6f7;
+$color-lightgrey: #dedfe4;
+$color-grey: #8e8b8c;
+$color-darkgrey: #545253;
+$color-white: #fff;
+
 .order-info {
   width: 100%;
   display: flex;
@@ -35,5 +43,34 @@
     span {
       font-size: smaller;
     }
+  }
+}
+
+.cart-qtd {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $color-lightgrey;
+  font-size: small;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+  height: 2em;
+  width: 5em;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+
+  .add-rem {
+    position: relative;
+    display: flex;
+    bottom: 1.5em;
+    background-color: inherit;
+    height: 1em;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0px;
   }
 }

@@ -48,17 +48,16 @@ class MealList extends Component {
                   <Link to={`/meal/${meal._id}`}>
                     <img src={meal.photoUrl} alt={meal.name} />
                   </Link>
-                  {this.props.user && (
-                    <div>
-                      <small> ★ {meal.ratings} | Rate this meal</small>
-                      <button
-                        className='add-remove-button'
-                        onClick={() => this.increaseRating(meal)}
-                      >
-                        {(this.state.ratings.includes(meal.name) && '-') || '+'}
-                      </button>
-                    </div>
-                  )}
+                  <div className='meal-rating'>
+                    <small>Rate this meal</small>
+                    <button
+                      className='add-remove-button'
+                      onClick={() => this.increaseRating(meal)}
+                    >
+                      {(this.state.ratings.includes(meal.name) && '-') || '+'}
+                    </button>
+                    <small> ★ {meal.ratings} </small>
+                  </div>
                 </div>
                 <div className='meal-info'>
                   <div className='name-price'>

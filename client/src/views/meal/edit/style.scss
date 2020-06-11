@@ -1,0 +1,89 @@
+$color-darkblue: #5a8ca1;
+$color-blue: #bee4f4;
+$color-lightergrey: #f9f6f7;
+$color-lightgrey: #dedfe4;
+$color-grey: #8e8b8c;
+$color-darkgrey: #545253;
+$color-white: #fff;
+
+.form-edit-container {
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
+
+form {
+  position: relative;
+  margin-bottom: 3em;
+}
+
+.ingredients {
+  margin-bottom: 3em;
+}
+
+input {
+  height: fit-content;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.ingredient-list-create {
+  border: 1px solid $color-lightgrey;
+  width: 60vw;
+  margin: 0.25em 2em 1em 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  border-radius: 4px;
+  height: 3em;
+
+  div {
+    width: 70%;
+    font-size: small;
+  }
+  button {
+    font-size: smaller;
+    box-shadow: none;
+    background-color: $color-lightgrey;
+    border-radius: 4px;
+    padding: 0.1em;
+    width: 1e;
+    width: 40%;
+    height: 2.5em;
+  }
+  input {
+    width: 70%;
+    font-size: small;
+    height: 2em;
+    border: none;
+  }
+}
+
+.final-button {
+  border-radius: 10px;
+  border: 1px solid $color-darkblue;
+  background-color: $color-blue;
+  width: 40%;
+  box-shadow: 8px 10px 8px -4px $color-lightgrey;
+  &:hover &:active {
+    color: #fff;
+    cursor: pointer;
+    background-color: $color-darkblue;
+    transform: translateY(-1px);
+    box-shadow: 8px 10px 8px -4px $color-darkgrey;
+  }
+}
+
+.add-rem {
+  position: relative;
+  display: flex;
+  bottom: 1.5em;
+  background-color: inherit;
+  height: 1em;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0px;
+}

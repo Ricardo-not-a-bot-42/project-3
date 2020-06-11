@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 
 import { loadStripe } from '@stripe/stripe-js';
-import {
-  CardElement,
-  Elements,
-  ElementsConsumer,
-} from '@stripe/react-stripe-js';
+import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
 
 import formatPrice from './../../helpers/format-price';
 import { cartTotalPrice } from './../../helpers/cartTotalPrice';
@@ -20,12 +16,12 @@ const STRIPE_INPUT_OPTIONS = {
     base: {
       fontSize: '14px',
       color: '#424770',
-      fontFamily: 'sans-serif',
+      fontFamily: 'sans-serif'
     },
     invalid: {
-      color: '#c23d4b',
-    },
-  },
+      color: '#c23d4b'
+    }
+  }
 };
 
 class CheckoutView extends Component {
@@ -35,7 +31,7 @@ class CheckoutView extends Component {
       name: this.props.user.name,
       email: this.props.user.email,
       contact: this.props.user.contact,
-      address: this.props.user.address,
+      address: this.props.user.address
     };
     this.stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
   }
@@ -45,7 +41,7 @@ class CheckoutView extends Component {
     const cart = this.props.cart.map((item) => {
       return {
         quantity: item.quantity,
-        meal: item.meal._id,
+        meal: item.meal._id
       };
     });
     return createOrder({ address, cart, token })
@@ -71,7 +67,7 @@ class CheckoutView extends Component {
       stripe
         .createPaymentMethod({
           type: 'card',
-          card: elements.getElement(CardElement),
+          card: elements.getElement(CardElement)
         })
         .then((data) => {
           console.log(data);
@@ -92,7 +88,7 @@ class CheckoutView extends Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -104,42 +100,37 @@ class CheckoutView extends Component {
         <Elements stripe={this.stripePromise}>
           <ElementsConsumer>
             {({ stripe, elements }) => (
-              <form
-                onSubmit={(event) =>
-                  this.handleFormSubmission(event, stripe, elements)
-                }
-              >
-                <button className='bottom-button'>Submit</button>
+              <form onSubmit={(event) => this.handleFormSubmission(event, stripe, elements)}>
                 <h3>Delivery Recipient</h3>
-                <label htmlFor='name-input'>Name</label>
+                <label htmlFor="name-input">Name</label>
                 <input
-                  type='text'
-                  id='name-input'
-                  name='name'
+                  type="text"
+                  id="name-input"
+                  name="name"
                   value={this.state.name}
                   onChange={this.handleInputChange}
                 />
-                <label htmlFor='email-input'>Email</label>
+                <label htmlFor="email-input">Email</label>
                 <input
-                  type='text'
-                  id='email-input'
-                  name='email'
+                  type="text"
+                  id="email-input"
+                  name="email"
                   value={this.state.email}
                   onChange={this.handleInputChange}
                 />
-                <label htmlFor='contact-input'>Contact</label>
+                <label htmlFor="contact-input">Contact</label>
                 <input
-                  type='text'
-                  id='contact-input'
-                  name='contact'
+                  type="text"
+                  id="contact-input"
+                  name="contact"
                   value={this.state.contact}
                   onChange={this.handleInputChange}
                 />
-                <label htmlFor='address-input'>Address</label>
+                <label htmlFor="address-input">Address</label>
                 <input
-                  type='text'
-                  id='address-input'
-                  name='address'
+                  type="text"
+                  id="address-input"
+                  name="address"
                   value={this.state.address}
                   onChange={this.handleInputChange}
                 />
@@ -156,12 +147,14 @@ class CheckoutView extends Component {
                     </div>
                   </div>
                 )) || <CardElement options={STRIPE_INPUT_OPTIONS} />}
+
+                <h3>Final Amount: </h3>
+                <strong>{formatPrice(totalPrice.totalPrice)}</strong>
+                <button className="final-button">Submit</button>
               </form>
             )}
           </ElementsConsumer>
         </Elements>
-        <h3>Final Amount: </h3>
-        <strong>{formatPrice(totalPrice.totalPrice)}</strong>
       </div>
     );
   }

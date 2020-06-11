@@ -26,6 +26,7 @@ h4 {
     font-weight: 700;
     width: 20%;
     margin: 2em 2em auto auto;
+    margin-bottom: 4em;
     left: 0;
     text-align: right;
     border-top: 1px solid $color-grey;
@@ -45,4 +46,38 @@ h4 {
 .checkout {
   position: absolute;
   bottom: 3em;
+}
+
+.shopping-list {
+  margin-right: 2em;
+  margin-left: 2em;
+}
+
+.cart-qtd {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $color-lightgrey;
+  font-size: small;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+  height: 2em;
+  width: 5em;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+
+  .add-rem {
+    position: relative;
+    display: flex;
+    bottom: 1.5em;
+    background-color: inherit;
+    height: 1em;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0px;
+  }
 }

@@ -20,12 +20,13 @@ class ShoppingCartView extends Component {
     return (
       <div>
         <h2>Your Shopping Cart</h2>
-        {(this.props.cart.length &&
-          this.props.cart.map((item) => {
-            return (
-              <CartItem {...item} add={this.props.add} key={generateKey()} />
-            );
-          })) || <p>Your cart is empty</p>}
+        <div className="shopping-list">
+          {(this.props.cart.length &&
+            this.props.cart.map((item) => {
+              return <CartItem {...item} add={this.props.add} key={generateKey()} />;
+            })) || <p>Your cart is empty</p>}
+        </div>
+
         <h3>Order Details</h3>
         <div className='order-details'>
           <div className='total'>
@@ -54,6 +55,9 @@ class ShoppingCartView extends Component {
           <div className='total-final'>
             <div>{formatPrice(totalPrice.totalPrice)}</div>
           </div>
+          <Link className="linkAsButtonGrey " to="/freezer">
+            Continue shopping
+          </Link>
           <div>
             {(this.props.cart.length && (
               <Link className='bottom-linkAsButton ' to='/checkout'>

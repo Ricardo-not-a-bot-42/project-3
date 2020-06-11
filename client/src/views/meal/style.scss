@@ -33,10 +33,10 @@ $color-white: #fff;
   }
 }
 .name-rating {
+  margin: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 2em;
   align-items: center;
 
   h2 {
@@ -44,12 +44,14 @@ $color-white: #fff;
     text-align: left;
     padding: 0;
     margin: 0;
-    width: 80%;
+    width: 40%;
   }
 }
 
 small {
   position: relative;
+  padding: 0;
+  margin: 0;
   bottom: 0em;
   left: 0em;
   margin-left: 1em;
@@ -65,20 +67,12 @@ small {
   flex-direction: row;
   justify-content: space-between;
 
-  .cart-qtd {
-    height: 3em;
-    align-items: center;
-    font-size: small;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 10em;
-  }
-
   .cart-update {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+
     button {
       background-color: $color-lightgrey;
       border: 1px solid $color-blue;
@@ -86,5 +80,34 @@ small {
       height: 3em;
       width: 10em;
     }
+  }
+}
+
+.cart-qtd {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $color-lightgrey;
+  font-size: small;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+  height: 2em;
+  width: 5em;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+
+  .add-rem {
+    position: relative;
+    display: flex;
+    bottom: 1.5em;
+    background-color: inherit;
+    height: 1em;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0px;
   }
 }
