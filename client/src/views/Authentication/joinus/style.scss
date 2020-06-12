@@ -1,13 +1,18 @@
+$color-lightgrey: #dedfe4;
+
 .StripeElement {
-  //   align-items: center;
-  //   padding: 2em;
-  //   height: 30em;
-  //   width: 25em;
-  //   background-color: lightcoral;
-  //   font-size: small;
-  //   display: flex;
-  //   flex-direction: column;
-  //   padding: 1.25em 1em;
-  //   border: 1px solid rgb(199, 199, 199);
-  //   margin-bottom: 1em;
+  align-items: center;
+  padding: 2em;
+  height: 4em;
+  width: 25em;
+  font-size: small;
+  padding: 1.25em 1em;
+  border: 1px solid rgb(199, 199, 199);
+  margin-bottom: 1em;
+  border-radius: 4px;
+  border: 1px solid $color-lightgrey;
+}
+
+form {
+  margin-top: 2em;
 }

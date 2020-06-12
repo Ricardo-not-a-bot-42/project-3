@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { login } from './../../../services/authentication';
 
+import './style.scss';
+
 class AuthenticationLogInView extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +60,7 @@ class AuthenticationLogInView extends Component {
             onChange={this.handleInputChange}
           />
 
-          <button className="bottom-button">Login</button>
+          <button className="final-button">Login</button>
         </form>
       </div>
     );

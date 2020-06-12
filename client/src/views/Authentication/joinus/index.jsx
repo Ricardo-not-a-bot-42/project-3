@@ -168,7 +168,7 @@ class AuthenticationJoinUsView extends Component {
                   </div>
                 )) || <button onClick={this.togglePaymentAdd}>Add payment method</button>}
 
-                <button className="bottom-button">Register and continue</button>
+                <button className="final-button">Register and continue</button>
               </form>
             )}
           </ElementsConsumer>
