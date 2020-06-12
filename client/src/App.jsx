@@ -44,7 +44,7 @@ class App extends Component {
     loadAuthenticatedUser()
       .then((user) => {
         if (user) {
-          return checkSubscription();
+          return Promise.resolve(user);
         } else {
           return Promise.resolve(user);
         }

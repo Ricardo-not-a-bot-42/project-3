@@ -80,7 +80,6 @@ class MealView extends Component {
                   return <li key={generateKey()}>{ingredient}</li>;
                 })}
               </ul>
-              <div></div>
             </div>
             {(this.props.user.userType === 'admin' && (
               <div className='admin-functions'>

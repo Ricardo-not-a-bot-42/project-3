@@ -1,12 +1,13 @@
-$color-darkblue: #5a8ca1;
-$color-blue: #bee4f4;
+$color-darkblue: #69ddf6;
+$color-blue: #69ddf6;
 $color-lightergrey: #f9f6f7;
 $color-lightgrey: #dedfe4;
 $color-grey: #8e8b8c;
 $color-darkgrey: #545253;
 $color-white: #fff;
 
-strong {
+strong,
+h3 {
   color: $color-darkgrey;
 }
 .links {
@@ -41,10 +42,41 @@ strong {
   margin: 1em 2em;
 }
 .buttons-links {
-  margin-top: 3em;
   margin-left: 2em;
   margin-right: 2em;
 }
+
+.subscription-promo-link {
+  padding: 0.5em;
+  margin-bottom: 1em;
+  a {
+    box-shadow: none;
+  }
+  h3 {
+    margin-top: 0;
+    background-color: rgba(249, 246, 247, 0.5);
+    border-radius: 10px;
+    padding: 0.2em;
+    font-size: 1.5em;
+    border: none;
+  }
+  h2 {
+    display: block;
+    padding-bottom: 1em;
+    background-color: rgba(249, 246, 247, 0.5);
+  }
+  div {
+    margin-bottom: 2em;
+  }
+  strong {
+    display: block;
+    margin: 1em;
+  }
+  background-image: url('https://326193.smushcdn.com/137681/wp-content/uploads/2020/03/Delivery-Hero-2048x1365.jpeg?lossy=1&strip=1&webp=1');
+  background-size: cover;
+  border-radius: 15px;
+}
+
 .profile-buttons {
   display: flex;
   flex-direction: row;
@@ -60,12 +92,11 @@ strong {
 }
 
 .page-buttons-links {
-  background-color: $color-lightgrey;
-  border: 1px solid $color-blue;
+  background-color: #f9f6f7;
   box-shadow: none;
   vertical-align: center;
   width: 7em;
   height: 4em;
-  padding: 0.5;
+  padding: 0.5em;
   box-shadow: 8px 10px 8px -4px $color-lightgrey;
 }

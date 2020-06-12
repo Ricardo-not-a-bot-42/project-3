@@ -40,10 +40,7 @@ const ProfileView = (props) => {
               <div>
                 <strong> Contact Number:</strong> {props.user.contact}
               </div>
-              <div>
-                <strong> Subscription status:</strong>{' '}
-                {(props.user.subscribed && 'Subscribed') || 'Not Subscribed'}
-              </div>
+
               <div>
                 {props.user.creditCardToken && (
                   <div>
@@ -70,13 +67,25 @@ const ProfileView = (props) => {
                 >
                   View Past Orders
                 </Link>
+              </div>
+              <div className='subscription-promo-link'>
+                <h3>Weekly Freezer Drop-Off</h3>
+                <h2>
+                  <strong>One subscription, weekly meals</strong>
+                  <div>
+                    <strong> Subscription status:</strong>{' '}
+                    {(props.user.subscribed && 'Subscribed') ||
+                      'Not Subscribed'}
+                  </div>
+                  <Link
+                    className='linkAsButton page-buttons-links'
+                    to='/profile/subscription'
+                  >
+                    View Subscription
+                  </Link>
+                </h2>
 
-                <Link
-                  className='linkAsButton page-buttons-links'
-                  to='/profile/subscription'
-                >
-                  View Subscription
-                </Link>
+                <strong></strong>
               </div>
             </div>
           </>

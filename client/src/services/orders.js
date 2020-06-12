@@ -37,10 +37,8 @@ const cancelSubscription = () => {
 
 const checkSubscription = () => {
   return baseOrderService.post('/check-subscription').then((response) => {
-    if (response.data.user) {
-      const user = response.data.user;
-      return Promise.resolve(user);
-    }
+    const user = response.data.user;
+    return Promise.resolve(user);
   });
 };
 

@@ -4,7 +4,11 @@ $color-lightgrey: #dedfe4;
   margin-top: 2em;
   margin-bottom: 2em;
   line-height: 2em;
+  border-bottom: 1px solid $color-lightgrey;
   //   background-color: red;
+  button {
+    margin-top: 0.5em;
+  }
 }
 button {
   width: auto;
