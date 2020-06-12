@@ -36,6 +36,7 @@ class HomeView extends Component {
       <div className="home">
         <section className="home-section-overview">
           <img src="/images/grey_blue_logo.png" alt="company-logo" />
+          <h2>Snow Meals</h2>
           <div>
             Delicious homemade meals prepared with natural ingredients, mindfully sourced into your
             dish and sustainably delivered at the comfort of your home. <br />

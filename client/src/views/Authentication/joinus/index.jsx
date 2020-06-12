@@ -164,7 +164,7 @@ class AuthenticationJoinUsView extends Component {
                   <div className="payment-method">
                     <label htmlFor="creditCardToken-input">Credit Card</label>
                     <CardElement options={STRIPE_INPUT_OPTIONS} />
-                    <button onClick={this.togglePaymentAdd}>Cancel</button>
+                    <button onClick={this.togglePaymentAdd}>Cancel Credit Card Submission</button>
                   </div>
                 )) || <button onClick={this.togglePaymentAdd}>Add payment method</button>}
 
