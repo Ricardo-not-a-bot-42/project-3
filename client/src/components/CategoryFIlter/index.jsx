@@ -7,6 +7,9 @@ class CategoryFilter extends Component {
       <div>
         <h3>Filter the results by category</h3>
         <div className="second-section">
+          <button className="category-button" onClick={() => this.props.clickMethod('')}>
+            ALL
+          </button>
           <button className="category-button" onClick={() => this.props.clickMethod('Soup')}>
             <img className="category-image" src="/images/soup.png" alt="soup" />
           </button>

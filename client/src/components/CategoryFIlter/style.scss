@@ -1,5 +1,7 @@
 $color-lightergrey: #f9f6f7;
 $color-white: #fff;
+$color-darkblue: #5a8ca1;
+$color-blue: #69ddf6;
 
 .show-all-button {
   margin-top: 0;
@@ -15,12 +17,17 @@ $color-white: #fff;
   background-color: $color-lightergrey;
   border-radius: 4px;
   .category-button {
-    // max-width: 30%;
     background-color: $color-white;
     border: none;
     margin: 0.3em;
   }
   .category-image {
     max-width: 100%;
+  }
+
+  button {
+    color: $color-darkblue;
+    font-size: smaller;
+    font-weight: 900;
   }
 }
