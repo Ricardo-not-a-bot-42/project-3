@@ -19,7 +19,7 @@
     "http-errors": "^1.7.3",
     "mongoose": "^5.6.13",
     "morgan": "^1.9.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "serve-favicon": "^2.5.0",
     "stripe": "^8.61.0"
   },
